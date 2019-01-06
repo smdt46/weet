@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
                 UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                 //UserDefaults.standard.synchronize()
                 //self.dismiss(animated: true, completion: nil)
-                self.performSegue(withIdentifier: "mainView", sender: self)
+                self.performSegue(withIdentifier: "tabMain", sender: self)
             }
         }
     }

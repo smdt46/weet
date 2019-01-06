@@ -30,10 +30,12 @@ class ViewController: UIViewController {
     @IBAction func LogoutButtonTapped(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
         //UserDefaults.standard.synchronize()
-        self.performSegue(withIdentifier: "loginView", sender: self)
+        
+        // タイトル画面へ
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "title")
+        present(nextView, animated: true, completion: nil)
     }
     
-
-
 }
 

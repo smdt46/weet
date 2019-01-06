@@ -176,47 +176,12 @@
                     <connections>
                         <outlet property="userNameTextField" destination="Oyx-7F-hFo" id="wo0-7O-QMj"/>
                         <outlet property="userPasswordTextField" destination="mGD-jQ-MCq" id="cqO-3o-AH5"/>
-                        <segue destination="eRK-uE-qIc" kind="show" identifier="mainView" id="nLT-IB-npn"/>
+                        <segue destination="Yul-o2-JgI" kind="show" identifier="tabMain" id="9yr-EY-ls0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l7h-UU-u4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1601" y="989"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="fal-Xs-nC2">
-            <objects>
-                <viewController id="eRK-uE-qIc" customClass="ViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tKa-FZ-had">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4po-7a-2Ya">
-                                <rect key="frame" x="16" y="36" width="343" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="ログアウト">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="LogoutButtonTapped:" destination="eRK-uE-qIc" eventType="touchUpInside" id="BH2-lQ-dQE"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="R8e-9P-pAS" firstAttribute="trailing" secondItem="4po-7a-2Ya" secondAttribute="trailing" constant="16" id="0Lx-jP-jpE"/>
-                            <constraint firstItem="4po-7a-2Ya" firstAttribute="top" secondItem="R8e-9P-pAS" secondAttribute="top" constant="16" id="4v3-aN-goV"/>
-                            <constraint firstItem="4po-7a-2Ya" firstAttribute="leading" secondItem="R8e-9P-pAS" secondAttribute="leading" constant="16" id="X61-1v-428"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="R8e-9P-pAS"/>
-                    </view>
-                    <connections>
-                        <segue destination="MK1-oa-rzO" kind="show" identifier="loginView" id="fd5-E8-Y08"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NB7-g0-rnj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2590" y="988"/>
         </scene>
         <!--Register Page View Controller-->
         <scene sceneID="2K7-bf-XJc">
@@ -455,7 +420,7 @@
         <!--View Controller-->
         <scene sceneID="bxj-6s-HaE">
             <objects>
-                <viewController id="cMm-jq-Qhd" sceneMemberID="viewController">
+                <viewController id="cMm-jq-Qhd" customClass="ViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qhN-Lg-gHZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -466,12 +431,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJA-gU-00O">
+                                <rect key="frame" x="149" y="318.5" width="77" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="ログアウト">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="LogoutButtonTapped:" destination="cMm-jq-Qhd" eventType="touchUpInside" id="tzq-hP-8sV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="icM-ot-Uxe" firstAttribute="leading" secondItem="Qv1-XA-UTN" secondAttribute="leading" constant="16" id="PoN-oA-JMY"/>
+                            <constraint firstItem="CJA-gU-00O" firstAttribute="centerY" secondItem="qhN-Lg-gHZ" secondAttribute="centerY" id="Uv1-q1-aA7"/>
                             <constraint firstItem="Qv1-XA-UTN" firstAttribute="trailing" secondItem="icM-ot-Uxe" secondAttribute="trailing" constant="16" id="evI-at-dta"/>
                             <constraint firstItem="icM-ot-Uxe" firstAttribute="top" secondItem="Qv1-XA-UTN" secondAttribute="top" constant="16" id="luG-eg-wYT"/>
+                            <constraint firstItem="CJA-gU-00O" firstAttribute="centerX" secondItem="qhN-Lg-gHZ" secondAttribute="centerX" id="zWh-t1-uql"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qv1-XA-UTN"/>
                     </view>
@@ -504,6 +481,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tQ6-r0-L7x"/>
+        <segue reference="9yr-EY-ls0"/>
     </inferredMetricsTieBreakers>
 </document>
