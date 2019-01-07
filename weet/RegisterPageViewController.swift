@@ -10,27 +10,42 @@ import UIKit
 
 class RegisterPageViewController: UIViewController {
 
-    @IBOutlet weak var userNameTextField: UITextField!
+    var userMailAddress: String = ""
+    @IBOutlet weak var userMailAddressLabel: UILabel!
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var userSexTextField: SexPickerKeyboard!
+    @IBOutlet weak var userBirthdayTextField: DatePickerKeyboard!
+    @IBOutlet weak var userPrefecturesTextField: PrefecturesPickerKeyboard!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // パスワード欄は非表示
+        userPasswordTextField.isSecureTextEntry = true
+        repeatPasswordTextField.isSecureTextEntry = true
+        userMailAddressLabel.text = userMailAddress
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    
+    // 次へボタン押下
     @IBAction func registerButtonTapped(_ sender: Any) {
-        let userName = userNameTextField.text
         let userPassword = userPasswordTextField.text
         let userRepeatPassword = repeatPasswordTextField.text
+        let userName = userNameTextField.text
+        let userSex = userSexTextField.text!
+        let userBirthday = userBirthdayTextField.text!
+        let userPrefecture = userPrefecturesTextField.text!
         
         // 空白確認
-        if(userName == "" || userPassword == "" || userRepeatPassword == "") {
+        if(userMailAddress == "" || userPassword == "" || userRepeatPassword == "" || userName == "" || userSex == "" || userBirthday == "" || userPrefecture == "") {
             // アラートメッセージ
             displayMyAlertMessage(userMessage: "全てのフォームに入力してください。")
             return
@@ -43,14 +58,18 @@ class RegisterPageViewController: UIViewController {
         }
         
         // データ登録
-        UserDefaults.standard.set(userName, forKey: "userName")
+        UserDefaults.standard.set(userMailAddress, forKey: "userName")
         UserDefaults.standard.set(userPassword, forKey: "userPassword")
         //UserDefaults.standard.synchronize()
         
+        // ログイン
+        //UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+        
         // メッセージアラートなど
-        let myAlert = UIAlertController(title: "Alert", message: "どうも！登録完了", preferredStyle: UIAlertController.Style.alert)
+        let myAlert = UIAlertController(title: "登録完了", message: "おめでとうございます！登録できました", preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
-            action in self.dismiss(animated: true, completion: nil)
+            // 次の画面へ
+            action in self.performSegue(withIdentifier: "registerView3", sender: self)
         }
         myAlert.addAction(okAction)
         self.present(myAlert, animated: true,completion: nil)
@@ -77,4 +96,10 @@ class RegisterPageViewController: UIViewController {
     }
     */
 
+    @IBAction func kakuninButton(_ sender: Any) {
+        print(userBirthdayTextField.text!)
+        print(userSexTextField.text!)
+        print(userPrefecturesTextField.text!)
+
+    }
 }
