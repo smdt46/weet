@@ -31,6 +31,10 @@ class LoginViewController: UIViewController {
         let userPasswordStored = UserDefaults.standard.string(forKey: "userPassword")
         if(userName == userNameStored) {
             if(userPassword == userPasswordStored) {
+                // ユーザ基本情報が登録されていなかったら
+                // 基本情報入力画面に遷移する
+                // 入力されていたら、UserDefaultsにユーザIDとログイン状態を保存し、メイン画面に遷移する
+                
                 // ログイン
                 UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                 //UserDefaults.standard.synchronize()

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C3399A321E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */; };
+		6C3399A421E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3399A221E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib */; };
 		6C49D76E21E1FFEF00EB7024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C49D76D21E1FFEF00EB7024 /* AppDelegate.swift */; };
 		6C49D77021E1FFEF00EB7024 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C49D76F21E1FFEF00EB7024 /* ViewController.swift */; };
 		6C49D77321E1FFEF00EB7024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C49D77121E1FFEF00EB7024 /* Main.storyboard */; };
@@ -14,6 +16,7 @@
 		6C49D77821E1FFF100EB7024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C49D77621E1FFF100EB7024 /* LaunchScreen.storyboard */; };
 		6C49D78021E20A3600EB7024 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C49D77F21E20A3600EB7024 /* RegisterPageViewController.swift */; };
 		6C49D78221E2290500EB7024 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C49D78121E2290500EB7024 /* LoginViewController.swift */; };
+		6C4DE80121E62499003BEDCD /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4DE80021E62499003BEDCD /* UserProfileViewController.swift */; };
 		6C89303921E24F450092C6DD /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89303821E24F450092C6DD /* TitleViewController.swift */; };
 		6C89303B21E285B50092C6DD /* RegisterPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */; };
 		6CEBBD7821E3643B00DD8611 /* DatePickerKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBBD7721E3643B00DD8611 /* DatePickerKeyboard.swift */; };
@@ -23,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImagePreviewTableViewCell.swift; sourceTree = "<group>"; };
+		6C3399A221E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserImagePreviewTableViewCell.xib; sourceTree = "<group>"; };
 		6C49D76A21E1FFEF00EB7024 /* weet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C49D76D21E1FFEF00EB7024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C49D76F21E1FFEF00EB7024 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +37,7 @@
 		6C49D77921E1FFF100EB7024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C49D77F21E20A3600EB7024 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		6C49D78121E2290500EB7024 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6C4DE80021E62499003BEDCD /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		6C89303821E24F450092C6DD /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPage1ViewController.swift; sourceTree = "<group>"; };
 		6CEBBD7721E3643B00DD8611 /* DatePickerKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerKeyboard.swift; sourceTree = "<group>"; };
@@ -70,22 +76,41 @@
 		6C49D76C21E1FFEF00EB7024 /* weet */ = {
 			isa = PBXGroup;
 			children = (
+				6CAC6A9C21E7607B00CEF5DD /* Register */,
+				6CAC6A9B21E7604D00CEF5DD /* UserPage */,
 				6C49D76D21E1FFEF00EB7024 /* AppDelegate.swift */,
 				6C49D76F21E1FFEF00EB7024 /* ViewController.swift */,
 				6C49D77121E1FFEF00EB7024 /* Main.storyboard */,
-				6CEBBD7D21E3856800DD8611 /* ImageSelectViewController.swift */,
-				6CEBBD7921E367E000DD8611 /* SexPickerKeyboard.swift */,
 				6C89303821E24F450092C6DD /* TitleViewController.swift */,
 				6C49D78121E2290500EB7024 /* LoginViewController.swift */,
-				6C49D77F21E20A3600EB7024 /* RegisterPageViewController.swift */,
-				6CEBBD7B21E3739800DD8611 /* PrefecturesPickerKeyboard.swift */,
-				6CEBBD7721E3643B00DD8611 /* DatePickerKeyboard.swift */,
-				6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */,
 				6C49D77421E1FFF100EB7024 /* Assets.xcassets */,
 				6C49D77621E1FFF100EB7024 /* LaunchScreen.storyboard */,
 				6C49D77921E1FFF100EB7024 /* Info.plist */,
 			);
 			path = weet;
+			sourceTree = "<group>";
+		};
+		6CAC6A9B21E7604D00CEF5DD /* UserPage */ = {
+			isa = PBXGroup;
+			children = (
+				6C4DE80021E62499003BEDCD /* UserProfileViewController.swift */,
+				6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */,
+				6C3399A221E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib */,
+			);
+			path = UserPage;
+			sourceTree = "<group>";
+		};
+		6CAC6A9C21E7607B00CEF5DD /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */,
+				6C49D77F21E20A3600EB7024 /* RegisterPageViewController.swift */,
+				6CEBBD7D21E3856800DD8611 /* ImageSelectViewController.swift */,
+				6CEBBD7721E3643B00DD8611 /* DatePickerKeyboard.swift */,
+				6CEBBD7B21E3739800DD8611 /* PrefecturesPickerKeyboard.swift */,
+				6CEBBD7921E367E000DD8611 /* SexPickerKeyboard.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +174,7 @@
 				6C49D77821E1FFF100EB7024 /* LaunchScreen.storyboard in Resources */,
 				6C49D77521E1FFF100EB7024 /* Assets.xcassets in Resources */,
 				6C49D77321E1FFEF00EB7024 /* Main.storyboard in Resources */,
+				6C3399A421E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C49D78221E2290500EB7024 /* LoginViewController.swift in Sources */,
+				6C3399A321E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift in Sources */,
 				6CEBBD7A21E367E000DD8611 /* SexPickerKeyboard.swift in Sources */,
 				6C49D77021E1FFEF00EB7024 /* ViewController.swift in Sources */,
 				6C89303B21E285B50092C6DD /* RegisterPage1ViewController.swift in Sources */,
@@ -168,6 +195,7 @@
 				6C49D76E21E1FFEF00EB7024 /* AppDelegate.swift in Sources */,
 				6C49D78021E20A3600EB7024 /* RegisterPageViewController.swift in Sources */,
 				6CEBBD7E21E3856800DD8611 /* ImageSelectViewController.swift in Sources */,
+				6C4DE80121E62499003BEDCD /* UserProfileViewController.swift in Sources */,
 				6C89303921E24F450092C6DD /* TitleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,11 +13,15 @@ class RegisterPage1ViewController: UIViewController {
     //let URL_SAVE_BOY = "http://localhost/api/saveBoy.php"
 
     @IBOutlet weak var userMailAddressTextField: UITextField!
+    @IBOutlet weak var userPasswordTextField: UITextField!
+    @IBOutlet weak var repeatPasswordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // パスワード欄は非表示
+        userPasswordTextField.isSecureTextEntry = true
+        repeatPasswordTextField.isSecureTextEntry = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,6 +30,29 @@ class RegisterPage1ViewController: UIViewController {
     
     
     @IBAction func nextButtonTapped(_ sender: Any) {
+        let userMailAddress = userMailAddressTextField.text
+        let userPassword = userPasswordTextField.text
+        let userRepeatPassword = repeatPasswordTextField.text
+        
+        // 空白確認
+        if(userMailAddress == "" || userPassword == "" || userRepeatPassword == "") {
+            // アラートメッセージ
+            //displayMyAlertMessage(userMessage: "全てのフォームに入力してください。")
+            return
+        }
+        
+        // パスワード一致確認
+        if(userPassword != userRepeatPassword) {
+            //displayMyAlertMessage(userMessage: "パスワードが一致していません。")
+            return
+        }
+
+    
+        UserDefaults.standard.set(userMailAddress, forKey: "userName")
+        UserDefaults.standard.set(userPassword, forKey: "userPassword")
+        self.performSegue(withIdentifier: "register", sender: self)
+        
+        
 //        // createdNSURL
 //        let requestURL = NSURL(string: URL_SAVE_BOY)
 //
@@ -68,25 +95,15 @@ class RegisterPage1ViewController: UIViewController {
 //        }
 //        task.resume()
         
-        // メールアドレスの空白・書式確認
         // メールアドレス有無の問い合わせ
         // 返ってきたJSONにエラーが無ければ、次の画面へ
         
         if(userMailAddressTextField.text != "") {
-            self.performSegue(withIdentifier: "registerView2", sender: self)
+            //self.performSegue(withIdentifier: "register", sender: self)
         } else {
             print("おいｗメールアドレス入力しろよｗ")
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 次の画面を取り出す
-        let viewController = segue.destination as! RegisterPageViewController
-        
-        viewController.userMailAddress = userMailAddressTextField.text!
-    }
-    
-    
 
     /*
     // MARK: - Navigation

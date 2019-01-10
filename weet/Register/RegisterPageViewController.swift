@@ -10,10 +10,6 @@ import UIKit
 
 class RegisterPageViewController: UIViewController {
 
-    var userMailAddress: String = ""
-    @IBOutlet weak var userMailAddressLabel: UILabel!
-    @IBOutlet weak var userPasswordTextField: UITextField!
-    @IBOutlet weak var repeatPasswordTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userSexTextField: SexPickerKeyboard!
     @IBOutlet weak var userBirthdayTextField: DatePickerKeyboard!
@@ -22,11 +18,6 @@ class RegisterPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // パスワード欄は非表示
-        userPasswordTextField.isSecureTextEntry = true
-        repeatPasswordTextField.isSecureTextEntry = true
-        userMailAddressLabel.text = userMailAddress
     }
     
     
@@ -37,33 +28,17 @@ class RegisterPageViewController: UIViewController {
     
     // 次へボタン押下
     @IBAction func registerButtonTapped(_ sender: Any) {
-        let userPassword = userPasswordTextField.text
-        let userRepeatPassword = repeatPasswordTextField.text
         let userName = userNameTextField.text
         let userSex = userSexTextField.text!
         let userBirthday = userBirthdayTextField.text!
         let userPrefecture = userPrefecturesTextField.text!
         
         // 空白確認
-        if(userMailAddress == "" || userPassword == "" || userRepeatPassword == "" || userName == "" || userSex == "" || userBirthday == "" || userPrefecture == "") {
+        if(userName == "" || userSex == "" || userBirthday == "" || userPrefecture == "") {
             // アラートメッセージ
             displayMyAlertMessage(userMessage: "全てのフォームに入力してください。")
             return
         }
-        
-        // パスワード一致確認
-        if(userPassword != userRepeatPassword) {
-            displayMyAlertMessage(userMessage: "パスワードが一致していません。")
-            return
-        }
-        
-        // データ登録
-        UserDefaults.standard.set(userMailAddress, forKey: "userName")
-        UserDefaults.standard.set(userPassword, forKey: "userPassword")
-        //UserDefaults.standard.synchronize()
-        
-        // ログイン
-        //UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
         
         // メッセージアラートなど
         let myAlert = UIAlertController(title: "登録完了", message: "おめでとうございます！登録できました", preferredStyle: UIAlertController.Style.alert)
@@ -75,9 +50,6 @@ class RegisterPageViewController: UIViewController {
         self.present(myAlert, animated: true,completion: nil)
     }
     
-    @IBAction func skipButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "registerView3", sender: self)
-    }
     
     func displayMyAlertMessage(userMessage: String) {
         let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertController.Style.alert)
@@ -86,20 +58,4 @@ class RegisterPageViewController: UIViewController {
         self.present(myAlert,animated: true,completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    @IBAction func kakuninButton(_ sender: Any) {
-        print(userBirthdayTextField.text!)
-        print(userSexTextField.text!)
-        print(userPrefecturesTextField.text!)
-
-    }
 }
