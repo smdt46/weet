@@ -15,7 +15,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     let textArry: [String] = ["1番めのセル","2番めのセル",
                               "3番めのセルは長い文字列を設定して、\nセルの高さが自動的に調節されるようになるかを確認しようと思います。",
                               "4番目のセル","5番目のセル"]
-    let sectionTitleArry: [String] = ["", "ひとこと", "自己紹介", "友達関連", "恋愛関係", "婚活関係", "ルームメイト関係"]
+    let sectionTitleArry: [String] = ["基本情報", "ひとこと", "自己紹介", "友達関連", "恋愛関係", "婚活関係", "ルームメイト関係"]
     
     let friendArry: [String] = ["居住地", "学歴", "職業", "暮らし"]
     let friendAnsArry: [String] = ["兵庫県", "高校卒", "システムエンジニア", "実家暮らし"]
@@ -80,7 +80,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         switch indexPath.section {
         case 0:
-            cellImage.cellViewData(num: indexPath, imageName: "pose_furikaeru_man.png")
+            cellImage.cellViewData(image1Name: "pose_furikaeru_man.png", image2Name: "pose_furikaeru_man.png", image3Name: "pose_furikaeru_man.png", name: "かまやんかまやん", ageAndAddress: "22歳・兵庫県")
             return cellImage
         case 1:
             cell.textLabel?.text = "いいご縁を期待してます"
@@ -88,15 +88,19 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = "私はシステムエンジニアをしています\nあああああ"
         case 3:
+            cell.detailTextLabel?.textColor = UIColor.magenta
             cell.textLabel?.text = friendArry[indexPath.row]
             cell.detailTextLabel?.text = friendAnsArry[indexPath.row]
         case 4:
+            cell.detailTextLabel?.textColor = UIColor.magenta
             cell.textLabel?.text = loveArry[indexPath.row]
             cell.detailTextLabel?.text = loveAnsArry[indexPath.row]
         case 5:
+            cell.detailTextLabel?.textColor = UIColor.magenta
             cell.textLabel?.text = marriageArry[indexPath.row]
             cell.detailTextLabel?.text = marriageAnsArry[indexPath.row]
         case 6:
+            cell.detailTextLabel?.textColor = UIColor.magenta
             cell.textLabel?.text = roommateArry[indexPath.row]
             cell.detailTextLabel?.text = roommateAnsArry[indexPath.row]
         default:
