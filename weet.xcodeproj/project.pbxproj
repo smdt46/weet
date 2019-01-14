@@ -19,10 +19,12 @@
 		6C4DE80121E62499003BEDCD /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4DE80021E62499003BEDCD /* UserProfileViewController.swift */; };
 		6C89303921E24F450092C6DD /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89303821E24F450092C6DD /* TitleViewController.swift */; };
 		6C89303B21E285B50092C6DD /* RegisterPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */; };
+		6CD6DF9621EB0DBC0072F2FA /* EurekaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD6DF9521EB0DBC0072F2FA /* EurekaViewController.swift */; };
 		6CEBBD7821E3643B00DD8611 /* DatePickerKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBBD7721E3643B00DD8611 /* DatePickerKeyboard.swift */; };
 		6CEBBD7A21E367E000DD8611 /* SexPickerKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBBD7921E367E000DD8611 /* SexPickerKeyboard.swift */; };
 		6CEBBD7C21E3739800DD8611 /* PrefecturesPickerKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBBD7B21E3739800DD8611 /* PrefecturesPickerKeyboard.swift */; };
 		6CEBBD7E21E3856800DD8611 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBBD7D21E3856800DD8611 /* ImageSelectViewController.swift */; };
+		D162B589DD70CE90D5661C49 /* Pods_weet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC62C5E30CEA860FE9D0728C /* Pods_weet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +42,14 @@
 		6C4DE80021E62499003BEDCD /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		6C89303821E24F450092C6DD /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPage1ViewController.swift; sourceTree = "<group>"; };
+		6CD6DF9521EB0DBC0072F2FA /* EurekaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaViewController.swift; sourceTree = "<group>"; };
 		6CEBBD7721E3643B00DD8611 /* DatePickerKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerKeyboard.swift; sourceTree = "<group>"; };
 		6CEBBD7921E367E000DD8611 /* SexPickerKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexPickerKeyboard.swift; sourceTree = "<group>"; };
 		6CEBBD7B21E3739800DD8611 /* PrefecturesPickerKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefecturesPickerKeyboard.swift; sourceTree = "<group>"; };
 		6CEBBD7D21E3856800DD8611 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
+		CC62C5E30CEA860FE9D0728C /* Pods_weet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4AA610E3AE3D043B8AECD9E /* Pods-weet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weet/Pods-weet.debug.xcconfig"; sourceTree = "<group>"; };
+		FD377E1E90577536FDDC14B1 /* Pods-weet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weet.release.xcconfig"; path = "Pods/Target Support Files/Pods-weet/Pods-weet.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D162B589DD70CE90D5661C49 /* Pods_weet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +69,8 @@
 			children = (
 				6C49D76C21E1FFEF00EB7024 /* weet */,
 				6C49D76B21E1FFEF00EB7024 /* Products */,
+				C98CC5121E1DE9F6B93C5D0B /* Pods */,
+				92F5485CBE377205FE98061F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +90,7 @@
 				6C49D76D21E1FFEF00EB7024 /* AppDelegate.swift */,
 				6C49D76F21E1FFEF00EB7024 /* ViewController.swift */,
 				6C49D77121E1FFEF00EB7024 /* Main.storyboard */,
+				6CD6DF9521EB0DBC0072F2FA /* EurekaViewController.swift */,
 				6C89303821E24F450092C6DD /* TitleViewController.swift */,
 				6C49D78121E2290500EB7024 /* LoginViewController.swift */,
 				6C49D77421E1FFF100EB7024 /* Assets.xcassets */,
@@ -113,6 +123,23 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		92F5485CBE377205FE98061F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC62C5E30CEA860FE9D0728C /* Pods_weet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C98CC5121E1DE9F6B93C5D0B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4AA610E3AE3D043B8AECD9E /* Pods-weet.debug.xcconfig */,
+				FD377E1E90577536FDDC14B1 /* Pods-weet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -120,9 +147,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C49D77C21E1FFF100EB7024 /* Build configuration list for PBXNativeTarget "weet" */;
 			buildPhases = (
+				DD9F6280221663D077D5C0AF /* [CP] Check Pods Manifest.lock */,
 				6C49D76621E1FFEF00EB7024 /* Sources */,
 				6C49D76721E1FFEF00EB7024 /* Frameworks */,
 				6C49D76821E1FFEF00EB7024 /* Resources */,
+				5D70C1FB1EEA868BFB825D57 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -180,11 +209,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5D70C1FB1EEA868BFB825D57 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-weet/Pods-weet-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-weet/Pods-weet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD9F6280221663D077D5C0AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-weet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6C49D76621E1FFEF00EB7024 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CD6DF9621EB0DBC0072F2FA /* EurekaViewController.swift in Sources */,
 				6C49D78221E2290500EB7024 /* LoginViewController.swift in Sources */,
 				6C3399A321E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift in Sources */,
 				6CEBBD7A21E367E000DD8611 /* SexPickerKeyboard.swift in Sources */,
@@ -340,6 +421,7 @@
 		};
 		6C49D77D21E1FFF100EB7024 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4AA610E3AE3D043B8AECD9E /* Pods-weet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -358,6 +440,7 @@
 		};
 		6C49D77E21E1FFF100EB7024 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD377E1E90577536FDDC14B1 /* Pods-weet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

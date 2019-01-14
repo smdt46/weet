@@ -458,7 +458,7 @@
                     <navigationItem key="navigationItem" title="ユーザ情報参照(サンプル)" id="eTX-FR-erh">
                         <barButtonItem key="rightBarButtonItem" title="編集" id="DbW-Av-3d3">
                             <connections>
-                                <segue destination="Zf9-a7-mjb" kind="show" id="h4W-Ke-cmh"/>
+                                <segue destination="cvx-BZ-cKN" kind="show" id="6Ki-NM-I10"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -470,21 +470,20 @@
             </objects>
             <point key="canvasLocation" x="6373" y="1344"/>
         </scene>
-        <!--ユーザ情報編集-->
-        <scene sceneID="iNi-Af-E8R">
+        <!--Eureka View Controller-->
+        <scene sceneID="IT6-Iu-DRP">
             <objects>
-                <viewController id="Zf9-a7-mjb" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="R6P-gf-GT6">
+                <viewController id="cvx-BZ-cKN" customClass="EurekaViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wAi-ii-jLA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Brj-dd-YVv"/>
+                        <viewLayoutGuide key="safeArea" id="R7P-7D-74j"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ユーザ情報編集" id="9dk-LQ-Mhf"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XsL-mI-FoP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="alL-vP-osr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7148" y="1344"/>
+            <point key="canvasLocation" x="7185" y="1344"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6Io-pa-UCN">
