@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5c9-VZ-Uvn">
-                                <rect key="frame" x="16" y="260" width="288" height="98"/>
+                                <rect key="frame" x="16" y="231.5" width="288" height="155"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTM-RW-Ypu">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="41"/>
@@ -47,6 +47,18 @@
                                         </state>
                                         <connections>
                                             <segue destination="MK1-oa-rzO" kind="show" identifier="loginFromTitle" id="tQ6-r0-L7x"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLe-aj-fRA">
+                                        <rect key="frame" x="0.0" y="114" width="288" height="41"/>
+                                        <color key="backgroundColor" red="0.55634254220000001" green="0.97934550050000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="デモ用">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="demoLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fWd-XH-WoS"/>
+                                            <segue destination="Yul-o2-JgI" kind="show" identifier="demo" id="fkv-dh-ADi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -485,10 +497,10 @@
             </objects>
             <point key="canvasLocation" x="7185" y="1344"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--My Tab Bar Controller-->
         <scene sceneID="6Io-pa-UCN">
             <objects>
-                <tabBarController storyboardIdentifier="tabMain" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yul-o2-JgI" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabMain" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yul-o2-JgI" customClass="MyTabBarController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HcS-es-D1d">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -506,11 +518,11 @@
             </objects>
             <point key="canvasLocation" x="3485.5999999999999" y="132.68365817091455"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--検索-->
         <scene sceneID="8Pb-BL-M6P">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v87-CM-cwD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="Ubz-BJ-HZj"/>
+                    <tabBarItem key="tabBarItem" title="検索" image="searchIcon" selectedImage="searchIcon" id="Ubz-BJ-HZj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RB4-Tj-xa4">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -525,11 +537,11 @@
             </objects>
             <point key="canvasLocation" x="4483.125" y="-936.97183098591552"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--いいね-->
         <scene sceneID="KjE-rm-mXR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fHJ-Hn-bV6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Y1j-if-WMR"/>
+                    <tabBarItem key="tabBarItem" title="いいね" image="goodIcon" selectedImage="goodIcon" id="Y1j-if-WMR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cpw-uE-DEs">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -544,11 +556,11 @@
             </objects>
             <point key="canvasLocation" x="4483.125" y="-179.57746478873239"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--メッセージ-->
         <scene sceneID="CD1-ms-KqT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bya-JF-whJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="Jv6-p3-IXE"/>
+                    <tabBarItem key="tabBarItem" title="メッセージ" image="messageIcon" selectedImage="messageIcon" id="Jv6-p3-IXE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nX9-or-GW6">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -563,11 +575,11 @@
             </objects>
             <point key="canvasLocation" x="4483.125" y="553.52112676056333"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--マイページ-->
         <scene sceneID="IMU-6E-jHB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hqk-HY-lDz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="YQb-HI-6YE"/>
+                    <tabBarItem key="tabBarItem" title="マイページ" image="myPageIcon" selectedImage="myPageIcon" id="YQb-HI-6YE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FAT-Pr-Dfz">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -583,8 +595,14 @@
             <point key="canvasLocation" x="4483.125" y="1343.661971830986"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="goodIcon" width="72" height="72"/>
+        <image name="messageIcon" width="72" height="72"/>
+        <image name="myPageIcon" width="72" height="72"/>
+        <image name="searchIcon" width="72" height="72"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9yr-EY-ls0"/>
-        <segue reference="kre-q8-Glr"/>
+        <segue reference="fkv-dh-ADi"/>
+        <segue reference="tQ6-r0-L7x"/>
     </inferredMetricsTieBreakers>
 </document>

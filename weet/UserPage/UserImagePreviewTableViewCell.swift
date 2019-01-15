@@ -15,24 +15,18 @@ class UserImagePreviewTableViewCell: UITableViewCell {
     @IBOutlet weak var image1: UIButton!
     @IBOutlet weak var image2: UIButton!
     @IBOutlet weak var image3: UIButton!
-    var imageArry: [String] = []
+    var imageArry: [Data] = []
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ageAndAddressLabel: UILabel!
     
     // セル表示時の処理
     func cellViewData(image1Name: String, image2Name: String, image3Name: String, name: String, ageAndAddress: String) {
-        // 画像名を配列に格納
-        imageArry.append(image1Name)
-        imageArry.append(image2Name)
-        imageArry.append(image3Name)
         
         // ニックネームをラベルに設定
         self.nameLabel.text = name
         // 年齢・居住地をラベルに設定
         self.ageAndAddressLabel.text = ageAndAddress
         
-        // 1番目の画像をプレビュー部分に設定
-        self.imagePreview.image = UIImage(named: image1Name)
         // 画像一覧の角を丸くする
         self.image1.layer.cornerRadius = image1.frame.size.width * 0.5
         self.image2.layer.cornerRadius = image2.frame.size.width * 0.5
@@ -40,13 +34,35 @@ class UserImagePreviewTableViewCell: UITableViewCell {
         self.image1.layer.masksToBounds = true
         self.image2.layer.masksToBounds = true
         self.image3.layer.masksToBounds = true
-        // 各画像を設定
-        image1.setImage(UIImage(named: "pose_furikaeru_man.png"), for: .normal)
-        image1.imageView?.contentMode = .scaleAspectFit
-        image2.setImage(UIImage(named: "pose_furikaeru_man.png"), for: .normal)
-        image2.imageView?.contentMode = .scaleAspectFit
-        image3.setImage(UIImage(named: "pose_furikaeru_man.png"), for: .normal)
-        image3.imageView?.contentMode = .scaleAspectFit
+        if (image1Name != "") {
+            // 各画像を設定
+            let imageURL1 = URL(string: image1Name)
+//            let imageURL2 = URL(string: image2Name)
+//            let imageURL3 = URL(string: image3Name)
+            do {
+                let data1 = try Data(contentsOf: imageURL1!)
+                self.imageArry.append(data1)
+                self.imageArry[0] = data1
+//                let data2 = try Data(contentsOf: imageURL2!)
+//                self.imageArry.append(data2)
+//                self.imageArry[1] = data2
+//                let data3 = try Data(contentsOf: imageURL3!)
+//                self.imageArry.append(data3)
+//                self.imageArry[2] = data3
+                self.image1.setImage(UIImage(data: data1), for: .normal)
+                self.image1.imageView?.contentMode = .scaleAspectFit
+//                self.image2.setImage(UIImage(data: data2), for: .normal)
+//                self.image2.imageView?.contentMode = .scaleAspectFit
+//                self.image3.setImage(UIImage(data: data3), for: .normal)
+//                self.image3.imageView?.contentMode = .scaleAspectFit
+                // 1番目の画像をプレビュー部分に設定
+                self.imagePreview.image = UIImage(data: data1)
+            }catch let err {
+                print("Error : \(err.localizedDescription)")
+            }
+        }
+        
+
         
         // 1番目の画像に枠線を設定
         self.image1.layer.borderColor = UIColor.blue.cgColor
@@ -60,7 +76,7 @@ class UserImagePreviewTableViewCell: UITableViewCell {
         // 枠線を設定
         self.image1.layer.borderColor = UIColor.blue.cgColor
         self.image1.layer.borderWidth = 2
-        imagePreview.image = UIImage(named: imageArry[0])
+        self.imagePreview.image = UIImage(data: self.imageArry[0])
     }
     
     @IBAction func image2Button(_ sender: Any) {
@@ -70,7 +86,7 @@ class UserImagePreviewTableViewCell: UITableViewCell {
         // 枠線を設定
         self.image2.layer.borderColor = UIColor.blue.cgColor
         self.image2.layer.borderWidth = 2
-        imagePreview.image = UIImage(named: imageArry[1])
+        self.imagePreview.image = UIImage(data: self.imageArry[1])
     }
     
     @IBAction func image3Button(_ sender: Any) {
@@ -80,7 +96,7 @@ class UserImagePreviewTableViewCell: UITableViewCell {
         // 枠線を設定
         self.image3.layer.borderColor = UIColor.blue.cgColor
         self.image3.layer.borderWidth = 2
-        imagePreview.image = UIImage(named: imageArry[2])
+        self.imagePreview.image = UIImage(data: self.imageArry[2])
     }
     
     // 全ての外枠線を消す

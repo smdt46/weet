@@ -48,15 +48,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t6Q-kw-efs">
                                 <rect key="frame" x="193" y="361" width="166" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmv-Kd-biD">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3R-ck-q6g">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="IbY-Ob-vAu"/>
-                                            <constraint firstAttribute="height" constant="50" id="ifp-h5-Yj7"/>
-                                            <constraint firstAttribute="width" secondItem="rmv-Kd-biD" secondAttribute="height" multiplier="1:1" id="pfU-1P-21m"/>
+                                            <constraint firstAttribute="width" secondItem="T3R-ck-q6g" secondAttribute="height" multiplier="1:1" id="OgF-Ed-6kU"/>
+                                            <constraint firstAttribute="width" constant="50" id="hK7-6P-va9"/>
+                                            <constraint firstAttribute="height" constant="50" id="vZv-vb-RYp"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="image1Button:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3yd-E2-BjE"/>
+                                            <action selector="image3Button:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IIu-jT-YoS"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ye-DR-0JD">
@@ -69,15 +69,15 @@
                                             <action selector="image2Button:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="C43-ZV-EIE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3R-ck-q6g">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmv-Kd-biD">
                                         <rect key="frame" x="116" y="0.0" width="50" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="T3R-ck-q6g" secondAttribute="height" multiplier="1:1" id="OgF-Ed-6kU"/>
-                                            <constraint firstAttribute="width" constant="50" id="hK7-6P-va9"/>
-                                            <constraint firstAttribute="height" constant="50" id="vZv-vb-RYp"/>
+                                            <constraint firstAttribute="width" constant="50" id="IbY-Ob-vAu"/>
+                                            <constraint firstAttribute="height" constant="50" id="ifp-h5-Yj7"/>
+                                            <constraint firstAttribute="width" secondItem="rmv-Kd-biD" secondAttribute="height" multiplier="1:1" id="pfU-1P-21m"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="image3Button:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IIu-jT-YoS"/>
+                                            <action selector="image1Button:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3yd-E2-BjE"/>
                                         </connections>
                                     </button>
                                 </subviews>
