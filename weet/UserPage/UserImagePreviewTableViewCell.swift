@@ -34,29 +34,46 @@ class UserImagePreviewTableViewCell: UITableViewCell {
         self.image1.layer.masksToBounds = true
         self.image2.layer.masksToBounds = true
         self.image3.layer.masksToBounds = true
+        
+        self.imageArry = []
+        
         if (image1Name != "") {
             // 各画像を設定
-            let imageURL1 = URL(string: image1Name)
-//            let imageURL2 = URL(string: image2Name)
-//            let imageURL3 = URL(string: image3Name)
+            let imageURL = URL(string: image1Name)
             do {
-                let data1 = try Data(contentsOf: imageURL1!)
-                self.imageArry.append(data1)
-                self.imageArry[0] = data1
-//                let data2 = try Data(contentsOf: imageURL2!)
-//                self.imageArry.append(data2)
-//                self.imageArry[1] = data2
-//                let data3 = try Data(contentsOf: imageURL3!)
-//                self.imageArry.append(data3)
-//                self.imageArry[2] = data3
-                self.image1.setImage(UIImage(data: data1), for: .normal)
+                let data = try Data(contentsOf: imageURL!)
+                self.imageArry.append(data)
+                self.image1.setImage(UIImage(data: data), for: .normal)
                 self.image1.imageView?.contentMode = .scaleAspectFit
-//                self.image2.setImage(UIImage(data: data2), for: .normal)
-//                self.image2.imageView?.contentMode = .scaleAspectFit
-//                self.image3.setImage(UIImage(data: data3), for: .normal)
-//                self.image3.imageView?.contentMode = .scaleAspectFit
                 // 1番目の画像をプレビュー部分に設定
-                self.imagePreview.image = UIImage(data: data1)
+                self.imagePreview.image = UIImage(data: data)
+                print("image1Set")
+            }catch let err {
+                print("Error : \(err.localizedDescription)")
+            }
+        }
+        if (image2Name != "") {
+            // 各画像を設定
+            let imageURL = URL(string: image2Name)
+            do {
+                let data = try Data(contentsOf: imageURL!)
+                self.imageArry.append(data)
+                self.image2.setImage(UIImage(data: data), for: .normal)
+                self.image2.imageView?.contentMode = .scaleAspectFit
+                print("image2Set")
+            }catch let err {
+                print("Error : \(err.localizedDescription)")
+            }
+        }
+        if (image3Name != "") {
+            // 各画像を設定
+            let imageURL = URL(string: image3Name)
+            do {
+                let data = try Data(contentsOf: imageURL!)
+                self.imageArry.append(data)
+                self.image3.setImage(UIImage(data: data), for: .normal)
+                self.image3.imageView?.contentMode = .scaleAspectFit
+                print("image3Set")
             }catch let err {
                 print("Error : \(err.localizedDescription)")
             }
@@ -104,5 +121,21 @@ class UserImagePreviewTableViewCell: UITableViewCell {
         self.image1.layer.borderWidth = 0
         self.image2.layer.borderWidth = 0
         self.image3.layer.borderWidth = 0
+    }
+    
+    func imageSet(imageURL: String){
+        let image = URL(string: imageURL)
+        do {
+            let data = try Data(contentsOf: image!)
+            // 枠線を消す
+            borderLineClear()
+            
+            // 枠線を設定
+            self.image3.layer.borderColor = UIColor.blue.cgColor
+            self.image3.layer.borderWidth = 2
+            self.imagePreview.image = UIImage(data: data)
+        }catch let err {
+            print("Error : \(err.localizedDescription)")
+        }
     }
 }

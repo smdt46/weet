@@ -8,6 +8,8 @@
 
 import UIKit
 import Eureka
+import Alamofire
+import SwiftyJSON
 
 class EurekaViewController: FormViewController {
 
@@ -23,56 +25,54 @@ class EurekaViewController: FormViewController {
         ("学歴",["未設定", "高校卒", "短大/専門卒", "大学卒", "大学院卒", "その他"], "高校卒")
         
     ]
+
+    // 参照画面からJSONを受け取る
+    var json: JSON = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // フォーム作成
-        for sectionRow in sectionTitleArry {
+        form
+            +++ Section("ひとこと")
+            <<< TextRow { row in
+                row.placeholder = "75文字以内"
+                }.onChange { row in
+                    if let value = row.value {
+                        print(value)
+                    }
+            }
+            
+            +++ Section("自己紹介")
+            <<< TextAreaRow { row in
+                row.placeholder = "300文字以内"
+                } .onChange { row in
+                    if let value = row.value {
+                        print(value)
+                    }
+        }
+        
+        // 友達・恋愛などフォーム作成
+        for i in 0..<json["User_pecials"].count {
             // セクションを作成
-            let section = Section(sectionRow)
-            for i in 0..<qArry.count {
-                // 条件分岐でフォームの形式を判定して行を作成する
-                let row = PickerInputRow<String>() {
-                    $0.title = qArry[i].name
-                    $0.options = qArry[i].ans
-                    $0.value = qArry[i].value
+            let section = Section(json["User_pecials"][i]["matching_format_name"].stringValue)
+            // 行を作成
+            for j in 0..<json["User_pecials"][i]["user_questions_and_answers"].count {
+                let row = TextRow { row in
+                    row.title = json["User_pecials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
                 }
+                // 条件分岐でフォームの形式を判定して行を作成する
+//                let row = PickerInputRow<String>() {
+//                    $0.title = qArry[i].name
+//                    $0.options = qArry[i].ans
+//                    $0.value = qArry[i].value
+//                }
                 section.append(row)
             }
             form.append(section)
         }
         
-        
-        
-        
-        
-        
-//        form
-//            +++ Section() {
-//                $0.header = {
-//                    let header = HeaderFooterView<UIView>(.callback({
-//                        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300))
-//                        let image1 = UIImage(named: "pose_furikaeru_man.png") // (1)
-//                        let imageView = UIImageView(image:image1)   // (2)
-//                        view.addSubview(imageView)  // (3)
-//                        return view
-//                    }))
-//                    return header
-//                }()
-//            }
-//
-//
-//
-//        +++ Section("基本情報")
-//            <<< TextRow { row in
-//                row.title = "ニックネーム"
-//            }
-//
-//        +++ Section("自己紹介")
-//            <<< TextAreaRow { row in
-//        }
-//
+
 //        +++ Section("友達")
 //        <<< PickerInputRow<String>() {
 //            $0.title = "学歴"
@@ -119,6 +119,10 @@ class EurekaViewController: FormViewController {
 //                $0.options = ["未設定", "人脈を広げたい", "趣味を満喫できる暮らしがしたい", "夢や志が同じ人たちと切磋琢磨しながら生活したい", "その他"]
 //                $0.value = [self.unset]
 //        }
+    }
+    @IBAction func saveButton(_ sender: Any) {
+        // 各値をパラメータに設定
+        // AlamofireでAPIにPOSTする
     }
     
     override func didReceiveMemoryWarning() {

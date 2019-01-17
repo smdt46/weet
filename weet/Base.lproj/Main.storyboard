@@ -402,50 +402,7 @@
             </objects>
             <point key="canvasLocation" x="5480.625" y="553.52112676056333"/>
         </scene>
-        <!--test-->
-        <scene sceneID="bxj-6s-HaE">
-            <objects>
-                <viewController id="cMm-jq-Qhd" customClass="ViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qhN-Lg-gHZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJA-gU-00O">
-                                <rect key="frame" x="121.5" y="269" width="77" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="ログアウト">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="LogoutButtonTapped:" destination="cMm-jq-Qhd" eventType="touchUpInside" id="tzq-hP-8sV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Soq-N4-FHq">
-                                <rect key="frame" x="121.5" y="169" width="77" height="30"/>
-                                <state key="normal" title="ユーザ情報"/>
-                                <connections>
-                                    <segue destination="5wG-R4-mQD" kind="show" id="Jc1-z5-kRD"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Soq-N4-FHq" firstAttribute="centerX" secondItem="qhN-Lg-gHZ" secondAttribute="centerX" id="T9g-H5-nNv"/>
-                            <constraint firstItem="CJA-gU-00O" firstAttribute="centerY" secondItem="qhN-Lg-gHZ" secondAttribute="centerY" id="Uv1-q1-aA7"/>
-                            <constraint firstItem="Soq-N4-FHq" firstAttribute="centerY" secondItem="qhN-Lg-gHZ" secondAttribute="centerY" constant="-100" id="pES-QQ-4kx"/>
-                            <constraint firstItem="CJA-gU-00O" firstAttribute="centerX" secondItem="qhN-Lg-gHZ" secondAttribute="centerX" id="zWh-t1-uql"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Qv1-XA-UTN"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="test" id="0KP-jz-uNR">
-                        <barButtonItem key="backBarButtonItem" title=" " id="zO7-ar-WN9"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aKX-3N-iGm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5480.625" y="1343.661971830986"/>
-        </scene>
-        <!--ユーザ情報参照(サンプル)-->
+        <!--マイページ参照-->
         <scene sceneID="alE-Ft-gZU">
             <objects>
                 <viewController id="5wG-R4-mQD" customClass="UserProfileViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
@@ -467,22 +424,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QUW-Xh-wiY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ユーザ情報参照(サンプル)" id="eTX-FR-erh">
+                    <navigationItem key="navigationItem" title="マイページ参照" id="eTX-FR-erh">
+                        <barButtonItem key="backBarButtonItem" title=" " id="kk8-co-0IJ"/>
                         <barButtonItem key="rightBarButtonItem" title="編集" id="DbW-Av-3d3">
                             <connections>
-                                <segue destination="cvx-BZ-cKN" kind="show" id="6Ki-NM-I10"/>
+                                <action selector="editButton:" destination="5wG-R4-mQD" id="4uD-Yf-ZI6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView1" destination="Vke-Pc-e7R" id="VIf-JI-htj"/>
+                        <segue destination="cvx-BZ-cKN" kind="show" identifier="edit" id="hol-h7-bBz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktm-WF-8pa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6373" y="1344"/>
+            <point key="canvasLocation" x="5481" y="1344"/>
         </scene>
-        <!--Eureka View Controller-->
+        <!--マイページ編集-->
         <scene sceneID="IT6-Iu-DRP">
             <objects>
                 <viewController id="cvx-BZ-cKN" customClass="EurekaViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
@@ -492,10 +451,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R7P-7D-74j"/>
                     </view>
+                    <navigationItem key="navigationItem" title="マイページ編集" id="3yX-gv-Rig">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="Yd2-wA-tXx">
+                            <connections>
+                                <action selector="saveButton:" destination="cvx-BZ-cKN" id="zUD-Y3-XpN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alL-vP-osr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7185" y="1344"/>
+            <point key="canvasLocation" x="6294" y="1344"/>
         </scene>
         <!--My Tab Bar Controller-->
         <scene sceneID="6Io-pa-UCN">
@@ -587,7 +553,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="cMm-jq-Qhd" kind="relationship" relationship="rootViewController" id="BvQ-ve-ZhS"/>
+                        <segue destination="5wG-R4-mQD" kind="relationship" relationship="rootViewController" id="qkf-EW-WpD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFh-C6-yXC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -602,7 +568,7 @@
         <image name="searchIcon" width="72" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fkv-dh-ADi"/>
+        <segue reference="7yQ-Br-EN0"/>
         <segue reference="tQ6-r0-L7x"/>
     </inferredMetricsTieBreakers>
 </document>

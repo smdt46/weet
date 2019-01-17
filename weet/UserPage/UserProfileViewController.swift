@@ -32,7 +32,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         myTableView1.estimatedRowHeight = 100
         myTableView1.allowsSelection = false
         myTableView1.rowHeight = UITableView.automaticDimension
-        //myTableView1.isScrollEnabled = false
         self.view.addSubview(myTableView1)
         
         getProfile()
@@ -46,13 +45,14 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         // ユーザIDをURLのパラメータに設定して問い合わせる
         
         
-        let url: String = "http://54.238.92.95:8080/api/v1/user/1"
+        let url: String = "http://54.238.92.95:8080/api/v1/user/2"
         Alamofire.request(url).responseJSON { response in
             guard let object = response.result.value else {
                 return
             }
             
             self.json = JSON(object)
+            print("request")
             self.myTableView1.reloadData()
         }
     }
@@ -60,11 +60,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     // セクション数を指定
     func numberOfSections(in tableView: UITableView) -> Int {
-        if json["User_pecials"].count != 0 {
-            print("セクション数: \(3 + json["User_pecials"].count)")
-            return 3 + json["User_pecials"].count
+        if json["user_specials"].count != 0 {
+            //print("セクション数: \(3 + json["user_specials"].count)")
+            return 3 + json["user_specials"].count
         } else {
-            print("セクション数: 1")
+            //print("セクション数: 1")
             return 1
         }
     }
@@ -72,25 +72,25 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     // セクションタイトルを指定
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return json["User_basics"]["matching_format_name"].stringValue
+            return json["user_basics"]["matching_format_name"].stringValue
         } else if section == 1 {
             return "ひとこと"
         } else if section == 2 {
             return "コメント"
         } else {
-            return json["User_pecials"][section - 3]["matching_format_name"].stringValue
+            return json["user_specials"][section - 3]["matching_format_name"].stringValue
         }
     }
     
 
     // セル数を指定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("セル数：1")
+        //print("セル数：1")
         switch section {
         case 0,1,2:
             return 1
         default:
-            return json["User_pecials"][section - 3]["user_questions_and_answers"].count
+            return json["user_specials"][section - 3]["user_questions_and_answers"].count
         }
         //return 1
     }
@@ -105,13 +105,14 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
 //        cell.textLabel?.text = "セクション番号 : \(indexPath.section)"
 //        cell.detailTextLabel?.text = "行番号"
         
+        
         // 基本情報セルの準備
         let imageCell = myTableView1.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! UserImagePreviewTableViewCell
 
         // ユーザー画像が空欄の場合デフォルト画像を設定する
         let defaultImage = ""
-        if self.json["User_basics"]["image1"].stringValue !=  ""{
-            self.image1Name = self.json["User_basics"]["image1"].stringValue
+        if self.json["user_basics"]["image1"].stringValue !=  ""{
+            self.image1Name = self.json["user_basics"]["image1"].stringValue
         }
 
         // ユーザー基本情報の場合
@@ -120,21 +121,23 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 image1Name: self.image1Name,
                 image2Name: defaultImage,
                 image3Name: defaultImage,
-                name: self.json["User_basics"]["user_name"].stringValue,
-                ageAndAddress: self.json["User_basics"]["age"].stringValue + "歳"
+                name: self.json["user_basics"]["user_name"].stringValue,
+                ageAndAddress: self.json["user_basics"]["age"].stringValue + "歳"
             )
             return imageCell
         } else if indexPath.section == 1 {
-            cell.textLabel?.text = json["User_basics"]["hitokoto"].stringValue
+            cell.textLabel?.text = json["user_basics"]["hitokoto"].stringValue
             return cell
         } else if indexPath.section == 2 {
             cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = json["User_basics"]["comment"].stringValue
+            cell.textLabel?.text = json["user_basics"]["comment"].stringValue
             return cell
         } else {
             cell.detailTextLabel?.numberOfLines = 0
-            cell.textLabel?.text = json["User_pecials"][indexPath.section-3]["user_questions_and_answers"][indexPath.row]["question_name"].stringValue
-            cell.detailTextLabel?.text = json["User_pecials"][indexPath.section-3]["user_questions_and_answers"][indexPath.row]["answer_name"].stringValue
+            cell.textLabel?.textColor = UIColor.gray
+            cell.detailTextLabel?.textColor = UIColor.black
+            cell.textLabel?.text = json["user_specials"][indexPath.section-3]["user_questions_and_answers"][indexPath.row]["question_name"].stringValue
+            cell.detailTextLabel?.text = json["user_specials"][indexPath.section-3]["user_questions_and_answers"][indexPath.row]["answer_name"].stringValue
             return cell
         }
 
@@ -142,6 +145,23 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         //cell.detailTextLabel?.text = textArry[indexPath.row]
         //return imageCell
     }
+    
+    @IBAction func editButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "edit", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        //segueのidentifierが"segue1"の場合の処理を定義
+        if (segue.identifier == "edit") {
+            //segue1の遷移先のUIViewControllerを取得する
+            let next: EurekaViewController = (segue.destination as? EurekaViewController)!
+            //変数temp1に遷移元のテキストフィールド(TEXT1)を代入する
+            next.json = self.json
+        }
+    }
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
