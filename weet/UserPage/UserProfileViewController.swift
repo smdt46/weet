@@ -47,7 +47,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         // ユーザIDをURLのパラメータに設定して問い合わせる
         
         
-        let url: String = "http://54.238.92.95:8080/api/v1/user/2"
+        let url: String = "http://54.238.92.95:8080/api/v1/user/1"
         Alamofire.request(url).responseJSON { response in
             guard let object = response.result.value else {
                 return

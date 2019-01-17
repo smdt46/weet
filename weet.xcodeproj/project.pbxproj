@@ -113,8 +113,8 @@
 				6C4DE80021E62499003BEDCD /* UserProfileViewController.swift */,
 				6C1A681021F0220000C3FA6F /* IdealViewController.swift */,
 				6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */,
-				6CD6DF9521EB0DBC0072F2FA /* EurekaViewController.swift */,
 				6C3399A221E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib */,
+				6CD6DF9521EB0DBC0072F2FA /* EurekaViewController.swift */,
 			);
 			path = UserPage;
 			sourceTree = "<group>";

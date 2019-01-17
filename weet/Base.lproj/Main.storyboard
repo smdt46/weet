@@ -434,7 +434,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktm-WF-8pa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5481" y="1344"/>
+            <point key="canvasLocation" x="6283" y="1344"/>
         </scene>
         <!--マイページ-->
         <scene sceneID="4qy-rR-EzM">
@@ -488,7 +488,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQu-hG-nNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5138" y="2067"/>
+            <point key="canvasLocation" x="5481" y="1344"/>
         </scene>
         <!--Ideal View Controller-->
         <scene sceneID="yRv-so-g5A">
@@ -497,13 +497,13 @@
                     <view key="view" contentMode="scaleToFill" id="RMS-Ar-t5Y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.35294117650000001" green="0.94901960780000005" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aPy-Tp-mtt"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztf-2V-YY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5998" y="2064"/>
+            <point key="canvasLocation" x="6281" y="2096"/>
         </scene>
         <!--マイページ編集-->
         <scene sceneID="IT6-Iu-DRP">
@@ -525,7 +525,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alL-vP-osr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6294" y="1344"/>
+            <point key="canvasLocation" x="7121" y="1344"/>
         </scene>
         <!--My Tab Bar Controller-->
         <scene sceneID="6Io-pa-UCN">
@@ -633,6 +633,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7yQ-Br-EN0"/>
-        <segue reference="tQ6-r0-L7x"/>
+        <segue reference="kre-q8-Glr"/>
     </inferredMetricsTieBreakers>
 </document>

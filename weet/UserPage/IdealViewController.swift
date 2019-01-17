@@ -24,12 +24,12 @@ class IdealViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.json = appDelegate.myJson!
         
-        myTableView = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
+        myTableView = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.estimatedRowHeight = 100
         myTableView.allowsSelection = false
-        myTableView.rowHeight = UITableView.automaticDimension
+        myTableView.rowHeight = 75
         self.view.addSubview(myTableView)
     }
     
@@ -56,6 +56,7 @@ class IdealViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.textColor = UIColor.gray
         cell.textLabel?.text = json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_question_name"].stringValue
         
+        cell.detailTextLabel?.numberOfLines = 0
         cell.detailTextLabel?.textColor = UIColor.black
         cell.detailTextLabel?.text = json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_answer_name"].stringValue
         
