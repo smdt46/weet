@@ -9,5 +9,6 @@ target 'weet' do
   pod 'Eureka'
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'XLPagerTabStrip'
 
 end

@@ -32,6 +32,8 @@ class EurekaViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.json = appDelegate.myJson!
         
         form
             +++ Section("ひとこと")
@@ -53,13 +55,13 @@ class EurekaViewController: FormViewController {
         }
         
         // 友達・恋愛などフォーム作成
-        for i in 0..<json["User_pecials"].count {
+        for i in 0..<json["user_specials"].count {
             // セクションを作成
-            let section = Section(json["User_pecials"][i]["matching_format_name"].stringValue)
+            let section = Section(json["user_specials"][i]["matching_format_name"].stringValue)
             // 行を作成
-            for j in 0..<json["User_pecials"][i]["user_questions_and_answers"].count {
+            for j in 0..<json["user_specials"][i]["user_questions_and_answers"].count {
                 let row = TextRow { row in
-                    row.title = json["User_pecials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
+                    row.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
                 }
                 // 条件分岐でフォームの形式を判定して行を作成する
 //                let row = PickerInputRow<String>() {

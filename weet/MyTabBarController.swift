@@ -14,7 +14,7 @@ class MyTabBarController: UITabBarController {
         super.viewDidLoad()
         
         // アイコンの色
-        UITabBar.appearance().tintColor = UIColor(red: 240/255, green: 145/255, blue: 153/255, alpha: 1.0) // yellow
+        UITabBar.appearance().tintColor = UIColor(red: 254/255, green: 0, blue: 124/255, alpha: 1)
     }
 
 }
