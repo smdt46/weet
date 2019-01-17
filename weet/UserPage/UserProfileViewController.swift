@@ -9,8 +9,9 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import XLPagerTabStrip
 
-class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
     
     
     @IBOutlet weak var myTableView1: UITableView!
@@ -20,6 +21,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     var json: JSON = []
     var image1Name: String = ""
+    var itemInfo: IndicatorInfo = "プロフィール"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +55,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
             self.json = JSON(object)
             print("request")
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.myJson = self.json
             self.myTableView1.reloadData()
         }
     }
@@ -146,21 +150,10 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         //return imageCell
     }
     
-    @IBAction func editButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "edit", sender: nil)
+    
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-        //segueのidentifierが"segue1"の場合の処理を定義
-        if (segue.identifier == "edit") {
-            //segue1の遷移先のUIViewControllerを取得する
-            let next: EurekaViewController = (segue.destination as? EurekaViewController)!
-            //変数temp1に遷移元のテキストフィールド(TEXT1)を代入する
-            next.json = self.json
-        }
-    }
-    
-    
     
     
     override func didReceiveMemoryWarning() {

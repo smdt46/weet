@@ -2,23 +2,27 @@ PODS:
   - Alamofire (4.8.0)
   - Eureka (4.3.0)
   - SwiftyJSON (4.2.0)
+  - XLPagerTabStrip (8.1.0)
 
 DEPENDENCIES:
   - Alamofire
   - Eureka
   - SwiftyJSON
+  - XLPagerTabStrip
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Eureka
     - SwiftyJSON
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
 
-PODFILE CHECKSUM: a3c3a4bf5614d6a672849e88943cef1e0c2837d7
+PODFILE CHECKSUM: 9b9d11f1152310120939d82ac4d820424f0351ac
 
 COCOAPODS: 1.5.3

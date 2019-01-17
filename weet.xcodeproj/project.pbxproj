@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C1A680921F01EDD00C3FA6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A680821F01EDD00C3FA6F /* MainViewController.swift */; };
+		6C1A681121F0220000C3FA6F /* IdealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A681021F0220000C3FA6F /* IdealViewController.swift */; };
 		6C3399A321E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */; };
 		6C3399A421E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3399A221E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib */; };
 		6C49D76E21E1FFEF00EB7024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C49D76D21E1FFEF00EB7024 /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C1A680821F01EDD00C3FA6F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6C1A681021F0220000C3FA6F /* IdealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdealViewController.swift; sourceTree = "<group>"; };
 		6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImagePreviewTableViewCell.swift; sourceTree = "<group>"; };
 		6C3399A221E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserImagePreviewTableViewCell.xib; sourceTree = "<group>"; };
 		6C49D76A21E1FFEF00EB7024 /* weet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +97,6 @@
 				6C49D76F21E1FFEF00EB7024 /* ViewController.swift */,
 				6C49D77121E1FFEF00EB7024 /* Main.storyboard */,
 				6CB6F56F21ECF65100F0EF93 /* MyTabBarController.swift */,
-				6CD6DF9521EB0DBC0072F2FA /* EurekaViewController.swift */,
 				6C89303821E24F450092C6DD /* TitleViewController.swift */,
 				6C49D78121E2290500EB7024 /* LoginViewController.swift */,
 				6C49D77421E1FFF100EB7024 /* Assets.xcassets */,
@@ -106,8 +109,11 @@
 		6CAC6A9B21E7604D00CEF5DD /* UserPage */ = {
 			isa = PBXGroup;
 			children = (
+				6C1A680821F01EDD00C3FA6F /* MainViewController.swift */,
 				6C4DE80021E62499003BEDCD /* UserProfileViewController.swift */,
+				6C1A681021F0220000C3FA6F /* IdealViewController.swift */,
 				6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */,
+				6CD6DF9521EB0DBC0072F2FA /* EurekaViewController.swift */,
 				6C3399A221E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib */,
 			);
 			path = UserPage;
@@ -225,6 +231,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -233,6 +240,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -271,12 +279,14 @@
 				6CD6DF9621EB0DBC0072F2FA /* EurekaViewController.swift in Sources */,
 				6C49D78221E2290500EB7024 /* LoginViewController.swift in Sources */,
 				6C3399A321E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift in Sources */,
+				6C1A681121F0220000C3FA6F /* IdealViewController.swift in Sources */,
 				6CEBBD7A21E367E000DD8611 /* SexPickerKeyboard.swift in Sources */,
 				6C49D77021E1FFEF00EB7024 /* ViewController.swift in Sources */,
 				6C89303B21E285B50092C6DD /* RegisterPage1ViewController.swift in Sources */,
 				6CEBBD7821E3643B00DD8611 /* DatePickerKeyboard.swift in Sources */,
 				6CEBBD7C21E3739800DD8611 /* PrefecturesPickerKeyboard.swift in Sources */,
 				6C49D76E21E1FFEF00EB7024 /* AppDelegate.swift in Sources */,
+				6C1A680921F01EDD00C3FA6F /* MainViewController.swift in Sources */,
 				6C49D78021E20A3600EB7024 /* RegisterPageViewController.swift in Sources */,
 				6CEBBD7E21E3856800DD8611 /* ImageSelectViewController.swift in Sources */,
 				6C4DE80121E62499003BEDCD /* UserProfileViewController.swift in Sources */,
