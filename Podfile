@@ -7,6 +7,7 @@ target 'weet' do
 
   # Pods for weet
   pod 'Eureka'
+  pod 'ImageRow'
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'XLPagerTabStrip'

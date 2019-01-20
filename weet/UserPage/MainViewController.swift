@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 import XLPagerTabStrip
 
 class MainViewController: ButtonBarPagerTabStripViewController {
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    // image1
+    // image2
+    // image3
+    // 名前ラベル
+    // 年齢・居住地ラベル
     
     override func viewDidLoad() {
         //バーの色

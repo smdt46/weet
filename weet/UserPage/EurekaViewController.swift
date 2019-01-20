@@ -8,26 +8,33 @@
 
 import UIKit
 import Eureka
+import ImageRow
 import Alamofire
 import SwiftyJSON
 
 class EurekaViewController: FormViewController {
 
     let unset: String = "未設定"
-    let sectionTitle = "セクションタイトル"
+    let sectionTitle: String = "セクションタイトル"
     
     let sectionTitleArry: [String] = ["友達"]
     let rowTitleArry: [String] = ["職業"]
     let jobArry: [String] = ["未設定", "IT", "農業", "弁護士", "医者", "公務員"]
+    let bloodArry: [String] = ["未設定", "A型", "B型", "O型", "AB型", "不明"]
     
     let qArry: [(name: String, ans: [String], value: String)] = [
         ("職業",["未設定", "IT", "農業", "弁護士", "医者", "公務員"], "未設定"),
         ("学歴",["未設定", "高校卒", "短大/専門卒", "大学卒", "大学院卒", "その他"], "高校卒")
         
     ]
+    
+    var postPara: Parameters = [:]
 
     // 参照画面からJSONを受け取る
     var json: JSON = []
+    
+    // 選択されたイメージ格納用
+    var selectedImg = UIImage()
     
     
     override func viewDidLoad() {
@@ -36,6 +43,18 @@ class EurekaViewController: FormViewController {
         self.json = appDelegate.myJson!
         
         form
+            +++ Section("ユーザー画像")
+            <<< ImageRow {
+                $0.title = "画像1"
+                $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+                $0.value = UIImage(named: "defaultIcon.png")
+                $0.clearAction = .yes(style: .destructive)
+                $0.onChange { [unowned self] row in
+                    self.selectedImg = row.value!
+                    // パラメータにqidとaidを設定する
+                }
+            }
+            
             +++ Section("ひとこと")
             <<< TextRow { row in
                 row.placeholder = "75文字以内"
@@ -52,7 +71,7 @@ class EurekaViewController: FormViewController {
                     if let value = row.value {
                         print(value)
                     }
-        }
+            }
         
         // 友達・恋愛などフォーム作成
         for i in 0..<json["user_specials"].count {
@@ -60,8 +79,18 @@ class EurekaViewController: FormViewController {
             let section = Section(json["user_specials"][i]["matching_format_name"].stringValue)
             // 行を作成
             for j in 0..<json["user_specials"][i]["user_questions_and_answers"].count {
-                let row = TextRow { row in
-                    row.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
+                if (i == 0 && j == 0) {
+                    let row = PickerInputRow<String>() {
+                        $0.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
+                        $0.options = self.bloodArry
+                        $0.value = self.unset
+                    }
+                    section.append(row)
+                } else {
+                    let row = TextRow { row in
+                        row.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
+                    }
+                    section.append(row)
                 }
                 // 条件分岐でフォームの形式を判定して行を作成する
 //                let row = PickerInputRow<String>() {
@@ -69,7 +98,7 @@ class EurekaViewController: FormViewController {
 //                    $0.options = qArry[i].ans
 //                    $0.value = qArry[i].value
 //                }
-                section.append(row)
+                
             }
             form.append(section)
         }
@@ -123,8 +152,30 @@ class EurekaViewController: FormViewController {
 //        }
     }
     @IBAction func saveButton(_ sender: Any) {
-        // 各値をパラメータに設定
+        // パラメータ配列を使い、
         // AlamofireでAPIにPOSTする
+//        let data = UIImage(named: "defaultIcon.png")?.jpegData(compressionQuality: 1.0)
+//
+//        Alamofire.upload(
+//            multipartFormData: { multipartFormData in
+//                multipartFormData.append(data!, withName: "file", fileName: "test.jpeg", mimeType: "image/jpeg")
+//        },
+//            to: "http://localhost/normal_post1.php",
+//            encodingCompletion: { encodingResult in
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.responseJSON { response in
+//                        debugPrint(response)
+//                        guard let object = response.result.value else {
+//                            return
+//                        }
+//                        print(JSON(object))
+//                    }
+//                case .failure(let encodingError):
+//                    print(encodingError)
+//                }
+//        }
+//        )
     }
     
     override func didReceiveMemoryWarning() {
