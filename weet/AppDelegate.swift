@@ -33,15 +33,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = storybord.instantiateViewController(withIdentifier: viewName)
         window!.makeKeyAndVisible()
         
-//        let url: String = "http://54.238.92.95:8080/api/v1/user/1"
-//        Alamofire.request(url).responseJSON { response in
-//            guard let object = response.result.value else {
-//                return
-//            }
-//
-//            self.myJson = JSON(object)
-//            print("request")
-//        }
+        let url: String = "http://54.238.92.95:8080/api/v1/user/1"
+        Alamofire.request(url).responseJSON { response in
+            guard let object = response.result.value else {
+                return
+            }
+
+            self.myJson = JSON(object)
+            print("AppDelegate Request")
+        }
         
         return true
     }

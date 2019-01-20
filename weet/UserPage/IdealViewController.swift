@@ -30,6 +30,7 @@ class IdealViewController: UIViewController, UITableViewDelegate, UITableViewDat
         myTableView.estimatedRowHeight = 100
         myTableView.allowsSelection = false
         myTableView.rowHeight = 75
+        myTableView.isScrollEnabled = false
         self.view.addSubview(myTableView)
     }
     
