@@ -45,16 +45,51 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
             
             self.json = JSON(object)
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.userJson! = self.json
+            appDelegate.userJson = self.json
+            
+            // 画像を丸くする
+            self.image1.layer.cornerRadius = self.image1.frame.size.width * 0.5
+            self.image2.layer.cornerRadius = self.image2.frame.size.width * 0.5
+            self.image3.layer.cornerRadius = self.image3.frame.size.width * 0.5
+            self.image1.layer.masksToBounds = true
+            self.image2.layer.masksToBounds = true
+            self.image3.layer.masksToBounds = true
+            
+            if (self.json["user_basics"]["image1"].stringValue != "") {
+                // 各画像を設定
+                let imageURL = URL(string: self.json["user_basics"]["image1"].stringValue)
+                do {
+                    self.imageData1 = try Data(contentsOf: imageURL!)
+                    // 1番目の画像をプレビュー部分に設定
+                    self.imagePreview.image = UIImage(data: self.imageData1!)
+                    print("image1Set")
+                }catch let err {
+                    print("Error : \(err.localizedDescription)")
+                }
+            }
+            
+            
+            self.image1.layer.borderColor = UIColor.blue.cgColor
+            self.image1.layer.borderWidth = 2
+            
+            // 名前セット
+            self.nameLabel.text = self.json["user_basics"]["user_name"].stringValue
+            // 年齢・居住地セット
+            self.ageAndAddressLabel.text = self.json["user_basics"]["age"].stringValue + "歳"
             
             print("UserPage Request")
         }
+        
+        print("MainLoad")
+        
         super.viewDidLoad()
+        
+        
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         //管理されるViewControllerを返す処理
-        let firstVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "userProfiel")
+        let firstVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "userProfile")
         let secondVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "userIdeal")
         let childViewControllers:[UIViewController] = [firstVC, secondVC]
         return childViewControllers

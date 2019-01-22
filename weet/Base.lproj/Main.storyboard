@@ -377,7 +377,20 @@
                     <view key="view" contentMode="scaleToFill" id="tRB-uN-HRA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVq-tJ-SqA">
+                                <rect key="frame" x="137" y="269" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="cCA-0n-tJl" kind="show" id="0Xr-1v-cnw"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lVq-tJ-SqA" firstAttribute="centerX" secondItem="tRB-uN-HRA" secondAttribute="centerX" id="vIz-U3-W56"/>
+                            <constraint firstItem="lVq-tJ-SqA" firstAttribute="centerY" secondItem="tRB-uN-HRA" secondAttribute="centerY" id="xCE-I7-CNE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cNQ-EA-ZFr"/>
                     </view>
                     <navigationItem key="navigationItem" title="いいね受信ユーザ一覧" id="pxd-lJ-EGA"/>
@@ -725,14 +738,13 @@
         <!--ユーザーページ-->
         <scene sceneID="Nc8-Gi-Gmk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GqV-xN-sdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="userMain" title="ユーザーページ" id="cCA-0n-tJl" customClass="UserPageViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2ne-3Y-pjc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1250"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7g-yC-dFI">
-                                <rect key="frame" x="0.0" y="20" width="320" height="1230"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="1137"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69a-vf-C4W">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1250"/>
@@ -870,13 +882,14 @@
                         <outlet property="nameLabel" destination="b0Z-BN-zWl" id="8z4-8L-nug"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GqV-xN-sdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7119" y="-577"/>
         </scene>
-        <!--View Controller-->
+        <!--User Ideal View Controller-->
         <scene sceneID="ayY-hL-Mmo">
             <objects>
-                <viewController storyboardIdentifier="userIdeal" id="iTb-h8-Kaw" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userIdeal" id="iTb-h8-Kaw" customClass="UserIdealViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EKN-Hm-k7f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -888,10 +901,10 @@
             </objects>
             <point key="canvasLocation" x="7909" y="-218"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="Q6i-ef-Ifb">
             <objects>
-                <viewController storyboardIdentifier="userProfile" id="Qgo-Bh-eMl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userProfile" id="Qgo-Bh-eMl" customClass="ProfileViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lqs-5z-tN1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
