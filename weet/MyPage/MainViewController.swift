@@ -60,8 +60,8 @@ class MainViewController: ButtonBarPagerTabStripViewController {
             let imageURL = URL(string: json["user_basics"]["image1"].stringValue)
             do {
                 self.imageData1 = try Data(contentsOf: imageURL!)
-                self.image1.setImage(UIImage(data: self.imageData1!), for: .normal)
-                self.image1.imageView?.contentMode = .scaleAspectFit
+//                self.image1.setImage(UIImage(data: self.imageData1!), for: .normal)
+//                self.image1.imageView?.contentMode = .scaleAspectFit
                 // 1番目の画像をプレビュー部分に設定
                 self.imagePreview.image = UIImage(data: self.imageData1!)
                 print("image1Set")

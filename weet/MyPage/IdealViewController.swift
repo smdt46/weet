@@ -24,7 +24,7 @@ class IdealViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.json = appDelegate.myJson!
         
-        myTableView = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
+        myTableView = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.estimatedRowHeight = 100

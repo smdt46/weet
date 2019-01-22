@@ -27,7 +27,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
+        myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
         
         myTableView1.register(UINib(nibName: "UserImagePreviewTableViewCell", bundle: nil), forCellReuseIdentifier: "imageCell")
         myTableView1.delegate = self
