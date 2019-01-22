@@ -40,12 +40,14 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
         let url: String = "http://54.238.92.95:8080/api/v1/user/2"
         Alamofire.request(url).responseJSON { response in
             guard let object = response.result.value else {
+                print("接続エラー")
+                self.errorAlert()
                 return
             }
             
             self.json = JSON(object)
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.userJson = self.json
+            appDelegate.userJson = JSON(object)
             
             // 画像を丸くする
             self.image1.layer.cornerRadius = self.image1.frame.size.width * 0.5
@@ -86,6 +88,19 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
         
         
     }
+    
+    func errorAlert() {
+        let title = "接続エラー"
+        let message = "ネットワーク・サーバーの状態を確認してください"
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         //管理されるViewControllerを返す処理

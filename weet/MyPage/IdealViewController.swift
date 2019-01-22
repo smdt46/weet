@@ -20,18 +20,24 @@ class IdealViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 自分の情報が入ったJSONを取り込む
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.json = appDelegate.myJson!
         
-        myTableView = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
-        myTableView.delegate = self
-        myTableView.dataSource = self
-        myTableView.estimatedRowHeight = 100
-        myTableView.allowsSelection = false
-        myTableView.rowHeight = 75
-        myTableView.isScrollEnabled = false
-        self.view.addSubview(myTableView)
+        
+        if appDelegate.myJson != nil {
+            self.json = appDelegate.myJson!
+            
+            myTableView = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
+            myTableView.delegate = self
+            myTableView.dataSource = self
+            myTableView.estimatedRowHeight = 100
+            myTableView.allowsSelection = false
+            myTableView.rowHeight = 75
+            myTableView.isScrollEnabled = false
+            self.view.addSubview(myTableView)
+        } else {
+            print("接続エラー")
+        }
+        
     }
     
     // セクション数の指定

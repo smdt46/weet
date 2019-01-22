@@ -27,18 +27,25 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
-        
-        myTableView1.register(UINib(nibName: "UserImagePreviewTableViewCell", bundle: nil), forCellReuseIdentifier: "imageCell")
-        myTableView1.delegate = self
-        myTableView1.dataSource = self
-        myTableView1.estimatedRowHeight = 100
-        myTableView1.allowsSelection = false
-        myTableView1.isScrollEnabled = false
-        myTableView1.rowHeight = UITableView.automaticDimension
-        self.view.addSubview(myTableView1)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.json = appDelegate.myJson!
+        
+        if appDelegate.myJson != nil {
+            self.json = appDelegate.myJson!
+            
+            myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
+            
+            myTableView1.register(UINib(nibName: "UserImagePreviewTableViewCell", bundle: nil), forCellReuseIdentifier: "imageCell")
+            myTableView1.delegate = self
+            myTableView1.dataSource = self
+            myTableView1.estimatedRowHeight = 100
+            myTableView1.allowsSelection = false
+            myTableView1.isScrollEnabled = false
+            myTableView1.rowHeight = UITableView.automaticDimension
+            self.view.addSubview(myTableView1)
+        } else {
+            print("接続エラー")
+        }
+        
         // getProfile()
     }
     

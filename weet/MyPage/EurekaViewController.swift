@@ -36,74 +36,84 @@ class EurekaViewController: FormViewController {
     // 選択されたイメージ格納用
     var selectedImg = UIImage()
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.json = appDelegate.myJson!
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        form
-            +++ Section("ユーザー画像")
-            <<< ImageRow {
-                $0.title = "画像1"
-                $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
-                $0.value = UIImage(named: "defaultIcon.png")
-                $0.clearAction = .yes(style: .destructive)
-                $0.onChange { [unowned self] row in
-                    self.selectedImg = row.value!
-                    // パラメータにqidとaidを設定する
-                }
-            }
-            
-            +++ Section("ひとこと")
-            <<< TextRow { row in
-                row.placeholder = "75文字以内"
-                }.onChange { row in
-                    if let value = row.value {
-                        print(value)
-                    }
-            }
-            
-            +++ Section("自己紹介")
-            <<< TextAreaRow { row in
-                row.placeholder = "300文字以内"
-                } .onChange { row in
-                    if let value = row.value {
-                        print(value)
-                    }
-            }
         
-        // 友達・恋愛などフォーム作成
-        for i in 0..<json["user_specials"].count {
-            // セクションを作成
-            let section = Section(json["user_specials"][i]["matching_format_name"].stringValue)
-            // 行を作成
-            for j in 0..<json["user_specials"][i]["user_questions_and_answers"].count {
-                if (i == 0 && j == 0) {
-                    let row = PickerInputRow<String>() {
-                        $0.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
-                        $0.options = self.bloodArry
-                        $0.value = self.unset
+        if appDelegate.myJson != nil {
+            self.json = appDelegate.myJson!
+            
+            form
+                +++ Section("ユーザー画像")
+                <<< ImageRow {
+                    $0.title = "画像1"
+                    $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+                    $0.value = UIImage(named: "defaultIcon.png")
+                    $0.clearAction = .yes(style: .destructive)
+                    $0.onChange { [unowned self] row in
+                        self.selectedImg = row.value!
+                        // パラメータにqidとaidを設定する
                     }
-                    section.append(row)
-                } else {
-                    let row = TextRow { row in
-                        row.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
-                    }
-                    section.append(row)
                 }
-                // 条件分岐でフォームの形式を判定して行を作成する
-//                let row = PickerInputRow<String>() {
-//                    $0.title = qArry[i].name
-//                    $0.options = qArry[i].ans
-//                    $0.value = qArry[i].value
-//                }
                 
+                +++ Section("ひとこと")
+                <<< TextRow { row in
+                    row.placeholder = "75文字以内"
+                    }.onChange { row in
+                        if let value = row.value {
+                            print(value)
+                        }
+                }
+                
+                +++ Section("自己紹介")
+                <<< TextAreaRow { row in
+                    row.placeholder = "300文字以内"
+                    } .onChange { row in
+                        if let value = row.value {
+                            print(value)
+                        }
             }
-            form.append(section)
+            
+            // 友達・恋愛などフォーム作成
+            for i in 0..<json["user_specials"].count {
+                // セクションを作成
+                let section = Section(json["user_specials"][i]["matching_format_name"].stringValue)
+                // 行を作成
+                for j in 0..<json["user_specials"][i]["user_questions_and_answers"].count {
+                    if (i == 0 && j == 0) {
+                        let row = PickerInputRow<String>() {
+                            $0.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
+                            $0.options = self.bloodArry
+                            $0.value = self.unset
+                        }
+                        section.append(row)
+                    } else {
+                        let row = TextRow { row in
+                            row.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
+                        }
+                        section.append(row)
+                    }
+                    // 条件分岐でフォームの形式を判定して行を作成する
+                    //                let row = PickerInputRow<String>() {
+                    //                    $0.title = qArry[i].name
+                    //                    $0.options = qArry[i].ans
+                    //                    $0.value = qArry[i].value
+                    //                }
+                    
+                }
+                form.append(section)
+            }
+        } else {
+            print("接続エラー")
+            errorAlert()
         }
+        
+        
         
 
 //        +++ Section("友達")
@@ -153,6 +163,8 @@ class EurekaViewController: FormViewController {
 //                $0.value = [self.unset]
 //        }
     }
+    
+
     @IBAction func saveButton(_ sender: Any) {
         // パラメータ配列を使い、
         // AlamofireでAPIにPOSTする
@@ -201,6 +213,18 @@ class EurekaViewController: FormViewController {
             // 画面を消す
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func errorAlert() {
+        let title = "接続エラー"
+        let message = "ネットワーク・サーバーの状態を確認してください"
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

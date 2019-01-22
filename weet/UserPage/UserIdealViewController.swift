@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SwiftyJSON
 import XLPagerTabStrip
 
 class UserIdealViewController: UIViewController, IndicatorInfoProvider {
 
     //ここがボタンのタイトルに利用されます
     var itemInfo: IndicatorInfo = "Second"
+    var json: JSON = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -36,7 +36,6 @@ class MainViewController: ButtonBarPagerTabStripViewController {
         
         // json取得
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.json = appDelegate.myJson!
         
         // 画像セット
 //        let url = URL(string: json["user_basics"]["image1"].stringValue)
@@ -48,38 +47,47 @@ class MainViewController: ButtonBarPagerTabStripViewController {
 //            print("Error : \(err.localizedDescription)")
 //        }
         
-        self.image1.layer.cornerRadius = image1.frame.size.width * 0.5
-        self.image2.layer.cornerRadius = image2.frame.size.width * 0.5
-        self.image3.layer.cornerRadius = image3.frame.size.width * 0.5
-        self.image1.layer.masksToBounds = true
-        self.image2.layer.masksToBounds = true
-        self.image3.layer.masksToBounds = true
-        
-        if (json["user_basics"]["image1"].stringValue != "") {
-            // 各画像を設定
-            let imageURL = URL(string: json["user_basics"]["image1"].stringValue)
-            do {
-                self.imageData1 = try Data(contentsOf: imageURL!)
-//                self.image1.setImage(UIImage(data: self.imageData1!), for: .normal)
-//                self.image1.imageView?.contentMode = .scaleAspectFit
-                // 1番目の画像をプレビュー部分に設定
-                self.imagePreview.image = UIImage(data: self.imageData1!)
-                print("image1Set")
-            }catch let err {
-                print("Error : \(err.localizedDescription)")
+        if appDelegate.myJson != nil {
+            self.json = appDelegate.myJson!
+            
+            self.image1.layer.cornerRadius = image1.frame.size.width * 0.5
+            self.image2.layer.cornerRadius = image2.frame.size.width * 0.5
+            self.image3.layer.cornerRadius = image3.frame.size.width * 0.5
+            self.image1.layer.masksToBounds = true
+            self.image2.layer.masksToBounds = true
+            self.image3.layer.masksToBounds = true
+            
+            if (json["user_basics"]["image1"].stringValue != "") {
+                // 各画像を設定
+                let imageURL = URL(string: json["user_basics"]["image1"].stringValue)
+                do {
+                    self.imageData1 = try Data(contentsOf: imageURL!)
+                    //                self.image1.setImage(UIImage(data: self.imageData1!), for: .normal)
+                    //                self.image1.imageView?.contentMode = .scaleAspectFit
+                    // 1番目の画像をプレビュー部分に設定
+                    self.imagePreview.image = UIImage(data: self.imageData1!)
+                    print("image1Set")
+                }catch let err {
+                    print("Error : \(err.localizedDescription)")
+                }
             }
+            
+            self.image1.layer.borderColor = UIColor.blue.cgColor
+            self.image1.layer.borderWidth = 2
+            
+            
+            // 名前セット
+            self.nameLabel.text = json["user_basics"]["user_name"].stringValue
+            // 年齢・居住地セット
+            self.ageAndAddressLabel.text = json["user_basics"]["age"].stringValue + "歳"
+            
+            print("MainLoad")
+        } else {
+            print("接続エラー")
+            errorAlert()
         }
         
-        self.image1.layer.borderColor = UIColor.blue.cgColor
-        self.image1.layer.borderWidth = 2
         
-        
-        // 名前セット
-        self.nameLabel.text = json["user_basics"]["user_name"].stringValue
-        // 年齢・居住地セット
-        self.ageAndAddressLabel.text = json["user_basics"]["age"].stringValue + "歳"
-        
-        print("MainLoad")
         
         super.viewDidLoad()
     }
@@ -89,6 +97,18 @@ class MainViewController: ButtonBarPagerTabStripViewController {
     @IBAction func imageButton2(_ sender: Any) {
     }
     @IBAction func imageButton3(_ sender: Any) {
+    }
+    
+    func errorAlert() {
+        let title = "接続エラー"
+        let message = "ネットワーク・サーバーの状態を確認してください"
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
