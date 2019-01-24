@@ -19,6 +19,17 @@
 		6C49D78021E20A3600EB7024 /* RegisterPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C49D77F21E20A3600EB7024 /* RegisterPageViewController.swift */; };
 		6C49D78221E2290500EB7024 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C49D78121E2290500EB7024 /* LoginViewController.swift */; };
 		6C4DE80121E62499003BEDCD /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4DE80021E62499003BEDCD /* UserProfileViewController.swift */; };
+		6C58735921F9EDED00525C9B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58735321F9EDEC00525C9B /* CustomView.swift */; };
+		6C58735A21F9EDED00525C9B /* MuchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58735421F9EDEC00525C9B /* MuchViewController.swift */; };
+		6C58735B21F9EDED00525C9B /* MarryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58735521F9EDED00525C9B /* MarryView.swift */; };
+		6C58735C21F9EDED00525C9B /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58735621F9EDED00525C9B /* LiveView.swift */; };
+		6C58735D21F9EDED00525C9B /* MuchEurekaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58735721F9EDED00525C9B /* MuchEurekaViewController.swift */; };
+		6C58735E21F9EDED00525C9B /* FriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58735821F9EDED00525C9B /* FriendView.swift */; };
+		6C58736121F9EE1F00525C9B /* MuchSelect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C58736021F9EE1F00525C9B /* MuchSelect.storyboard */; };
+		6C58736721F9EE4500525C9B /* "Live.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C58736321F9EE4500525C9B /* "Live.png */; };
+		6C58736821F9EE4500525C9B /* Friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C58736421F9EE4500525C9B /* Friend.png */; };
+		6C58736921F9EE4500525C9B /* Live.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C58736521F9EE4500525C9B /* Live.png */; };
+		6C58736A21F9EE4500525C9B /* Couple.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C58736621F9EE4500525C9B /* Couple.png */; };
 		6C5E210221F89830009708CD /* rose.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6C5E20FC21F8982F009708CD /* rose.jpg */; };
 		6C5E210321F89830009708CD /* ueeda.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6C5E20FD21F8982F009708CD /* ueeda.jpg */; };
 		6C5E210421F89830009708CD /* ueeda2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6C5E20FE21F8982F009708CD /* ueeda2.jpg */; };
@@ -57,6 +68,17 @@
 		6C49D77F21E20A3600EB7024 /* RegisterPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPageViewController.swift; sourceTree = "<group>"; };
 		6C49D78121E2290500EB7024 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6C4DE80021E62499003BEDCD /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		6C58735321F9EDEC00525C9B /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		6C58735421F9EDEC00525C9B /* MuchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MuchViewController.swift; sourceTree = "<group>"; };
+		6C58735521F9EDED00525C9B /* MarryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarryView.swift; sourceTree = "<group>"; };
+		6C58735621F9EDED00525C9B /* LiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
+		6C58735721F9EDED00525C9B /* MuchEurekaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MuchEurekaViewController.swift; sourceTree = "<group>"; };
+		6C58735821F9EDED00525C9B /* FriendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendView.swift; sourceTree = "<group>"; };
+		6C58736021F9EE1F00525C9B /* MuchSelect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MuchSelect.storyboard; sourceTree = "<group>"; };
+		6C58736321F9EE4500525C9B /* "Live.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "\"Live.png"; sourceTree = "<group>"; };
+		6C58736421F9EE4500525C9B /* Friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Friend.png; sourceTree = "<group>"; };
+		6C58736521F9EE4500525C9B /* Live.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Live.png; sourceTree = "<group>"; };
+		6C58736621F9EE4500525C9B /* Couple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Couple.png; sourceTree = "<group>"; };
 		6C5E20FC21F8982F009708CD /* rose.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rose.jpg; sourceTree = "<group>"; };
 		6C5E20FD21F8982F009708CD /* ueeda.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ueeda.jpg; sourceTree = "<group>"; };
 		6C5E20FE21F8982F009708CD /* ueeda2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ueeda2.jpg; sourceTree = "<group>"; };
@@ -128,6 +150,7 @@
 		6C49D76C21E1FFEF00EB7024 /* weet */ = {
 			isa = PBXGroup;
 			children = (
+				6C58735F21F9EE0000525C9B /* MuchView */,
 				6C5E210821F8983F009708CD /* Extensions */,
 				6C26F44121F897AB00F7FEC3 /* TestImages */,
 				6CAC6A9C21E7607B00CEF5DD /* Register */,
@@ -137,6 +160,7 @@
 				6C49D76F21E1FFEF00EB7024 /* ViewController.swift */,
 				6C49D77121E1FFEF00EB7024 /* Main.storyboard */,
 				6C5E210D21F8989C009708CD /* Choice.storyboard */,
+				6C58736021F9EE1F00525C9B /* MuchSelect.storyboard */,
 				6CB6F56F21ECF65100F0EF93 /* MyTabBarController.swift */,
 				6C89303821E24F450092C6DD /* TitleViewController.swift */,
 				6C49D78121E2290500EB7024 /* LoginViewController.swift */,
@@ -146,6 +170,31 @@
 				6C49D77921E1FFF100EB7024 /* Info.plist */,
 			);
 			path = weet;
+			sourceTree = "<group>";
+		};
+		6C58735F21F9EE0000525C9B /* MuchView */ = {
+			isa = PBXGroup;
+			children = (
+				6C58735321F9EDEC00525C9B /* CustomView.swift */,
+				6C58735821F9EDED00525C9B /* FriendView.swift */,
+				6C58735621F9EDED00525C9B /* LiveView.swift */,
+				6C58735521F9EDED00525C9B /* MarryView.swift */,
+				6C58735721F9EDED00525C9B /* MuchEurekaViewController.swift */,
+				6C58735421F9EDEC00525C9B /* MuchViewController.swift */,
+				6C58736221F9EE3400525C9B /* image */,
+			);
+			path = MuchView;
+			sourceTree = "<group>";
+		};
+		6C58736221F9EE3400525C9B /* image */ = {
+			isa = PBXGroup;
+			children = (
+				6C58736321F9EE4500525C9B /* "Live.png */,
+				6C58736621F9EE4500525C9B /* Couple.png */,
+				6C58736421F9EE4500525C9B /* Friend.png */,
+				6C58736521F9EE4500525C9B /* Live.png */,
+			);
+			path = image;
 			sourceTree = "<group>";
 		};
 		6C5E210821F8983F009708CD /* Extensions */ = {
@@ -270,14 +319,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C5E210321F89830009708CD /* ueeda.jpg in Resources */,
+				6C58736121F9EE1F00525C9B /* MuchSelect.storyboard in Resources */,
 				6C5E210721F89830009708CD /* jihyo.jpg in Resources */,
 				6C49D77821E1FFF100EB7024 /* LaunchScreen.storyboard in Resources */,
 				6C5E210221F89830009708CD /* rose.jpg in Resources */,
+				6C58736A21F9EE4500525C9B /* Couple.png in Resources */,
 				6C49D77521E1FFF100EB7024 /* Assets.xcassets in Resources */,
 				6C49D77321E1FFEF00EB7024 /* Main.storyboard in Resources */,
 				6C5E210E21F8989C009708CD /* Choice.storyboard in Resources */,
+				6C58736721F9EE4500525C9B /* "Live.png in Resources */,
 				6C5E210421F89830009708CD /* ueeda2.jpg in Resources */,
 				6C5E210621F89830009708CD /* joy.jpg in Resources */,
+				6C58736821F9EE4500525C9B /* Friend.png in Resources */,
+				6C58736921F9EE4500525C9B /* Live.png in Resources */,
 				6C5E210521F89830009708CD /* ain.jpg in Resources */,
 				6C3399A421E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib in Resources */,
 			);
@@ -345,6 +399,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C58735B21F9EDED00525C9B /* MarryView.swift in Sources */,
+				6C58735C21F9EDED00525C9B /* LiveView.swift in Sources */,
 				6CD6DF9621EB0DBC0072F2FA /* EurekaViewController.swift in Sources */,
 				6C5E210A21F89877009708CD /* RoundUIView.swift in Sources */,
 				6C49D78221E2290500EB7024 /* LoginViewController.swift in Sources */,
@@ -357,11 +413,15 @@
 				6C49D77021E1FFEF00EB7024 /* ViewController.swift in Sources */,
 				6C89303B21E285B50092C6DD /* RegisterPage1ViewController.swift in Sources */,
 				6CC34DEF21F6AB7900FCDAF0 /* UserIdealViewController.swift in Sources */,
+				6C58735D21F9EDED00525C9B /* MuchEurekaViewController.swift in Sources */,
 				6CEBBD7821E3643B00DD8611 /* DatePickerKeyboard.swift in Sources */,
 				6CEBBD7C21E3739800DD8611 /* PrefecturesPickerKeyboard.swift in Sources */,
 				6C49D76E21E1FFEF00EB7024 /* AppDelegate.swift in Sources */,
 				6C1A680921F01EDD00C3FA6F /* MainViewController.swift in Sources */,
+				6C58735E21F9EDED00525C9B /* FriendView.swift in Sources */,
 				6C49D78021E20A3600EB7024 /* RegisterPageViewController.swift in Sources */,
+				6C58735921F9EDED00525C9B /* CustomView.swift in Sources */,
+				6C58735A21F9EDED00525C9B /* MuchViewController.swift in Sources */,
 				6CEBBD7E21E3856800DD8611 /* ImageSelectViewController.swift in Sources */,
 				6C4DE80121E62499003BEDCD /* UserProfileViewController.swift in Sources */,
 				6C89303921E24F450092C6DD /* TitleViewController.swift in Sources */,

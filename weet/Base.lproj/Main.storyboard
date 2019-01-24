@@ -354,51 +354,15 @@
             </objects>
             <point key="canvasLocation" x="2532" y="133"/>
         </scene>
-        <!--マッチング形式選択-->
-        <scene sceneID="bhl-ti-swD">
+        <!--MuchSelect-->
+        <scene sceneID="gmB-Ul-Yn9">
             <objects>
-                <viewController id="uKr-TC-WP2" customClass="ViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vea-Y9-fgc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggf-bc-sNh">
-                                <rect key="frame" x="137" y="269" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="CEf-eh-Stz" kind="show" id="5Id-dS-Ybj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHi-ki-xaD">
-                                <rect key="frame" x="140" y="369" width="40" height="30"/>
-                                <state key="normal" title="POST"/>
-                                <connections>
-                                    <action selector="postButton:" destination="uKr-TC-WP2" eventType="touchUpInside" id="S3D-22-i6e"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Ggf-bc-sNh" firstAttribute="centerY" secondItem="Vea-Y9-fgc" secondAttribute="centerY" id="3W2-ce-pUu"/>
-                            <constraint firstItem="Ggf-bc-sNh" firstAttribute="centerX" secondItem="Vea-Y9-fgc" secondAttribute="centerX" id="Maz-va-iKQ"/>
-                            <constraint firstItem="bHi-ki-xaD" firstAttribute="centerY" secondItem="Vea-Y9-fgc" secondAttribute="centerY" constant="100" id="QBS-ET-N7q"/>
-                            <constraint firstItem="bHi-ki-xaD" firstAttribute="centerX" secondItem="Vea-Y9-fgc" secondAttribute="centerX" id="ysJ-4i-Ss0"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="KyN-7S-QxY"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="マッチング形式選択" id="k7M-le-TCt"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UPs-Qa-AmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="MuchSelect" id="WUu-LY-V54" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="M0o-Jk-54A"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MGs-4S-mS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5480.625" y="-936.97183098591552"/>
-        </scene>
-        <!--Choice-->
-        <scene sceneID="PSE-om-3zv">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Choice" id="CEf-eh-Stz" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jj0-JI-Mri" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6161" y="-937"/>
+            <point key="canvasLocation" x="5481" y="-937"/>
         </scene>
         <!--いいね受信ユーザ一覧-->
         <scene sceneID="6y5-J3-pCR">
@@ -701,7 +665,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="uKr-TC-WP2" kind="relationship" relationship="rootViewController" id="mpu-Hw-XAM"/>
+                        <segue destination="WUu-LY-V54" kind="relationship" relationship="rootViewController" id="Gn9-x0-JRi"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKt-tO-8Yh" userLabel="First Responder" sceneMemberID="firstResponder"/>
