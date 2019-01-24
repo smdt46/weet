@@ -76,6 +76,17 @@ class MainViewController: ButtonBarPagerTabStripViewController {
             self.image1.layer.borderWidth = 2
             
             
+            // 画像をタップすることを可能に
+            self.imagePreview.isUserInteractionEnabled = true
+            
+            // 画像をタップされたときのアクションを追加
+            self.imagePreview.addGestureRecognizer(
+                UITapGestureRecognizer(
+                    target: self,
+                    action: #selector(self.tapped(sender:)))
+            )
+            
+            
             // 名前セット
             self.nameLabel.text = json["user_basics"]["user_name"].stringValue
             // 年齢・居住地セット
@@ -97,6 +108,13 @@ class MainViewController: ButtonBarPagerTabStripViewController {
     @IBAction func imageButton2(_ sender: Any) {
     }
     @IBAction func imageButton3(_ sender: Any) {
+    }
+    
+    
+    @objc func tapped(sender: UITapGestureRecognizer){
+        print("tapped")
+        // Alamofireで云々
+        self.performSegue(withIdentifier: "edit", sender: nil)
     }
     
     func errorAlert() {

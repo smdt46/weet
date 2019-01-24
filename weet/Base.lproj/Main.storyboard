@@ -357,11 +357,33 @@
         <!--マッチング形式選択-->
         <scene sceneID="bhl-ti-swD">
             <objects>
-                <viewController id="uKr-TC-WP2" sceneMemberID="viewController">
+                <viewController id="uKr-TC-WP2" customClass="ViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vea-Y9-fgc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggf-bc-sNh">
+                                <rect key="frame" x="137" y="269" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="CEf-eh-Stz" kind="show" id="5Id-dS-Ybj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHi-ki-xaD">
+                                <rect key="frame" x="140" y="369" width="40" height="30"/>
+                                <state key="normal" title="POST"/>
+                                <connections>
+                                    <action selector="postButton:" destination="uKr-TC-WP2" eventType="touchUpInside" id="S3D-22-i6e"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ggf-bc-sNh" firstAttribute="centerY" secondItem="Vea-Y9-fgc" secondAttribute="centerY" id="3W2-ce-pUu"/>
+                            <constraint firstItem="Ggf-bc-sNh" firstAttribute="centerX" secondItem="Vea-Y9-fgc" secondAttribute="centerX" id="Maz-va-iKQ"/>
+                            <constraint firstItem="bHi-ki-xaD" firstAttribute="centerY" secondItem="Vea-Y9-fgc" secondAttribute="centerY" constant="100" id="QBS-ET-N7q"/>
+                            <constraint firstItem="bHi-ki-xaD" firstAttribute="centerX" secondItem="Vea-Y9-fgc" secondAttribute="centerX" id="ysJ-4i-Ss0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KyN-7S-QxY"/>
                     </view>
                     <navigationItem key="navigationItem" title="マッチング形式選択" id="k7M-le-TCt"/>
@@ -369,6 +391,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UPs-Qa-AmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5480.625" y="-936.97183098591552"/>
+        </scene>
+        <!--Choice-->
+        <scene sceneID="PSE-om-3zv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Choice" id="CEf-eh-Stz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jj0-JI-Mri" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6161" y="-937"/>
         </scene>
         <!--いいね受信ユーザ一覧-->
         <scene sceneID="6y5-J3-pCR">
@@ -884,7 +914,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GqV-xN-sdY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7119" y="-577"/>
+            <point key="canvasLocation" x="7080" y="-186"/>
         </scene>
         <!--User Ideal View Controller-->
         <scene sceneID="ayY-hL-Mmo">
@@ -899,7 +929,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uJG-rQ-jxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7909" y="-218"/>
+            <point key="canvasLocation" x="7873" y="174"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="Q6i-ef-Ifb">
@@ -914,7 +944,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKY-4o-apa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7909" y="-938"/>
+            <point key="canvasLocation" x="7873" y="-546"/>
         </scene>
     </scenes>
     <resources>
@@ -924,7 +954,7 @@
         <image name="searchIcon" width="72" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7yQ-Br-EN0"/>
-        <segue reference="kre-q8-Glr"/>
+        <segue reference="fkv-dh-ADi"/>
+        <segue reference="tQ6-r0-L7x"/>
     </inferredMetricsTieBreakers>
 </document>

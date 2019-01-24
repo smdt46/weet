@@ -46,68 +46,97 @@ class EurekaViewController: FormViewController {
         
         
         if appDelegate.myJson != nil {
-            self.json = appDelegate.myJson!
             
-            form
-                +++ Section("ユーザー画像")
-                <<< ImageRow {
-                    $0.title = "画像1"
-                    $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
-                    $0.value = UIImage(named: "defaultIcon.png")
-                    $0.clearAction = .yes(style: .destructive)
-                    $0.onChange { [unowned self] row in
-                        self.selectedImg = row.value!
-                        // パラメータにqidとaidを設定する
-                    }
+            let url: String = "http://54.238.92.95:8080/api/v1/answers"
+            Alamofire.request(url).responseJSON { response in
+                guard let object = response.result.value else {
+                    print("接続エラー")
+                    self.errorAlert()
+                    return
                 }
                 
-                +++ Section("ひとこと")
-                <<< TextRow { row in
-                    row.placeholder = "75文字以内"
-                    }.onChange { row in
-                        if let value = row.value {
-                            print(value)
-                        }
-                }
+                let qjson = JSON(object)
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 
-                +++ Section("自己紹介")
-                <<< TextAreaRow { row in
-                    row.placeholder = "300文字以内"
-                    } .onChange { row in
-                        if let value = row.value {
-                            print(value)
+                self.json = appDelegate.myJson!
+                
+                self.form
+                    +++ Section("ユーザー画像")
+                    <<< ImageRow {
+                        $0.title = "画像1"
+                        $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+                        $0.value = UIImage(named: "defaultIcon.png")
+                        $0.clearAction = .yes(style: .destructive)
+                        $0.onChange { [unowned self] row in
+                            self.selectedImg = row.value!
+                            // パラメータにqidとaidを設定する
                         }
-            }
-            
-            // 友達・恋愛などフォーム作成
-            for i in 0..<json["user_specials"].count {
-                // セクションを作成
-                let section = Section(json["user_specials"][i]["matching_format_name"].stringValue)
-                // 行を作成
-                for j in 0..<json["user_specials"][i]["user_questions_and_answers"].count {
-                    if (i == 0 && j == 0) {
-                        let row = PickerInputRow<String>() {
-                            $0.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
-                            $0.options = self.bloodArry
-                            $0.value = self.unset
-                        }
-                        section.append(row)
-                    } else {
-                        let row = TextRow { row in
-                            row.title = json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
-                        }
-                        section.append(row)
                     }
-                    // 条件分岐でフォームの形式を判定して行を作成する
-                    //                let row = PickerInputRow<String>() {
-                    //                    $0.title = qArry[i].name
-                    //                    $0.options = qArry[i].ans
-                    //                    $0.value = qArry[i].value
-                    //                }
                     
+                    +++ Section("ひとこと")
+                    <<< TextRow { row in
+                        row.placeholder = "75文字以内"
+                        row.value = self.json["user_basics"]["hitokoto"].stringValue
+                        }.onChange { row in
+                            if let value = row.value {
+                                print(value)
+                            }
+                    }
+                    
+                    +++ Section("自己紹介")
+                    <<< TextAreaRow { row in
+                        row.placeholder = "300文字以内"
+                        row.value = self.json["user_basics"]["comment"].stringValue
+                        } .onChange { row in
+                            if let value = row.value {
+                                print(value)
+                            }
                 }
-                form.append(section)
+                
+                // 友達・恋愛などフォーム作成
+                for i in 0..<self.json["user_specials"].count {
+                    // セクションを作成
+                    let section = Section(self.json["user_specials"][i]["matching_format_name"].stringValue)
+                    // 行を作成
+                    for j in 0..<self.json["user_specials"][i]["user_questions_and_answers"].count {
+                        if (i == 0 && j == 0) {
+                            let row = PickerInputRow<String>() {
+                                $0.title = self.json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
+                                $0.options = self.bloodArry
+                                // self.json["user_specials"][i]["user_questions_and_answers"][j]["question_id"]
+                                // 繰り返し文でanswersを探索
+                                print(qjson[0]["candidate_answer"].array!)
+//                                for k in 0..<qjson.count {
+//                                    if (self.json["user_specials"][i]["user_questions_and_answers"][j]["question_id"] == qjson[k]["question_id"]) {
+//                                        $0.options = [qjson[k]["candidate_answer"].stringValue]
+//                                        break
+//                                    }
+//                                }
+                                // 要素のquestion_idと、探索対象のquestion_idを比較して
+                                // 一致すれば選択肢配列を設定し、brakeで抜ける
+                                $0.value = self.json["user_specials"][i]["user_questions_and_answers"][j]["answer_name"].stringValue
+                            }
+                            section.append(row)
+                        } else {
+                            let row = TextRow { row in
+                                row.title = self.json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
+                                row.value = self.json["user_specials"][i]["user_questions_and_answers"][j]["answer_name"].stringValue
+                            }
+                            section.append(row)
+                        }
+                        // 条件分岐でフォームの形式を判定して行を作成する
+                        //                let row = PickerInputRow<String>() {
+                        //                    $0.title = qArry[i].name
+                        //                    $0.options = qArry[i].ans
+                        //                    $0.value = qArry[i].value
+                        //                }
+                        
+                    }
+                    self.form.append(section)
+                }
             }
+            
+            
         } else {
             print("接続エラー")
             errorAlert()
