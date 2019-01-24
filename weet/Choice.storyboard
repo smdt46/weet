@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Choice View Controller-->
+        <!--選別画面-->
         <scene sceneID="BH1-ad-F65">
             <objects>
-                <viewController id="1gs-jQ-vR7" customClass="ChoiceViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="選別画面" id="1gs-jQ-vR7" customClass="ChoiceViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dni-Dd-juJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

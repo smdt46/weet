@@ -22,6 +22,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.json = appDelegate.userJson!
+        
         myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
         
         myTableView1.delegate = self
