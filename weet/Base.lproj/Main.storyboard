@@ -419,7 +419,21 @@
                     <view key="view" contentMode="scaleToFill" id="cjF-ha-U0d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzB-TN-TWT">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <connections>
+                                    <segue destination="Ak2-Yo-ZM9" kind="embed" id="5xD-hk-zPT"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fR2-gU-Ec3" firstAttribute="trailing" secondItem="rzB-TN-TWT" secondAttribute="trailing" id="RpX-Ml-r8A"/>
+                            <constraint firstItem="rzB-TN-TWT" firstAttribute="leading" secondItem="fR2-gU-Ec3" secondAttribute="leading" id="ZB9-QJ-R0q"/>
+                            <constraint firstItem="fR2-gU-Ec3" firstAttribute="bottom" secondItem="rzB-TN-TWT" secondAttribute="bottom" id="brk-8c-cox"/>
+                            <constraint firstItem="rzB-TN-TWT" firstAttribute="top" secondItem="fR2-gU-Ec3" secondAttribute="top" id="oNt-0s-a40"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fR2-gU-Ec3"/>
                     </view>
                 </viewController>
@@ -927,6 +941,19 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKY-4o-apa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7873" y="-546"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="3V6-Uy-H46">
+            <objects>
+                <viewController id="Ak2-Yo-ZM9" customClass="MessageViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K20-bO-SPk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wEt-0t-dE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

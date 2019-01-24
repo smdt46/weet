@@ -11,5 +11,10 @@ target 'weet' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'XLPagerTabStrip'
+  pod 'Firebase'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'JSQMessagesViewController'
 
 end
