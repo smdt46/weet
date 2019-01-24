@@ -396,7 +396,7 @@
         <!--メッセージ可能ユーザ一覧-->
         <scene sceneID="74j-hd-oZl">
             <objects>
-                <viewController id="GY2-hj-N9b" sceneMemberID="viewController">
+                <viewController id="GY2-hj-N9b" customClass="MessageUserListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AY3-YL-4YI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -404,10 +404,28 @@
                         <viewLayoutGuide key="safeArea" id="lOu-Pu-1bZ"/>
                     </view>
                     <navigationItem key="navigationItem" title="メッセージ可能ユーザ一覧" id="Oys-eF-Jv5"/>
+                    <connections>
+                        <segue destination="nbt-yI-g6R" kind="show" identifier="message" id="kfr-YV-hic"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0z-3w-WzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5480.625" y="553.52112676056333"/>
+        </scene>
+        <!--メッセージ画面-->
+        <scene sceneID="vOX-Qe-4we">
+            <objects>
+                <viewController title="メッセージ画面" id="nbt-yI-g6R" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cjF-ha-U0d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fR2-gU-Ec3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NfJ-gA-B6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6281" y="554"/>
         </scene>
         <!--マイページ参照-->
         <scene sceneID="alE-Ft-gZU">
