@@ -104,8 +104,8 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         //管理されるViewControllerを返す処理
-        let firstVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "userProfile")
-        let secondVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "userIdeal")
+        let firstVC = UIStoryboard(name: "UserPage", bundle: nil).instantiateViewController(withIdentifier: "userProfile")
+        let secondVC = UIStoryboard(name: "UserPage", bundle: nil).instantiateViewController(withIdentifier: "userIdeal")
         let childViewControllers:[UIViewController] = [firstVC, secondVC]
         return childViewControllers
     }

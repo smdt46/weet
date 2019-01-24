@@ -89,6 +89,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Kv-cD-1cN">
+                                <rect key="frame" x="141.5" y="68.5" width="92" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="ユーザページ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ECb-46-SS7" kind="show" id="rOs-3P-Emd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -100,6 +110,8 @@
                             <constraint firstItem="Keh-0X-saV" firstAttribute="centerY" secondItem="dni-Dd-juJ" secondAttribute="centerY" constant="300" id="G8b-7m-nhi"/>
                             <constraint firstItem="ZUO-kN-OEn" firstAttribute="width" secondItem="dni-Dd-juJ" secondAttribute="width" constant="-59" id="Goo-Bx-lSg"/>
                             <constraint firstItem="RMd-D5-Ffh" firstAttribute="width" secondItem="dni-Dd-juJ" secondAttribute="width" constant="-59" id="IbX-8F-QB7"/>
+                            <constraint firstItem="6Kv-cD-1cN" firstAttribute="centerY" secondItem="dni-Dd-juJ" secondAttribute="centerY" constant="-250" id="JO2-7b-7c5"/>
+                            <constraint firstItem="6Kv-cD-1cN" firstAttribute="centerX" secondItem="dni-Dd-juJ" secondAttribute="centerX" id="TTh-t8-akV"/>
                             <constraint firstItem="RMd-D5-Ffh" firstAttribute="bottom" secondItem="LX9-qj-7en" secondAttribute="bottom" constant="-15" id="Veb-eT-OHd"/>
                             <constraint firstItem="ZN1-hK-hhy" firstAttribute="centerX" secondItem="uMm-u4-hEb" secondAttribute="centerX" id="WoN-1o-Eex"/>
                             <constraint firstItem="ZUO-kN-OEn" firstAttribute="bottom" secondItem="LX9-qj-7en" secondAttribute="bottom" constant="-15" id="X7d-Uq-7m4"/>
@@ -128,6 +140,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sgk-Iv-Brd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="29.600000000000001" y="988.66995073891633"/>
+        </scene>
+        <!--UserPage-->
+        <scene sceneID="4Md-Sf-Aag">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserPage" id="ECb-46-SS7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEO-vr-Pfp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="687" y="988"/>
         </scene>
     </scenes>
     <resources>

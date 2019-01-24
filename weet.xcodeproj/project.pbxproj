@@ -42,6 +42,7 @@
 		6C5E210E21F8989C009708CD /* Choice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C5E210D21F8989C009708CD /* Choice.storyboard */; };
 		6C89303921E24F450092C6DD /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89303821E24F450092C6DD /* TitleViewController.swift */; };
 		6C89303B21E285B50092C6DD /* RegisterPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */; };
+		6CA3AAF521FA1DCD00B33EA6 /* UserPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CA3AAF421FA1DCD00B33EA6 /* UserPage.storyboard */; };
 		6CB6F57021ECF65100F0EF93 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB6F56F21ECF65100F0EF93 /* MyTabBarController.swift */; };
 		6CC34DEB21F6AAFC00FCDAF0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC34DEA21F6AAFC00FCDAF0 /* ProfileViewController.swift */; };
 		6CC34DEF21F6AB7900FCDAF0 /* UserIdealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC34DEE21F6AB7900FCDAF0 /* UserIdealViewController.swift */; };
@@ -94,6 +95,7 @@
 		6C5E210D21F8989C009708CD /* Choice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Choice.storyboard; sourceTree = "<group>"; };
 		6C89303821E24F450092C6DD /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPage1ViewController.swift; sourceTree = "<group>"; };
+		6CA3AAF421FA1DCD00B33EA6 /* UserPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserPage.storyboard; sourceTree = "<group>"; };
 		6CB6F56F21ECF65100F0EF93 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		6CC34DEA21F6AAFC00FCDAF0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6CC34DEE21F6AB7900FCDAF0 /* UserIdealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdealViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		6C49D76C21E1FFEF00EB7024 /* weet */ = {
 			isa = PBXGroup;
 			children = (
+				6CA3AAF321FA1D2700B33EA6 /* Message */,
 				6C58735F21F9EE0000525C9B /* MuchView */,
 				6C5E210821F8983F009708CD /* Extensions */,
 				6C26F44121F897AB00F7FEC3 /* TestImages */,
@@ -163,10 +166,9 @@
 				6CAC6A9B21E7604D00CEF5DD /* MyPage */,
 				6CF5BC8921F6A1970005EA9A /* UserPage */,
 				6C49D76D21E1FFEF00EB7024 /* AppDelegate.swift */,
-				6CDDE9CF21FA14CA003C3B0B /* MessageViewController.swift */,
 				6C49D76F21E1FFEF00EB7024 /* ViewController.swift */,
 				6C49D77121E1FFEF00EB7024 /* Main.storyboard */,
-				6C58736B21FA0E2800525C9B /* MessageUserListViewController.swift */,
+				6CA3AAF421FA1DCD00B33EA6 /* UserPage.storyboard */,
 				6C58736021F9EE1F00525C9B /* MuchSelect.storyboard */,
 				6C5E210D21F8989C009708CD /* Choice.storyboard */,
 				6CB6F56F21ECF65100F0EF93 /* MyTabBarController.swift */,
@@ -212,6 +214,15 @@
 				6C5E210921F89877009708CD /* RoundUIView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6CA3AAF321FA1D2700B33EA6 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				6CDDE9CF21FA14CA003C3B0B /* MessageViewController.swift */,
+				6C58736B21FA0E2800525C9B /* MessageUserListViewController.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		6CAC6A9B21E7604D00CEF5DD /* MyPage */ = {
@@ -341,6 +352,7 @@
 				6C5E210621F89830009708CD /* joy.jpg in Resources */,
 				6CDDE9CE21FA142D003C3B0B /* GoogleService-Info.plist in Resources */,
 				6C58736821F9EE4500525C9B /* Friend.png in Resources */,
+				6CA3AAF521FA1DCD00B33EA6 /* UserPage.storyboard in Resources */,
 				6C58736921F9EE4500525C9B /* Live.png in Resources */,
 				6C5E210521F89830009708CD /* ain.jpg in Resources */,
 				6C3399A421E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib in Resources */,
