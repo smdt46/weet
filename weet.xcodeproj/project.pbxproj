@@ -39,7 +39,6 @@
 		6C5E210721F89830009708CD /* jihyo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6C5E210121F89830009708CD /* jihyo.jpg */; };
 		6C5E210A21F89877009708CD /* RoundUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5E210921F89877009708CD /* RoundUIView.swift */; };
 		6C5E210C21F8988D009708CD /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5E210B21F8988D009708CD /* ChoiceViewController.swift */; };
-		6C5E210E21F8989C009708CD /* Choice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C5E210D21F8989C009708CD /* Choice.storyboard */; };
 		6C89303921E24F450092C6DD /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89303821E24F450092C6DD /* TitleViewController.swift */; };
 		6C89303B21E285B50092C6DD /* RegisterPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */; };
 		6CA3AAF521FA1DCD00B33EA6 /* UserPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CA3AAF421FA1DCD00B33EA6 /* UserPage.storyboard */; };
@@ -53,6 +52,7 @@
 		6CEBBD7A21E367E000DD8611 /* SexPickerKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBBD7921E367E000DD8611 /* SexPickerKeyboard.swift */; };
 		6CEBBD7C21E3739800DD8611 /* PrefecturesPickerKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBBD7B21E3739800DD8611 /* PrefecturesPickerKeyboard.swift */; };
 		6CEBBD7E21E3856800DD8611 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEBBD7D21E3856800DD8611 /* ImageSelectViewController.swift */; };
+		6CED6C8521FACC2400320CD5 /* Choice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CED6C8421FACC2400320CD5 /* Choice.storyboard */; };
 		6CF5BC8821F69ACC0005EA9A /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF5BC8721F69ACC0005EA9A /* UserPageViewController.swift */; };
 		D162B589DD70CE90D5661C49 /* Pods_weet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC62C5E30CEA860FE9D0728C /* Pods_weet.framework */; };
 /* End PBXBuildFile section */
@@ -92,7 +92,6 @@
 		6C5E210121F89830009708CD /* jihyo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jihyo.jpg; sourceTree = "<group>"; };
 		6C5E210921F89877009708CD /* RoundUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundUIView.swift; sourceTree = "<group>"; };
 		6C5E210B21F8988D009708CD /* ChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
-		6C5E210D21F8989C009708CD /* Choice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Choice.storyboard; sourceTree = "<group>"; };
 		6C89303821E24F450092C6DD /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		6C89303A21E285B50092C6DD /* RegisterPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPage1ViewController.swift; sourceTree = "<group>"; };
 		6CA3AAF421FA1DCD00B33EA6 /* UserPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserPage.storyboard; sourceTree = "<group>"; };
@@ -106,6 +105,7 @@
 		6CEBBD7921E367E000DD8611 /* SexPickerKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexPickerKeyboard.swift; sourceTree = "<group>"; };
 		6CEBBD7B21E3739800DD8611 /* PrefecturesPickerKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefecturesPickerKeyboard.swift; sourceTree = "<group>"; };
 		6CEBBD7D21E3856800DD8611 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
+		6CED6C8421FACC2400320CD5 /* Choice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Choice.storyboard; path = "../../../../Desktop/weet_swift 3/weet/Choice.storyboard"; sourceTree = "<group>"; };
 		6CF5BC8721F69ACC0005EA9A /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		CC62C5E30CEA860FE9D0728C /* Pods_weet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AA610E3AE3D043B8AECD9E /* Pods-weet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weet/Pods-weet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 				6C49D77121E1FFEF00EB7024 /* Main.storyboard */,
 				6CA3AAF421FA1DCD00B33EA6 /* UserPage.storyboard */,
 				6C58736021F9EE1F00525C9B /* MuchSelect.storyboard */,
-				6C5E210D21F8989C009708CD /* Choice.storyboard */,
+				6CED6C8421FACC2400320CD5 /* Choice.storyboard */,
 				6CB6F56F21ECF65100F0EF93 /* MyTabBarController.swift */,
 				6C89303821E24F450092C6DD /* TitleViewController.swift */,
 				6C49D78121E2290500EB7024 /* LoginViewController.swift */,
@@ -346,12 +346,12 @@
 				6C58736A21F9EE4500525C9B /* Couple.png in Resources */,
 				6C49D77521E1FFF100EB7024 /* Assets.xcassets in Resources */,
 				6C49D77321E1FFEF00EB7024 /* Main.storyboard in Resources */,
-				6C5E210E21F8989C009708CD /* Choice.storyboard in Resources */,
 				6C58736721F9EE4500525C9B /* "Live.png in Resources */,
 				6C5E210421F89830009708CD /* ueeda2.jpg in Resources */,
 				6C5E210621F89830009708CD /* joy.jpg in Resources */,
 				6CDDE9CE21FA142D003C3B0B /* GoogleService-Info.plist in Resources */,
 				6C58736821F9EE4500525C9B /* Friend.png in Resources */,
+				6CED6C8521FACC2400320CD5 /* Choice.storyboard in Resources */,
 				6CA3AAF521FA1DCD00B33EA6 /* UserPage.storyboard in Resources */,
 				6C58736921F9EE4500525C9B /* Live.png in Resources */,
 				6C5E210521F89830009708CD /* ain.jpg in Resources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ChoiceViewController: UIViewController {
     
@@ -14,77 +15,81 @@ class ChoiceViewController: UIViewController {
     @IBOutlet weak var userInfoLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var shadowView: UIView!
-    var i:Int=0
-  
-    struct UserData{
-        let user_name:String
-        let image1:String
-        let image2:String
-        let image3:String
-        let sex:String
-        let age:Int
-        let residence:String
-        let hitokoto:String
-    }
-    var userDatum = [UserData]()
+
+    // API URL
+    var api_url:String = "http://54.238.92.95:8080/api/v1/user/2"
     
+    struct UserBasics: Codable {
+        let user_name : String
+        let sex : String
+        let age : Int
+        let matching_format_name : String
+        let image1 : String
+        let image3 : String
+        let hitokoto : String
+        let residence : String
+        let image2 : String
+        let comment : String
+    }
+    struct UserQuestionsAndAnswers:Codable{
+        let question_name : String
+        let answer_name: String
+        let question_id : Int
+    }
+    
+    struct UserSpecials:Codable{
+        let user_questions_and_answers :[UserQuestionsAndAnswers]
+        let matching_format_name :String
+    }
+    
+    struct UserIdealQuestionsAndAnswers:Codable{
+        let ideal_question_name : String
+        let ideal_question_id : Int
+        let ideal_answer_name : String
+    }
+    
+    struct UserIdealSpecials:Codable{
+        let user_ideal_questions_and_answers : [UserIdealQuestionsAndAnswers]
+        let matching_format_name :String
+    }
+    struct Result:Codable{
+        let user_specials :[UserSpecials]
+        let user_basics : UserBasics
+        let user_ideal_specials : [UserIdealSpecials]
+    }
+    
+    func requestUserData(){
+        do {
+            // APIにアクセス
+            let url = URL(string: api_url)!
+            let data = try Data(contentsOf: url, options: [])
+            // jsonに変換後パース
+            let json = try JSON(data: data)
+            let resultData:Result = try JSONDecoder().decode(Result.self, from: data)
+            
+            let image_url = URL(string: resultData.user_basics.image1)!
+            
+            // imageViewを更新
+            let imageData = try Data(contentsOf: image_url)
+            let image = UIImage(data:imageData)
+            imageView.image=image
+            // ラベル更新
+            userNameLabel.text=resultData.user_basics.user_name
+            userInfoLabel.text=resultData.user_basics.hitokoto
+            print(resultData.user_basics.hitokoto)
+        } catch {
+            print(error)
+        }
+    }
     
     @IBAction func swipe(_ sender:
         UISwipeGestureRecognizer) {
-        var imageArray=["ain.jpg","rose.jpg","jihyo.jpg","joy.jpg","ueeda.jpg","ueeda2.jpg"]
-        var userNames=["Ain","Rose","Jihyo","Joy","かずもり","あつもり"]
-        if(5<i){
-            i=0
-        }
-        
-        let mainImage = UIImage(named:imageArray[i] )
-        
-        if(userNameLabel.isHidden){
-           userNameLabel.isHidden = false
-        }
-        
-        if(userInfoLabel.isHidden){
-            userNameLabel.isHidden = false
-        }
-        
-        if(imageView.isHidden){
-            imageView.isHidden = false
-        }
-        
-        if(shadowView.isHidden){
-            shadowView.isHidden = false
-        }
-        
-        
-        userNameLabel.text=userNames[i]
-        i=i+1
-        imageView.image=mainImage
+        requestUserData()
     }
     
-    @IBAction func testButton(_ sender: Any) {
-        let url = URL(string: "https://scontent-nrt1-1.cdninstagram.com/vp/3fcdc4f29441516e2c26f727b5c951ad/5CC3F919/t51.2885-15/e35/31788447_1964211993895171_3814348962245115904_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com")!
-        do {
-            let imageData = try Data(contentsOf: url)
-            let image = UIImage(data:imageData)
-            imageView.image=image
-        } catch {
-            let title = "Error"
-            let message = "Sorry, image is not available."
-            let okText = "OK"
-            
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-            let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okayButton)
-            
-            present(alert, animated: true, completion: nil)
-        }
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameLabel.isHidden = true
-        userInfoLabel.isHidden = true
-        imageView.isHidden = true
-        shadowView.isHidden = true
+        requestUserData()
     }
     
     
