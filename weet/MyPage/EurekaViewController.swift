@@ -15,6 +15,7 @@ import SwiftyJSON
 class EurekaViewController: FormViewController {
 
     let unset: String = "未設定"
+    let user_id: Int = 1
     
     // 参照画面からJSONを受け取る
     var json: JSON = []
@@ -83,14 +84,16 @@ class EurekaViewController: FormViewController {
                     let section = Section(self.json["user_specials"][i]["matching_format_name"].stringValue)
                     // 行を作成
                     for j in 0..<self.json["user_specials"][i]["user_questions_and_answers"].count {
-      
+                        var dic: [String:Int] = [:]
                             let row = PickerInputRow<String>() {
                                 // タイトル設定
+                                
                                 $0.title = self.json["user_specials"][i]["user_questions_and_answers"][j]["question_name"].stringValue
 
                                 // 一致するanswersを探索し、選択肢を設定
                                 for k in 0..<qjson.count {
                                     if self.json["user_specials"][i]["user_questions_and_answers"][j]["question_id"] == qjson[k]["question_id"] {
+                                        dic = self.makeDicArry(json: qjson[k]["candidate_answer"])
                                         print(self.makeAnsArry(json: qjson[k]["candidate_answer"]))
                                         $0.options = self.makeAnsArry(json: qjson[k]["candidate_answer"])
                                         break
@@ -99,7 +102,13 @@ class EurekaViewController: FormViewController {
                                 
                                 // デフォルト値設定
                                 $0.value = self.json["user_specials"][i]["user_questions_and_answers"][j]["answer_name"].stringValue
-                            }
+                                } .onChange { row in
+                                    let q_id: Int = self.json["user_specials"][i]["user_questions_and_answers"][j]["question_id"].intValue
+                                    let ans_id: Int = dic[row.value!]!
+                                    print("q_id: \(q_id)")
+                                    print("a_id: \(ans_id)")
+                                    // self.saveProfile(user_id: self.user_id, q_id: q_id, a_id: ans_id)
+                        }
                         section.append(row)
                     }
                     self.form.append(section)
@@ -152,10 +161,21 @@ class EurekaViewController: FormViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // 質問選択肢をPOSTして更新する
-    func saveProfile(q_id: Int, a_id: Int) {
+    // 基本情報をPOSTして更新する
+    func saveBasics(user_id: Int, key: String, value: String) {
         let parameters: Parameters = [
-            "user_id": 1,
+            "user_id": user_id,
+            "key": key,
+            "value": value
+        ]
+        let url: String = "http://54.238.92.95:8080/test"
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+    }
+    
+    // 質問選択肢をPOSTして更新する
+    func saveProfile(user_id: Int, q_id: Int, a_id: Int) {
+        let parameters: Parameters = [
+            "user_id": user_id,
             "question_id": q_id,
             "answer_id": a_id
         ]
@@ -170,6 +190,15 @@ class EurekaViewController: FormViewController {
             Arry.append(json[i]["answer_name"].stringValue)
         }
         return Arry
+    }
+    
+    func makeDicArry(json: JSON) -> Dictionary<String, Int> {
+        var DicArry: Dictionary<String, Int> = [:]
+        for i in 0..<json.count {
+            DicArry[json[i]["answer_name"].stringValue] = json[i]["answer_id"].intValue
+        }
+        print(DicArry)
+        return DicArry
     }
     
     override func didReceiveMemoryWarning() {

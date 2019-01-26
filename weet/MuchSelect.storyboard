@@ -13,48 +13,54 @@
         <!--マッチング形式選択-->
         <scene sceneID="OCb-wS-y0X">
             <objects>
-                <viewController id="LOo-Fd-8Gd" sceneMemberID="viewController">
+                <viewController id="LOo-Fd-8Gd" customClass="MuchButtonViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JEc-Gh-v1d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-sB-uEI">
-                                <rect key="frame" x="0.0" y="417" width="375" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="PvM-MS-KXM"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="qL1-Ku-DNC" kind="embed" id="Dbw-rj-Kip"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLm-B2-00R">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="417"/>
                                 <connections>
                                     <segue destination="Qv2-G5-BbI" kind="embed" id="ilS-Il-2bX"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFc-FF-8kA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCM-sr-hSz">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="pEH-L4-rXu"/>
+                                    <constraint firstAttribute="height" constant="50" id="oAu-el-xF7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="検索する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="MuchButton:" destination="LOo-Fd-8Gd" eventType="touchUpInside" id="v5f-vt-bjv"/>
+                                    <segue destination="aDV-hn-Py0" kind="show" id="6ZM-o1-7s0"/>
+                                </connections>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-sB-uEI">
+                                <rect key="frame" x="0.0" y="417" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="ccf-l7-Fls"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="Hn0-Sf-RG7" kind="embed" id="bHD-JM-QRL"/>
+                                    <segue destination="qL1-Ku-DNC" kind="embed" id="Dbw-rj-Kip"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="XhP-Cv-B99" firstAttribute="trailing" secondItem="mLm-B2-00R" secondAttribute="trailing" id="8p3-ZV-stj"/>
-                            <constraint firstItem="mLm-B2-00R" firstAttribute="leading" secondItem="XhP-Cv-B99" secondAttribute="leading" id="EBI-t6-RX1"/>
-                            <constraint firstItem="m8f-sB-uEI" firstAttribute="top" secondItem="mLm-B2-00R" secondAttribute="bottom" id="Eg9-af-v1D"/>
-                            <constraint firstItem="iFc-FF-8kA" firstAttribute="top" secondItem="m8f-sB-uEI" secondAttribute="bottom" id="HCE-aD-y3O"/>
-                            <constraint firstItem="XhP-Cv-B99" firstAttribute="trailing" secondItem="iFc-FF-8kA" secondAttribute="trailing" id="YCH-sm-10K"/>
-                            <constraint firstItem="mLm-B2-00R" firstAttribute="top" secondItem="JEc-Gh-v1d" secondAttribute="top" id="Z4d-nP-pJg"/>
-                            <constraint firstItem="XhP-Cv-B99" firstAttribute="trailing" secondItem="m8f-sB-uEI" secondAttribute="trailing" id="ZZo-4i-Kte"/>
-                            <constraint firstItem="iFc-FF-8kA" firstAttribute="leading" secondItem="XhP-Cv-B99" secondAttribute="leading" id="ads-bO-tpC"/>
-                            <constraint firstItem="iFc-FF-8kA" firstAttribute="bottom" secondItem="XhP-Cv-B99" secondAttribute="bottom" id="dNE-tD-muE"/>
-                            <constraint firstItem="m8f-sB-uEI" firstAttribute="leading" secondItem="XhP-Cv-B99" secondAttribute="leading" id="wBB-ha-80V"/>
+                            <constraint firstItem="mLm-B2-00R" firstAttribute="leading" secondItem="XhP-Cv-B99" secondAttribute="leading" id="1Hi-um-x73"/>
+                            <constraint firstItem="XhP-Cv-B99" firstAttribute="bottom" secondItem="jCM-sr-hSz" secondAttribute="bottom" id="7eb-71-ChM"/>
+                            <constraint firstItem="jCM-sr-hSz" firstAttribute="leading" secondItem="XhP-Cv-B99" secondAttribute="leading" id="Bib-mF-cRK"/>
+                            <constraint firstItem="mLm-B2-00R" firstAttribute="trailing" secondItem="XhP-Cv-B99" secondAttribute="trailing" id="TgL-V5-ia6"/>
+                            <constraint firstItem="mLm-B2-00R" firstAttribute="top" secondItem="JEc-Gh-v1d" secondAttribute="top" id="UxF-Lr-17i"/>
+                            <constraint firstItem="m8f-sB-uEI" firstAttribute="leading" secondItem="XhP-Cv-B99" secondAttribute="leading" id="YuM-5b-jdJ"/>
+                            <constraint firstItem="jCM-sr-hSz" firstAttribute="top" secondItem="m8f-sB-uEI" secondAttribute="bottom" id="lZo-dU-DDF"/>
+                            <constraint firstItem="m8f-sB-uEI" firstAttribute="trailing" secondItem="XhP-Cv-B99" secondAttribute="trailing" id="lda-gJ-Lid"/>
+                            <constraint firstItem="m8f-sB-uEI" firstAttribute="top" secondItem="mLm-B2-00R" secondAttribute="bottom" id="pPX-Cb-xwx"/>
+                            <constraint firstItem="XhP-Cv-B99" firstAttribute="trailing" secondItem="jCM-sr-hSz" secondAttribute="trailing" id="sJ7-0d-MBA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XhP-Cv-B99"/>
                     </view>
@@ -181,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7v-Hj-7hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6281" y="-282"/>
+            <point key="canvasLocation" x="6281" y="-372"/>
         </scene>
         <!--Much View Controller-->
         <scene sceneID="m4U-ck-GDR">
@@ -230,47 +236,13 @@
             </objects>
             <point key="canvasLocation" x="7639" y="-938"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="AKV-Yk-ld7">
-            <objects>
-                <viewController id="Hn0-Sf-RG7" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="y8S-IT-pVa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIg-Zo-jHR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                                <state key="normal" title="マッチングする">
-                                    <color key="titleColor" red="0.94117647059999998" green="0.97254901959999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="aDV-hn-Py0" kind="show" id="D2T-cD-4Ni"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="JIg-Zo-jHR" firstAttribute="top" secondItem="y8S-IT-pVa" secondAttribute="top" id="7P9-tK-6Gi"/>
-                            <constraint firstAttribute="bottom" secondItem="JIg-Zo-jHR" secondAttribute="bottom" id="Jul-gp-wim"/>
-                            <constraint firstItem="JIg-Zo-jHR" firstAttribute="leading" secondItem="y8S-IT-pVa" secondAttribute="leading" id="erx-jx-vYB"/>
-                            <constraint firstAttribute="trailing" secondItem="JIg-Zo-jHR" secondAttribute="trailing" id="nLs-cs-xVh"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="9Aw-sM-Pca"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BZO-dZ-SYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6940" y="-439.88005997001505"/>
-        </scene>
         <!--Choice-->
         <scene sceneID="cZ4-Ug-0j0">
             <objects>
                 <viewControllerPlaceholder storyboardName="Choice" id="aDV-hn-Py0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ako-rk-jPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6940" y="-305"/>
+            <point key="canvasLocation" x="6744" y="-487"/>
         </scene>
     </scenes>
     <resources>

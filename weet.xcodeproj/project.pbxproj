@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C0D8B5221FB74AC00DED2EF /* Choice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C0D8B5121FB74AC00DED2EF /* Choice.storyboard */; };
+		6C0D8B5421FCB29D00DED2EF /* MuchButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D8B5321FCB29D00DED2EF /* MuchButtonViewController.swift */; };
 		6C1A680921F01EDD00C3FA6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A680821F01EDD00C3FA6F /* MainViewController.swift */; };
 		6C1A681121F0220000C3FA6F /* IdealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A681021F0220000C3FA6F /* IdealViewController.swift */; };
 		6C3399A321E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		6C0D8B5121FB74AC00DED2EF /* Choice.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Choice.storyboard; sourceTree = "<group>"; };
+		6C0D8B5321FCB29D00DED2EF /* MuchButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuchButtonViewController.swift; sourceTree = "<group>"; };
 		6C1A680821F01EDD00C3FA6F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6C1A681021F0220000C3FA6F /* IdealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdealViewController.swift; sourceTree = "<group>"; };
 		6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImagePreviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				6C58735521F9EDED00525C9B /* MarryView.swift */,
 				6C58735721F9EDED00525C9B /* MuchEurekaViewController.swift */,
 				6C58735421F9EDEC00525C9B /* MuchViewController.swift */,
+				6C0D8B5321FCB29D00DED2EF /* MuchButtonViewController.swift */,
 				6C58736221F9EE3400525C9B /* image */,
 			);
 			path = MuchView;
@@ -454,6 +457,7 @@
 				6CEBBD7C21E3739800DD8611 /* PrefecturesPickerKeyboard.swift in Sources */,
 				6C49D76E21E1FFEF00EB7024 /* AppDelegate.swift in Sources */,
 				6C1A680921F01EDD00C3FA6F /* MainViewController.swift in Sources */,
+				6C0D8B5421FCB29D00DED2EF /* MuchButtonViewController.swift in Sources */,
 				6C58735E21F9EDED00525C9B /* FriendView.swift in Sources */,
 				6C49D78021E20A3600EB7024 /* RegisterPageViewController.swift in Sources */,
 				6C58735921F9EDED00525C9B /* CustomView.swift in Sources */,

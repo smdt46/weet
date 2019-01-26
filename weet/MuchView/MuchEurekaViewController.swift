@@ -12,6 +12,10 @@ import Eureka
 class MuchEurekaViewController: FormViewController {
     
         var selectedGender : String = ""
+    var sex: String = "女性"
+    var age: Int = 18
+    var pref: String = "兵庫県"
+    let ageArray:[Int] = ([Int])(18...60)
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -29,12 +33,21 @@ class MuchEurekaViewController: FormViewController {
                 <<< SegmentedRow<String>() { row in
                     row.title = "性別"
                     row.options = ["男性","女性"]
-                    row.value = "女性"
+                    row.value = self.sex
+                } .onChange { row in
+                        self.sex = row.value!
                 }
                 
-                <<< IntRow { row in
+                <<< PickerInputRow<Int>() { row in
                     row.title = "年齢"
-                    row.value = 18
+                    row.options = self.ageArray
+                    row.value = self.age
+                } .onChange { row in
+                    if let age = row.value {
+                        self.age = age
+                    } else {
+                        self.age = 18
+                    }
                 }
 
                 <<< PickerInputRow<String>() { row in
@@ -46,7 +59,9 @@ class MuchEurekaViewController: FormViewController {
                                    "奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県",
                                    "徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県",
                                    "熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
-                    row.value = "兵庫県"
+                    row.value = self.pref
+                } .onChange { row in
+                        self.pref = row.value!
                 }
         }
         
