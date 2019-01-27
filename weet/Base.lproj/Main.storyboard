@@ -687,22 +687,39 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="F47-dB-0JC" kind="relationship" relationship="rootViewController" id="VM0-DC-O92"/>
+                        <segue destination="yPK-Tx-fuq" kind="relationship" relationship="rootViewController" id="6Gy-2b-CR6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ire-ua-Ksb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4483.125" y="-179.57746478873239"/>
         </scene>
-        <!--Choice-->
-        <scene sceneID="stc-Ds-LTh">
+        <!--「いいね！」されたユーザー-->
+        <scene sceneID="HRW-JM-La5">
             <objects>
-                <viewControllerPlaceholder storyboardName="Choice" id="F47-dB-0JC" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="1dl-SR-osh"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Xf-Hz-Ekv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="yPK-Tx-fuq" customClass="goodListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wZE-rT-yi7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KQS-ZF-Cfr"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="「いいね！」されたユーザー" id="JVY-t9-CAc"/>
+                    <connections>
+                        <segue destination="uMa-tl-6Ts" kind="show" identifier="userpage" id="Z8M-mE-hcu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nnp-VS-uev" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5481" y="-180"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="vBD-ZP-iS8">
+            <objects>
+                <viewControllerPlaceholder id="uMa-tl-6Ts" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2us-H5-mVq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6282" y="-180"/>
         </scene>
         <!--メッセージ-->
         <scene sceneID="CD1-ms-KqT">

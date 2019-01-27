@@ -134,44 +134,34 @@
                                     <constraint firstAttribute="bottom" secondItem="jP2-yo-OFg" secondAttribute="bottom" id="rJO-bC-yNL"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNn-4v-eTj">
-                                <rect key="frame" x="69" y="516" width="82" height="36"/>
-                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                                <state key="normal" title="いいね！">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-cu-Iem">
+                                <rect key="frame" x="47.5" y="496.5" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="S0Y-Qe-J6w"/>
+                                    <constraint firstAttribute="height" constant="75" id="U0u-Pp-9df"/>
+                                </constraints>
+                                <state key="normal" image="good"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koy-Ds-lNX">
-                                <rect key="frame" x="169" y="516" width="82" height="36"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
-                                <state key="normal" title="いまいち">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oz-0Z-hj4">
+                                <rect key="frame" x="197.5" y="496.5" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="0ta-S0-kR3"/>
+                                    <constraint firstAttribute="width" constant="75" id="rFc-Ik-g1Z"/>
+                                </constraints>
+                                <state key="normal" image="skip"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="T3a-ih-9nu" firstAttribute="bottom" secondItem="gdi-9y-Nol" secondAttribute="bottom" id="1kD-LJ-5P2"/>
-                            <constraint firstItem="koy-Ds-lNX" firstAttribute="centerX" secondItem="gbK-c6-MVL" secondAttribute="centerX" constant="50" id="5qi-bb-Zyl"/>
+                            <constraint firstItem="8oz-0Z-hj4" firstAttribute="centerY" secondItem="gbK-c6-MVL" secondAttribute="centerY" constant="250" id="30N-g1-R2t"/>
                             <constraint firstItem="gdi-9y-Nol" firstAttribute="top" secondItem="T3a-ih-9nu" secondAttribute="top" id="6l7-Nd-CMj"/>
                             <constraint firstItem="gdi-9y-Nol" firstAttribute="leading" secondItem="T3a-ih-9nu" secondAttribute="leading" id="C10-se-Aeg"/>
-                            <constraint firstItem="RNn-4v-eTj" firstAttribute="centerX" secondItem="gbK-c6-MVL" secondAttribute="centerX" constant="-50" id="Or1-uf-W4s"/>
                             <constraint firstItem="gdi-9y-Nol" firstAttribute="trailing" secondItem="T3a-ih-9nu" secondAttribute="trailing" id="S1y-Uk-m3h"/>
-                            <constraint firstItem="koy-Ds-lNX" firstAttribute="centerY" secondItem="gbK-c6-MVL" secondAttribute="centerY" constant="250" id="d5g-Ei-o0z"/>
-                            <constraint firstItem="RNn-4v-eTj" firstAttribute="centerY" secondItem="gbK-c6-MVL" secondAttribute="centerY" constant="250" id="q45-jY-G5m"/>
+                            <constraint firstItem="8oz-0Z-hj4" firstAttribute="centerX" secondItem="gbK-c6-MVL" secondAttribute="centerX" constant="75" id="d3K-pR-Y61"/>
+                            <constraint firstItem="HFp-cu-Iem" firstAttribute="centerX" secondItem="gbK-c6-MVL" secondAttribute="centerX" constant="-75" id="i0f-zA-MHm"/>
                             <constraint firstItem="jP2-yo-OFg" firstAttribute="width" secondItem="gbK-c6-MVL" secondAttribute="width" id="y3r-er-JPS"/>
+                            <constraint firstItem="HFp-cu-Iem" firstAttribute="centerY" secondItem="gbK-c6-MVL" secondAttribute="centerY" constant="250" id="yaO-qi-vHA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T3a-ih-9nu"/>
                     </view>
@@ -179,11 +169,13 @@
                         <outlet property="ageAndAddressLabel" destination="WBA-CS-p3L" id="7jX-zf-Oed"/>
                         <outlet property="buttonBarView" destination="k0b-DJ-u7B" id="7Du-oz-rGd"/>
                         <outlet property="containerView" destination="zil-pY-epT" id="sTU-na-Yzs"/>
+                        <outlet property="goodButton" destination="HFp-cu-Iem" id="Gft-Pq-QsR"/>
                         <outlet property="image1" destination="lCm-Pc-uU7" id="WBi-gE-iVO"/>
                         <outlet property="image2" destination="sBz-9N-Jvq" id="8of-Xl-Weq"/>
                         <outlet property="image3" destination="Lbj-cF-Tbw" id="Csi-xT-bD8"/>
                         <outlet property="imagePreview" destination="VXx-gz-J1T" id="w3G-U4-23V"/>
                         <outlet property="nameLabel" destination="nWk-vI-98L" id="9AD-sm-FQz"/>
+                        <outlet property="skipButton" destination="8oz-0Z-hj4" id="eua-7W-x3P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AzQ-ot-bsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -221,4 +213,8 @@
             <point key="canvasLocation" x="7873" y="-546"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="good" width="31.200000762939453" height="31.200000762939453"/>
+        <image name="skip" width="31.200000762939453" height="31.200000762939453"/>
+    </resources>
 </document>

@@ -23,6 +23,8 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
     var imageData1: Data?
     var imageData2: Data?
     var imageData3: Data?
+    @IBOutlet weak var goodButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -86,6 +88,10 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
         
         super.viewDidLoad()
         
+        self.goodButton.layer.cornerRadius = self.goodButton.frame.size.width * 0.5
+        self.skipButton.layer.cornerRadius = self.skipButton.frame.size.width * 0.5
+        self.goodButton.layer.masksToBounds = true
+        self.skipButton.layer.masksToBounds = true
         
     }
     
