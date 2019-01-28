@@ -137,7 +137,7 @@ class EurekaViewController: FormViewController {
         } else {
             // 表示元がViewControllerの場合
             // 前画面のViewControllerを取得
-            let count = (self.navigationController?.viewControllers.count)! - 2
+            let count = (self.navigationController?.viewControllers.count)! - 3
             let vc = self.navigationController?.viewControllers[count] as! MainViewController
             // AlamofireでGETし、AppDelegateのJSONを更新する
             // vc.json = self.json
