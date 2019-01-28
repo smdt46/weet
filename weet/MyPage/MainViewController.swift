@@ -23,6 +23,7 @@ class MainViewController: ButtonBarPagerTabStripViewController {
     var imageData1: Data?
     var imageData2: Data?
     var imageData3: Data?
+    @IBOutlet weak var sexLabel: UILabel!
     
     override func viewDidLoad() {
         //バーの色
@@ -89,6 +90,16 @@ class MainViewController: ButtonBarPagerTabStripViewController {
             
             // 名前セット
             self.nameLabel.text = json["user_basics"]["user_name"].stringValue
+            // 性別セット
+            self.sexLabel.text = json["user_basics"]["sex"].stringValue
+            switch json["user_basics"]["sex"].stringValue {
+            case "男性":
+                self.sexLabel.textColor = UIColor.blue
+            case "女性":
+                self.sexLabel.textColor = UIColor.red
+            default:
+                self.sexLabel.textColor = UIColor.black
+            }
             // 年齢・居住地セット
             self.ageAndAddressLabel.text = json["user_basics"]["age"].stringValue + "歳"
             

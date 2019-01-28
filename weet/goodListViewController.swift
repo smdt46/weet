@@ -50,7 +50,6 @@ class goodListViewController: UIViewController, UITableViewDelegate, UITableView
             print("Error : \(err.localizedDescription)")
         }
         return cell
-        return cell
     }
     
     override func didReceiveMemoryWarning() {
