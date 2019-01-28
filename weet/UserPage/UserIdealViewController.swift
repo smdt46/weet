@@ -70,7 +70,7 @@ class UserIdealViewController: UIViewController, UITableViewDelegate, UITableVie
         if ((indexPath.section == 0 && indexPath.row == 0) ||
         (indexPath.section == 1 && indexPath.row == 0) ||
             (indexPath.section == 2 && indexPath.row == 0)) {
-            cell.backgroundColor = UIColor(red: 255/255, green: 192/255, blue: 203/255, alpha: 1)
+            cell.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1)
         }
         
         return cell
