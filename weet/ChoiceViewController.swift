@@ -82,6 +82,14 @@ class ChoiceViewController: UIViewController {
         }
     }
     
+    @objc func tapped(sender: UITapGestureRecognizer){
+        print("tapped")
+        // Alamofireで云々
+        let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
+        let next: UIViewController = storyboard.instantiateInitialViewController()!
+        self.navigationController?.pushViewController(next, animated: true)
+    }
+    
     @IBAction func swipe(_ sender:
         UISwipeGestureRecognizer) {
         requestUserData()
@@ -90,6 +98,15 @@ class ChoiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestUserData()
+        // 画像をタップすることを可能に
+        self.imageView.isUserInteractionEnabled = true
+        
+        // 画像をタップされたときのアクションを追加
+        self.imageView.addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(self.tapped(sender:)))
+        )
     }
     
     

@@ -698,16 +698,23 @@
             </objects>
             <point key="canvasLocation" x="8014" y="1344"/>
         </scene>
-        <!--View Controller-->
+        <!--理想像編集-->
         <scene sceneID="hjT-ap-IFf">
             <objects>
-                <viewController id="z5V-pp-ELE" sceneMemberID="viewController">
+                <viewController id="z5V-pp-ELE" customClass="IdealEditViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ytX-8M-svS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wpr-P0-eGu"/>
                     </view>
+                    <navigationItem key="navigationItem" title="理想像編集" id="YIk-kM-AxU">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="8h2-rp-LsI">
+                            <connections>
+                                <action selector="saveButton:" destination="z5V-pp-ELE" id="M4S-Vi-zh5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7xm-ov-icX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
