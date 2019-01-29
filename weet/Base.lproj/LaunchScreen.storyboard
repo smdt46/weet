@@ -18,17 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMF-jQ-dtw">
-                                <rect key="frame" x="131.5" y="303.5" width="112" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weet_launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="3eu-AY-Xow">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="IMF-jQ-dtw" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="BZa-xj-SDe"/>
-                            <constraint firstItem="IMF-jQ-dtw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CaT-S3-fvs"/>
+                            <constraint firstItem="3eu-AY-Xow" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="H7p-Mk-98d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3eu-AY-Xow" secondAttribute="bottom" id="VGh-5n-EOc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3eu-AY-Xow" secondAttribute="trailing" id="eSY-qP-znk"/>
+                            <constraint firstItem="3eu-AY-Xow" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="zAY-9e-9w6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,4 +37,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="weet_launchscreen" width="259.20001220703125" height="460.79998779296875"/>
+    </resources>
 </document>
