@@ -633,40 +633,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CsR-Jk-eoq">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPq-gk-Gsj">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="227.5"/>
-                                        <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
-                                        <state key="normal" title="プロフィールを編集">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="ewB-4h-Lh9" kind="show" id="BLT-Ws-bwz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghR-oR-gdU">
-                                        <rect key="frame" x="0.0" y="227.5" width="320" height="227.5"/>
-                                        <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="25"/>
-                                        <state key="normal" title="理想像を編集">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="z5V-pp-ELE" kind="show" id="ogn-bi-rj3"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIC-lt-cAi">
+                                <rect key="frame" x="30.5" y="319.5" width="259" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="259" id="Djq-qn-vBP"/>
+                                    <constraint firstAttribute="height" constant="129" id="V9e-dR-g32"/>
+                                </constraints>
+                                <state key="normal" image="idealEdit"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="z5V-pp-ELE" kind="show" id="vzq-B7-X7t"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCm-Oa-kwP">
+                                <rect key="frame" x="30.5" y="119.5" width="259" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="896-Io-t3W"/>
+                                    <constraint firstAttribute="width" constant="259" id="cfc-Ex-gbL"/>
+                                </constraints>
+                                <state key="normal" image="profileEdit"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="ewB-4h-Lh9" kind="show" id="SWk-Fl-eGD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="R7P-7D-74j" firstAttribute="trailing" secondItem="CsR-Jk-eoq" secondAttribute="trailing" id="RXF-Gr-P1N"/>
-                            <constraint firstItem="CsR-Jk-eoq" firstAttribute="top" secondItem="R7P-7D-74j" secondAttribute="top" id="Ts5-jD-mkT"/>
-                            <constraint firstItem="CsR-Jk-eoq" firstAttribute="leading" secondItem="R7P-7D-74j" secondAttribute="leading" id="d4a-M7-9A5"/>
-                            <constraint firstItem="R7P-7D-74j" firstAttribute="bottom" secondItem="CsR-Jk-eoq" secondAttribute="bottom" id="t8F-7h-WJU"/>
+                            <constraint firstItem="nCm-Oa-kwP" firstAttribute="centerY" secondItem="wAi-ii-jLA" secondAttribute="centerY" constant="-100" id="5Pd-ot-kvY"/>
+                            <constraint firstItem="nCm-Oa-kwP" firstAttribute="centerX" secondItem="wAi-ii-jLA" secondAttribute="centerX" id="Ryg-xx-CVk"/>
+                            <constraint firstItem="fIC-lt-cAi" firstAttribute="centerY" secondItem="wAi-ii-jLA" secondAttribute="centerY" constant="100" id="bA2-qN-wTI"/>
+                            <constraint firstItem="fIC-lt-cAi" firstAttribute="centerX" secondItem="wAi-ii-jLA" secondAttribute="centerX" id="coD-I4-CUK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R7P-7D-74j"/>
                     </view>
@@ -862,8 +867,10 @@
     </scenes>
     <resources>
         <image name="goodIcon" width="72" height="72"/>
+        <image name="idealEdit" width="259.20001220703125" height="129.60000610351562"/>
         <image name="messageIcon" width="72" height="72"/>
         <image name="myPageIcon" width="72" height="72"/>
+        <image name="profileEdit" width="259.20001220703125" height="129.60000610351562"/>
         <image name="searchIcon" width="72" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
