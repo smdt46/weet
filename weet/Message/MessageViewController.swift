@@ -64,7 +64,7 @@ class MessageViewController: JSQMessagesViewController {
         // 画像の設定
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if (appDelegate.userJson!["user_basics"]["image1"].stringValue != "") {
-            let imageURL = URL(string: appDelegate.userJson!["user_basics"]["image1"].stringValue)
+            let imageURL = URL(string: "https://www.pakutaso.com/shared/img/thumb/TSURU1891A041_TP_V.jpg")
             do {
                 let data = try Data(contentsOf: imageURL!)
                 self.incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(data: data)!, diameter: 64)
@@ -75,17 +75,8 @@ class MessageViewController: JSQMessagesViewController {
             self.incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "defaultIcon")!, diameter: 64)
         }
         
-        if (appDelegate.myJson!["user_basics"]["image1"].stringValue != "") {
-            let imageURL = URL(string: appDelegate.myJson!["user_basics"]["image1"].stringValue)
-            do {
-                let data = try Data(contentsOf: imageURL!)
-                self.outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(data: data)!, diameter: 64)
-            }catch let err {
-                print("Error : \(err.localizedDescription)")
-            }
-        } else {
-            self.incomingAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "defaultIcon")!, diameter: 64)
-        }
+       
+        self.outgoingAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "kmyan_icon")!, diameter: 64)
         
         
         

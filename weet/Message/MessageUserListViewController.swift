@@ -48,10 +48,10 @@ class MessageUserListViewController: UIViewController, UITableViewDelegate, UITa
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle,
                                    reuseIdentifier: "aaa\(indexPath.section)-\(indexPath.row)")
         
-        cell.textLabel?.text = json!["user_basics"]["user_name"].stringValue
-        cell.detailTextLabel?.text = json!["user_basics"]["age"].stringValue + "歳"
+        cell.textLabel?.text = "立花彩花"
+        cell.detailTextLabel?.text = "27歳"
         
-        let imageURL = URL(string: json!["user_basics"]["image1"].stringValue)
+        let imageURL = URL(string: "https://www.pakutaso.com/shared/img/thumb/TSURU1891A041_TP_V.jpg")
         do {
             let data = try Data(contentsOf: imageURL!)
             cell.imageView?.image = UIImage(data: data)
