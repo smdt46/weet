@@ -32,7 +32,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         if appDelegate.myJson != nil {
             self.json = appDelegate.myJson!
             
-            myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
+            let tableSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 3000.0)
+            myTableView1 = UITableView(frame: tableSize, style: UITableView.Style.grouped)
             
             myTableView1.register(UINib(nibName: "UserImagePreviewTableViewCell", bundle: nil), forCellReuseIdentifier: "imageCell")
             myTableView1.delegate = self

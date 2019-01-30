@@ -26,7 +26,8 @@ class IdealViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if appDelegate.myJson != nil {
             self.json = appDelegate.myJson!
             
-            myTableView = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
+            let tableSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 3000.0)
+            myTableView = UITableView(frame: tableSize, style: UITableView.Style.grouped)
             myTableView.delegate = self
             myTableView.dataSource = self
             myTableView.estimatedRowHeight = 100
