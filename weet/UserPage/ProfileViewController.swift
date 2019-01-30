@@ -81,11 +81,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if indexPath.section == 0 {
             cell.textLabel?.text = json["user_basics"]["hitokoto"].stringValue
-            return cell
         } else if indexPath.section == 1 {
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = json["user_basics"]["comment"].stringValue
-            return cell
         } else {
             cell.detailTextLabel?.numberOfLines = 0
             cell.textLabel?.numberOfLines = 0
@@ -93,8 +91,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.detailTextLabel?.textColor = UIColor.black
             cell.textLabel?.text = json["user_specials"][indexPath.section-2]["user_questions_and_answers"][indexPath.row]["question_name"].stringValue
             cell.detailTextLabel?.text = json["user_specials"][indexPath.section-2]["user_questions_and_answers"][indexPath.row]["answer_name"].stringValue
-            return cell
         }
+        
+        // 強調表示（テスト用）
+        if ((indexPath.section == 2 && indexPath.row == 0) ||
+            (indexPath.section == 3 && indexPath.row == 0) ||
+            (indexPath.section == 4 && indexPath.row == 0)) {
+            cell.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1)
+        }
+        
+        return cell
     }
     
     

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Alamofire
 import SwiftyJSON
 
 class goodListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var myTableView1: UITableView!
     var json: JSON?
+    let userList = ["2","3","4","5","7","8","9"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,26 +35,51 @@ class goodListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return userList.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
-        let next: UIViewController = storyboard.instantiateInitialViewController()!
-        self.navigationController?.pushViewController(next, animated: true)
+        // 選択したユーザーIDをGETし、ユーザーページに遷移する
+        let url: String = "http://54.238.92.95:8080/api/v1/user/\(userList[indexPath.row])"
+        Alamofire.request(url).responseJSON { response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.userJson = JSON(object)
+            let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
+            let next: UIViewController = storyboard.instantiateInitialViewController()!
+            self.navigationController?.pushViewController(next, animated: true)
+            print("AppDelegate Request")
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let url: String = "http://54.238.92.95:8080/api/v1/user/\(userList[indexPath.row])"
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "aaa\(indexPath.section)-\(indexPath.row)")
-        cell.textLabel?.text = json!["user_basics"]["user_name"].stringValue
-        cell.detailTextLabel?.text = json!["user_basics"]["age"].stringValue + "歳"
-        
-        let imageURL = URL(string: json!["user_basics"]["image1"].stringValue)
-        do {
-            let data = try Data(contentsOf: imageURL!)
-            cell.imageView?.image = UIImage(data: data)
-        }catch let err {
-            print("Error : \(err.localizedDescription)")
+        Alamofire.request(url).responseJSON { response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+
+            let userjson = JSON(object)
+            
+            cell.textLabel?.text = userjson["user_basics"]["user_name"].stringValue
+            cell.detailTextLabel?.text = userjson["user_basics"]["age"].stringValue + "歳"
+            
+            let imageURL = URL(string: userjson["user_basics"]["image1"].stringValue)
+            do {
+                let data = try Data(contentsOf: imageURL!)
+                cell.imageView?.image = UIImage(data: data)
+            }catch let err {
+                print("Error : \(err.localizedDescription)")
+            }
+            
+           
+            print("AppDelegate Request")
         }
         return cell
     }

@@ -38,20 +38,11 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
         //セレクトバーの色
         settings.style.selectedBarBackgroundColor = UIColor(red: 254/255, green: 0, blue: 124/255, alpha: 1)
         
-        // 選別画面から画面遷移時に渡されたUserIDを変数で
-        // ユーザー情報の取得
-        let url: String = "http://54.238.92.95:8080/api/v1/user/2"
-        Alamofire.request(url).responseJSON { response in
-            guard let object = response.result.value else {
-                print("接続エラー")
-                self.errorAlert()
-                return
-            }
-            
-            self.json = JSON(object)
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.userJson = JSON(object)
-            
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        if appDelegate.userJson != nil {
+            self.json = appDelegate.userJson!
+
             // 画像を丸くする
             self.image1.layer.cornerRadius = self.image1.frame.size.width * 0.5
             self.image2.layer.cornerRadius = self.image2.frame.size.width * 0.5
@@ -65,6 +56,8 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
                 let imageURL = URL(string: self.json["user_basics"]["image1"].stringValue)
                 do {
                     self.imageData1 = try Data(contentsOf: imageURL!)
+                    self.image1.setImage(UIImage(data: self.imageData1!), for: .normal)
+                    self.image1.imageView?.contentMode = .scaleAspectFit
                     // 1番目の画像をプレビュー部分に設定
                     self.imagePreview.image = UIImage(data: self.imageData1!)
                     print("image1Set")
@@ -96,6 +89,8 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
             self.navigationItem.title = self.json["user_basics"]["user_name"].stringValue
             
             print("UserPage Request")
+        } else {
+            errorAlert()
         }
         
         print("MainLoad")
