@@ -65,6 +65,9 @@ class EurekaViewController: FormViewController {
                         }.onChange { row in
                             if let value = row.value {
                                 print(value)
+                                self.saveBasics(user_id: self.user_id, hitokoto: value, comment: self.json["user_basics"]["comment"].stringValue)
+                            } else {
+                                
                             }
                     }
                     
@@ -75,6 +78,7 @@ class EurekaViewController: FormViewController {
                         } .onChange { row in
                             if let value = row.value {
                                 print(value)
+                                self.saveBasics(user_id: self.user_id, hitokoto: self.json["user_basics"]["hitokoto"].stringValue, comment: value)
                             }
                 }
                 
@@ -162,14 +166,20 @@ class EurekaViewController: FormViewController {
     }
     
     // 基本情報をPOSTして更新する
-    func saveBasics(user_id: Int, key: String, value: String) {
+    func saveBasics(user_id: Int, hitokoto: String, comment: String) {
         let parameters: Parameters = [
-            "user_id": user_id,
-            "key": key,
-            "value": value
+            "UserName": json["user_basics"]["user_name"].stringValue,
+            "Image1": json["user_basics"]["image1"].stringValue,
+            "Image2": "",
+            "Image3": "",
+            "Age": json["user_basics"]["age"].intValue,
+            "Sex": json["user_basics"]["sex"].stringValue,
+            "Hitokoto": hitokoto,
+            "Comment": comment
         ]
-        let url: String = "http://54.238.92.95:8080/test"
+        let url: String = "http://54.238.92.95:8080/api/v1/user/\(String(user_id))/update/basic"
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        print("basics_update")
     }
     
     // 質問選択肢をPOSTして更新する
@@ -181,6 +191,7 @@ class EurekaViewController: FormViewController {
         ]
         let url: String = "http://54.238.92.95:8080/test"
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        print("profile_update")
     }
     
     // 選択肢の配列を返す
