@@ -135,45 +135,7 @@ class EurekaViewController: FormViewController {
     
 
     @IBAction func saveButton(_ sender: Any) {
-        // 表示の大元がViewControllerかNavigationControllerかで戻る場所を判断する
-        if self.presentingViewController is UINavigationController {
-            //  表示の大元がNavigationControllerの場合
-            let nc = self.presentingViewController as! UINavigationController
-            let vc = nc.topViewController as! MainViewController
-            // vc.json = self.json
-            vc.loadView()
-            vc.viewDidLoad()
-            self.dismiss(animated: true, completion: nil)
-            
-        } else {
-            // 表示元がViewControllerの場合
-            // 前画面のViewControllerを取得
-            let count = (self.navigationController?.viewControllers.count)! - 3
-            let vc = self.navigationController?.viewControllers[count] as! MainViewController
-            // AlamofireでGETし、AppDelegateのJSONを更新する
-            // vc.json = self.json
-            // 画面更新
-            vc.loadView()
-            vc.viewDidLoad()
-            // 画面を消す
-            self.navigationController?.popViewController(animated: true)
-        }
-    }
-    
-    func errorAlert() {
-        let title = "接続エラー"
-        let message = "ネットワーク・サーバーの状態を確認してください"
-        let okText = "OK"
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
-        alert.addAction(okayButton)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    // 保存ボタンをタップしたときのアクション
-    @objc func tappedSaveButton() {
         let hitokotoRow = form.rowBy(tag: "hitokoto") as! TextRow
         let hitokoto = hitokotoRow.value!
         let commentRow = form.rowBy(tag: "comment") as! TextAreaRow
@@ -192,6 +154,56 @@ class EurekaViewController: FormViewController {
         let url: String = "http://54.238.92.95:8080/api/v1/user/\(String(user_id))/update/basics"
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
         print("basics_update_tap")
+        
+        let url1: String = "http://54.238.92.95:8080/api/v1/user/1"
+        Alamofire.request(url1).responseJSON { response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.myJson = JSON(object)
+            print("AppDelegate Request")
+        }
+        
+        // 表示の大元がViewControllerかNavigationControllerかで戻る場所を判断する
+        if self.presentingViewController is UINavigationController {
+            //  表示の大元がNavigationControllerの場合
+            let nc = self.presentingViewController as! UINavigationController
+            let vc = nc.topViewController as! MainViewController
+            // vc.json = self.json
+            vc.loadView()
+            vc.viewDidLoad()
+            self.dismiss(animated: true, completion: nil)
+            
+        } else {
+            // 表示元がViewControllerの場合
+            // 前画面のViewControllerを取得
+            let count = (self.navigationController?.viewControllers.count)! - 3
+            let vc = self.navigationController?.viewControllers[count] as! MainViewController
+            let vc1 = self.navigationController?.viewControllers[count] as! UserProfileViewController
+            // AlamofireでGETし、AppDelegateのJSONを更新する
+            // vc.json = self.json
+            // 画面更新
+            vc.loadView()
+            vc.viewDidLoad()
+            vc1.loadView()
+            vc1.viewDidLoad()
+            // 画面を消す
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func errorAlert() {
+        let title = "接続エラー"
+        let message = "ネットワーク・サーバーの状態を確認してください"
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     // 基本情報をPOSTして更新する

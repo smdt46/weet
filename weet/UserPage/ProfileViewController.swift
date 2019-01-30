@@ -25,8 +25,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.json = appDelegate.userJson!
         
-        myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
-        
+        let tableSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 3000.0)
+        myTableView1 = UITableView(frame: tableSize, style: UITableView.Style.grouped)
         myTableView1.delegate = self
         myTableView1.dataSource = self
         myTableView1.estimatedRowHeight = 100
@@ -88,6 +88,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         } else {
             cell.detailTextLabel?.numberOfLines = 0
+            cell.textLabel?.numberOfLines = 0
             cell.textLabel?.textColor = UIColor.gray
             cell.detailTextLabel?.textColor = UIColor.black
             cell.textLabel?.text = json["user_specials"][indexPath.section-2]["user_questions_and_answers"][indexPath.row]["question_name"].stringValue

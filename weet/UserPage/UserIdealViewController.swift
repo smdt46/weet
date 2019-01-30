@@ -23,15 +23,16 @@ class UserIdealViewController: UIViewController, UITableViewDelegate, UITableVie
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         
-        if appDelegate.myJson != nil {
+        if appDelegate.userJson != nil {
             self.json = appDelegate.userJson!
             
-            myTableView = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
+            let tableSize = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 3000.0)
+            myTableView = UITableView(frame: tableSize, style: UITableView.Style.grouped)
             myTableView.delegate = self
             myTableView.dataSource = self
             myTableView.estimatedRowHeight = 100
             myTableView.allowsSelection = false
-            myTableView.rowHeight = 75
+            myTableView.rowHeight = 60
             myTableView.isScrollEnabled = false
             self.view.addSubview(myTableView)
         } else {
