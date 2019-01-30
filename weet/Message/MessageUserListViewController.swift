@@ -18,14 +18,19 @@ class MessageUserListViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        self.json = appDelegate.userJson!
         
-        myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.plain) // ‥②
-        myTableView1.delegate = self // ‥③
-        myTableView1.dataSource = self // ‥③
-        myTableView1.estimatedRowHeight = 100
-        myTableView1.rowHeight = 75
-        self.view.addSubview(myTableView1)
+        if appDelegate.userJson != nil {
+            self.json = appDelegate.userJson!
+            
+            myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.plain) // ‥②
+            myTableView1.delegate = self // ‥③
+            myTableView1.dataSource = self // ‥③
+            myTableView1.estimatedRowHeight = 100
+            myTableView1.rowHeight = 75
+            self.view.addSubview(myTableView1)
+        } else {
+            errorAlert()
+        }
     }
     
     // セクション数を指定
@@ -61,6 +66,19 @@ class MessageUserListViewController: UIViewController, UITableViewDelegate, UITa
         return cell
         
     }
+    
+    func errorAlert() {
+        let title = "接続エラー"
+        let message = "ネットワーク・サーバーの状態を確認してください"
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
