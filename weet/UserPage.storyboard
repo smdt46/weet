@@ -146,7 +146,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HFp-cu-Iem">
-                                <rect key="frame" x="47.5" y="496.5" width="75" height="75"/>
+                                <rect key="frame" x="52.5" y="486.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="S0Y-Qe-J6w"/>
                                     <constraint firstAttribute="height" constant="75" id="U0u-Pp-9df"/>
@@ -154,7 +154,7 @@
                                 <state key="normal" image="good"/>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oz-0Z-hj4">
-                                <rect key="frame" x="197.5" y="496.5" width="75" height="75"/>
+                                <rect key="frame" x="192.5" y="486.5" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="0ta-S0-kR3"/>
                                     <constraint firstAttribute="width" constant="75" id="rFc-Ik-g1Z"/>
@@ -165,14 +165,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="T3a-ih-9nu" firstAttribute="bottom" secondItem="gdi-9y-Nol" secondAttribute="bottom" id="1kD-LJ-5P2"/>
-                            <constraint firstItem="8oz-0Z-hj4" firstAttribute="centerY" secondItem="gbK-c6-MVL" secondAttribute="centerY" constant="250" id="30N-g1-R2t"/>
+                            <constraint firstItem="8oz-0Z-hj4" firstAttribute="centerY" secondItem="gbK-c6-MVL" secondAttribute="centerY" constant="240" id="30N-g1-R2t"/>
                             <constraint firstItem="gdi-9y-Nol" firstAttribute="top" secondItem="T3a-ih-9nu" secondAttribute="top" id="6l7-Nd-CMj"/>
                             <constraint firstItem="gdi-9y-Nol" firstAttribute="leading" secondItem="T3a-ih-9nu" secondAttribute="leading" id="C10-se-Aeg"/>
                             <constraint firstItem="gdi-9y-Nol" firstAttribute="trailing" secondItem="T3a-ih-9nu" secondAttribute="trailing" id="S1y-Uk-m3h"/>
-                            <constraint firstItem="8oz-0Z-hj4" firstAttribute="centerX" secondItem="gbK-c6-MVL" secondAttribute="centerX" constant="75" id="d3K-pR-Y61"/>
-                            <constraint firstItem="HFp-cu-Iem" firstAttribute="centerX" secondItem="gbK-c6-MVL" secondAttribute="centerX" constant="-75" id="i0f-zA-MHm"/>
+                            <constraint firstItem="8oz-0Z-hj4" firstAttribute="centerX" secondItem="gbK-c6-MVL" secondAttribute="centerX" constant="70" id="d3K-pR-Y61"/>
+                            <constraint firstItem="HFp-cu-Iem" firstAttribute="centerX" secondItem="gbK-c6-MVL" secondAttribute="centerX" constant="-70" id="i0f-zA-MHm"/>
                             <constraint firstItem="jP2-yo-OFg" firstAttribute="width" secondItem="gbK-c6-MVL" secondAttribute="width" id="y3r-er-JPS"/>
-                            <constraint firstItem="HFp-cu-Iem" firstAttribute="centerY" secondItem="gbK-c6-MVL" secondAttribute="centerY" constant="250" id="yaO-qi-vHA"/>
+                            <constraint firstItem="HFp-cu-Iem" firstAttribute="centerY" secondItem="gbK-c6-MVL" secondAttribute="centerY" constant="240" id="yaO-qi-vHA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T3a-ih-9nu"/>
                     </view>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import SwiftyJSON
 
 class ChoiceViewController: UIViewController {
@@ -84,10 +85,19 @@ class ChoiceViewController: UIViewController {
     
     @objc func tapped(sender: UITapGestureRecognizer){
         print("tapped")
-        // Alamofireで云々
-        let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
-        let next: UIViewController = storyboard.instantiateInitialViewController()!
-        self.navigationController?.pushViewController(next, animated: true)
+        let url: String = "http://54.238.92.95:8080/api/v1/user/2"
+        Alamofire.request(url).responseJSON { response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.userJson = JSON(object)
+            let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
+            let next: UIViewController = storyboard.instantiateInitialViewController()!
+            self.navigationController?.pushViewController(next, animated: true)
+            print("AppDelegate Request")
+        }
     }
     
     @IBAction func swipe(_ sender:
