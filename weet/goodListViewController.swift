@@ -14,7 +14,7 @@ class goodListViewController: UIViewController, UITableViewDelegate, UITableView
 
     var myTableView1: UITableView!
     var json: JSON?
-    let userList = ["2","3","4","5","7","8","9"]
+    let userList = ["2","4","8","9"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

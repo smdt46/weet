@@ -18,7 +18,9 @@ class ChoiceViewController: UIViewController {
     @IBOutlet weak var shadowView: UIView!
 
     // API URL
-    var api_url:String = "http://54.238.92.95:8080/api/v1/user/2"
+    var api_url:String = "http://54.238.92.95:8080/api/v1/user/"
+    let userList = ["9", "8", "7"]
+    var i: Int = 0
     
     struct UserBasics: Codable {
         let user_name : String
@@ -61,8 +63,11 @@ class ChoiceViewController: UIViewController {
     
     func requestUserData(){
         do {
+            if(userList.count-1<i){
+                i=0
+            }
             // APIにアクセス
-            let url = URL(string: api_url)!
+            let url = URL(string: api_url+userList[i])!
             let data = try Data(contentsOf: url, options: [])
             // jsonに変換後パース
             let json = try JSON(data: data)
@@ -77,6 +82,7 @@ class ChoiceViewController: UIViewController {
             // ラベル更新
             userNameLabel.text=resultData.user_basics.user_name
             userInfoLabel.text=resultData.user_basics.hitokoto
+            i=i+1
             print(resultData.user_basics.hitokoto)
         } catch {
             print(error)
@@ -85,7 +91,7 @@ class ChoiceViewController: UIViewController {
     
     @objc func tapped(sender: UITapGestureRecognizer){
         print("tapped")
-        let url: String = "http://54.238.92.95:8080/api/v1/user/2"
+        let url: String = "http://54.238.92.95:8080/api/v1/user/"+userList[i-1]
         Alamofire.request(url).responseJSON { response in
             guard let object = response.result.value else {
                 return
