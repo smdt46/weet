@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = storybord.instantiateViewController(withIdentifier: viewName)
         window!.makeKeyAndVisible()
         
-        let url1: String = "http://54.238.92.95:8080/api/v1/user/3"
+        let url1: String = "http://54.238.92.95:8080/api/v1/user/1"
         Alamofire.request(url1).responseJSON { response in
             guard let object = response.result.value else {
                 return
