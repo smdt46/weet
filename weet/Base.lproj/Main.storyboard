@@ -791,17 +791,107 @@
                     <view key="view" contentMode="scaleToFill" id="wZE-rT-yi7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qOJ-kd-imY" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="64" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Trm-XH-aeO"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uiO-Yp-AsW">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ESz-gY-5NB">
+                                <rect key="frame" x="0.0" y="114" width="320" height="405"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qOJ-kd-imY" firstAttribute="leading" secondItem="KQS-ZF-Cfr" secondAttribute="leading" id="1Rq-mj-ypG"/>
+                            <constraint firstItem="KQS-ZF-Cfr" firstAttribute="bottom" secondItem="ESz-gY-5NB" secondAttribute="bottom" id="5Pw-HZ-U1b"/>
+                            <constraint firstItem="ESz-gY-5NB" firstAttribute="top" secondItem="qOJ-kd-imY" secondAttribute="bottom" id="Omh-B7-eUh"/>
+                            <constraint firstItem="KQS-ZF-Cfr" firstAttribute="trailing" secondItem="qOJ-kd-imY" secondAttribute="trailing" id="arm-cf-I4P"/>
+                            <constraint firstItem="qOJ-kd-imY" firstAttribute="top" secondItem="KQS-ZF-Cfr" secondAttribute="top" id="gR9-sA-FQd"/>
+                            <constraint firstItem="ESz-gY-5NB" firstAttribute="leading" secondItem="wZE-rT-yi7" secondAttribute="leading" id="rCa-7w-Llk"/>
+                            <constraint firstItem="KQS-ZF-Cfr" firstAttribute="trailing" secondItem="ESz-gY-5NB" secondAttribute="trailing" id="uSH-ZP-GVq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KQS-ZF-Cfr"/>
                     </view>
                     <navigationItem key="navigationItem" title="「いいね！」されたユーザー" id="JVY-t9-CAc"/>
                     <connections>
+                        <outlet property="buttonBarView" destination="qOJ-kd-imY" id="shC-RA-YH9"/>
+                        <outlet property="containerView" destination="ESz-gY-5NB" id="uzw-II-mLi"/>
                         <segue destination="uMa-tl-6Ts" kind="show" identifier="userpage" id="Z8M-mE-hcu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nnp-VS-uev" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5481" y="-180"/>
+        </scene>
+        <!--Good Friend List View Controller-->
+        <scene sceneID="1LV-mm-NKe">
+            <objects>
+                <viewController storyboardIdentifier="friendGood" id="F5i-s0-vkw" customClass="goodFriendListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Qz-OY-Tup">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nah-R9-bgi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VWp-8P-Uge" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6951" y="-181"/>
+        </scene>
+        <!--Good Love List View Controller-->
+        <scene sceneID="FJG-RG-sye">
+            <objects>
+                <viewController storyboardIdentifier="loveGood" id="z9o-gA-gDX" customClass="goodLoveListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gBf-CB-bB5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7Fb-FZ-pyQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vbb-ZX-RWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7652" y="-181"/>
+        </scene>
+        <!--Good Marriage List View Controller-->
+        <scene sceneID="YJh-Nm-3xM">
+            <objects>
+                <viewController storyboardIdentifier="marriageGood" id="o4b-I2-NFO" customClass="goodMarriageListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eg8-t2-iOK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3yZ-SQ-PxH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xuq-oY-J9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8340" y="-182"/>
+        </scene>
+        <!--Good Roommate List View Controller-->
+        <scene sceneID="zZb-LJ-Dt3">
+            <objects>
+                <viewController storyboardIdentifier="roommateGood" id="HHJ-Sh-c9O" customClass="goodRoommateListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DDa-vf-Nip">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RR1-JV-IvZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fps-XX-7We" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9024" y="-183"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="vBD-ZP-iS8">

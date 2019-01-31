@@ -1,20 +1,22 @@
 //
-//  goodListViewController.swift
+//  goodRoommateListViewController.swift
 //  weet
 //
-//  Created by owner on 2019/01/27.
+//  Created by owner on 2019/01/31.
 //  Copyright © 2019 GS. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 import SwiftyJSON
+import XLPagerTabStrip
 
-class goodListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class goodRoommateListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
+    
+    var itemInfo: IndicatorInfo = "ルームメイト"
     var myTableView1: UITableView!
     var json: JSON?
-    let userList = ["2","4","8","9"]
+    let userList = ["5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +66,7 @@ class goodListViewController: UIViewController, UITableViewDelegate, UITableView
                 return
             }
             
-
+            
             let userjson = JSON(object)
             
             cell.textLabel?.text = userjson["user_basics"]["user_name"].stringValue
@@ -78,7 +80,7 @@ class goodListViewController: UIViewController, UITableViewDelegate, UITableView
                 print("Error : \(err.localizedDescription)")
             }
             
-           
+            
             print("AppDelegate Request")
         }
         return cell
@@ -94,6 +96,10 @@ class goodListViewController: UIViewController, UITableViewDelegate, UITableView
         alert.addAction(okayButton)
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo
     }
     
     override func didReceiveMemoryWarning() {
