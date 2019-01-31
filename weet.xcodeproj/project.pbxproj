@@ -52,6 +52,11 @@
 		6CC3D092220333500083486E /* goodLoveListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC3D091220333500083486E /* goodLoveListViewController.swift */; };
 		6CC3D094220333C80083486E /* goodMarriageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC3D093220333C80083486E /* goodMarriageListViewController.swift */; };
 		6CC3D096220334120083486E /* goodRoommateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC3D095220334120083486E /* goodRoommateListViewController.swift */; };
+		6CC3D098220358450083486E /* firendMessageUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC3D097220358450083486E /* firendMessageUserListViewController.swift */; };
+		6CC3D09A2203597E0083486E /* loveMessageUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC3D0992203597E0083486E /* loveMessageUserListViewController.swift */; };
+		6CC3D09C220359FD0083486E /* marriageMessageUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC3D09B220359FD0083486E /* marriageMessageUserListViewController.swift */; };
+		6CC3D09E22035A170083486E /* roommateMessageUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC3D09D22035A170083486E /* roommateMessageUserListViewController.swift */; };
+		6CC3D0A02203B07F0083486E /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CC3D09F2203B07F0083486E /* Message.storyboard */; };
 		6CD6DF9621EB0DBC0072F2FA /* EurekaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD6DF9521EB0DBC0072F2FA /* EurekaViewController.swift */; };
 		6CD79B3121FF46F400EA2FF0 /* IdealEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD79B3021FF46F400EA2FF0 /* IdealEditViewController.swift */; };
 		6CDDE9CE21FA142D003C3B0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CDDE9CD21FA142D003C3B0B /* GoogleService-Info.plist */; };
@@ -112,6 +117,11 @@
 		6CC3D091220333500083486E /* goodLoveListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goodLoveListViewController.swift; sourceTree = "<group>"; };
 		6CC3D093220333C80083486E /* goodMarriageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goodMarriageListViewController.swift; sourceTree = "<group>"; };
 		6CC3D095220334120083486E /* goodRoommateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goodRoommateListViewController.swift; sourceTree = "<group>"; };
+		6CC3D097220358450083486E /* firendMessageUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firendMessageUserListViewController.swift; sourceTree = "<group>"; };
+		6CC3D0992203597E0083486E /* loveMessageUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loveMessageUserListViewController.swift; sourceTree = "<group>"; };
+		6CC3D09B220359FD0083486E /* marriageMessageUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = marriageMessageUserListViewController.swift; sourceTree = "<group>"; };
+		6CC3D09D22035A170083486E /* roommateMessageUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = roommateMessageUserListViewController.swift; sourceTree = "<group>"; };
+		6CC3D09F2203B07F0083486E /* Message.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Message.storyboard; sourceTree = "<group>"; };
 		6CD6DF9521EB0DBC0072F2FA /* EurekaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaViewController.swift; sourceTree = "<group>"; };
 		6CD79B3021FF46F400EA2FF0 /* IdealEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdealEditViewController.swift; sourceTree = "<group>"; };
 		6CDDE9CD21FA142D003C3B0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -185,6 +195,7 @@
 				6C49D77121E1FFEF00EB7024 /* Main.storyboard */,
 				6CA3AAF421FA1DCD00B33EA6 /* UserPage.storyboard */,
 				6C58736021F9EE1F00525C9B /* MuchSelect.storyboard */,
+				6CC3D09F2203B07F0083486E /* Message.storyboard */,
 				6C0D8B5121FB74AC00DED2EF /* Choice.storyboard */,
 				6CB6F56F21ECF65100F0EF93 /* MyTabBarController.swift */,
 				6C89303821E24F450092C6DD /* TitleViewController.swift */,
@@ -237,6 +248,10 @@
 			children = (
 				6CDDE9CF21FA14CA003C3B0B /* MessageViewController.swift */,
 				6C58736B21FA0E2800525C9B /* MessageUserListViewController.swift */,
+				6CC3D097220358450083486E /* firendMessageUserListViewController.swift */,
+				6CC3D0992203597E0083486E /* loveMessageUserListViewController.swift */,
+				6CC3D09B220359FD0083486E /* marriageMessageUserListViewController.swift */,
+				6CC3D09D22035A170083486E /* roommateMessageUserListViewController.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -376,6 +391,7 @@
 				6C58736A21F9EE4500525C9B /* Couple.png in Resources */,
 				6C49D77521E1FFF100EB7024 /* Assets.xcassets in Resources */,
 				6C49D77321E1FFEF00EB7024 /* Main.storyboard in Resources */,
+				6CC3D0A02203B07F0083486E /* Message.storyboard in Resources */,
 				6C58736721F9EE4500525C9B /* "Live.png in Resources */,
 				6C5E210421F89830009708CD /* ueeda2.jpg in Resources */,
 				6C5E210621F89830009708CD /* joy.jpg in Resources */,
@@ -463,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C58735B21F9EDED00525C9B /* MarryView.swift in Sources */,
+				6CC3D09A2203597E0083486E /* loveMessageUserListViewController.swift in Sources */,
 				6C58736C21FA0E2800525C9B /* MessageUserListViewController.swift in Sources */,
 				6C58735C21F9EDED00525C9B /* LiveView.swift in Sources */,
 				6CD6DF9621EB0DBC0072F2FA /* EurekaViewController.swift in Sources */,
@@ -475,6 +492,7 @@
 				6C1A681121F0220000C3FA6F /* IdealViewController.swift in Sources */,
 				6C5E210C21F8988D009708CD /* ChoiceViewController.swift in Sources */,
 				6CEBBD7A21E367E000DD8611 /* SexPickerKeyboard.swift in Sources */,
+				6CC3D09C220359FD0083486E /* marriageMessageUserListViewController.swift in Sources */,
 				6CDDE9D021FA14CA003C3B0B /* MessageViewController.swift in Sources */,
 				6CC34DEB21F6AAFC00FCDAF0 /* ProfileViewController.swift in Sources */,
 				6C49D77021E1FFEF00EB7024 /* ViewController.swift in Sources */,
@@ -493,11 +511,13 @@
 				6C58735921F9EDED00525C9B /* CustomView.swift in Sources */,
 				6C58735A21F9EDED00525C9B /* MuchViewController.swift in Sources */,
 				6CC3D092220333500083486E /* goodLoveListViewController.swift in Sources */,
+				6CC3D09E22035A170083486E /* roommateMessageUserListViewController.swift in Sources */,
 				6CEBBD7E21E3856800DD8611 /* ImageSelectViewController.swift in Sources */,
 				6CD79B3121FF46F400EA2FF0 /* IdealEditViewController.swift in Sources */,
 				6C4DE80121E62499003BEDCD /* UserProfileViewController.swift in Sources */,
 				6C89303921E24F450092C6DD /* TitleViewController.swift in Sources */,
 				6CB6F57021ECF65100F0EF93 /* MyTabBarController.swift in Sources */,
+				6CC3D098220358450083486E /* firendMessageUserListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -371,46 +371,55 @@
                     <view key="view" contentMode="scaleToFill" id="AY3-YL-4YI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gnS-m9-8eP" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="64" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hz2-vh-l0V"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xTB-zk-gRT">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVt-D6-TD2">
+                                <rect key="frame" x="0.0" y="114" width="320" height="405"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PVt-D6-TD2" firstAttribute="leading" secondItem="AY3-YL-4YI" secondAttribute="leading" id="6je-LF-pw3"/>
+                            <constraint firstItem="lOu-Pu-1bZ" firstAttribute="bottom" secondItem="PVt-D6-TD2" secondAttribute="bottom" id="Q6P-Tn-JdN"/>
+                            <constraint firstItem="lOu-Pu-1bZ" firstAttribute="trailing" secondItem="gnS-m9-8eP" secondAttribute="trailing" id="R9V-6z-Tco"/>
+                            <constraint firstItem="PVt-D6-TD2" firstAttribute="top" secondItem="gnS-m9-8eP" secondAttribute="bottom" id="XvI-dR-BiS"/>
+                            <constraint firstItem="lOu-Pu-1bZ" firstAttribute="trailing" secondItem="PVt-D6-TD2" secondAttribute="trailing" id="g9F-Xf-BIM"/>
+                            <constraint firstItem="gnS-m9-8eP" firstAttribute="leading" secondItem="lOu-Pu-1bZ" secondAttribute="leading" id="oHO-cy-hFr"/>
+                            <constraint firstItem="gnS-m9-8eP" firstAttribute="top" secondItem="lOu-Pu-1bZ" secondAttribute="top" id="uot-1o-gE4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lOu-Pu-1bZ"/>
                     </view>
                     <navigationItem key="navigationItem" title="メッセージ可能ユーザ一覧" id="Oys-eF-Jv5"/>
                     <connections>
-                        <segue destination="nbt-yI-g6R" kind="show" identifier="message" id="kfr-YV-hic"/>
+                        <outlet property="buttonBarView" destination="gnS-m9-8eP" id="fof-Hk-u5r"/>
+                        <outlet property="containerView" destination="PVt-D6-TD2" id="ouo-pR-cQi"/>
+                        <segue destination="Olb-3h-q2m" kind="show" identifier="message" id="F5N-YQ-Uup"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0z-3w-WzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5480.625" y="553.52112676056333"/>
         </scene>
-        <!--メッセージ画面-->
-        <scene sceneID="vOX-Qe-4we">
+        <!--Message-->
+        <scene sceneID="70y-Ib-5ey">
             <objects>
-                <viewController title="メッセージ画面" id="nbt-yI-g6R" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cjF-ha-U0d">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzB-TN-TWT">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                                <connections>
-                                    <segue destination="Ak2-Yo-ZM9" kind="embed" id="5xD-hk-zPT"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="fR2-gU-Ec3" firstAttribute="trailing" secondItem="rzB-TN-TWT" secondAttribute="trailing" id="RpX-Ml-r8A"/>
-                            <constraint firstItem="rzB-TN-TWT" firstAttribute="leading" secondItem="fR2-gU-Ec3" secondAttribute="leading" id="ZB9-QJ-R0q"/>
-                            <constraint firstItem="fR2-gU-Ec3" firstAttribute="bottom" secondItem="rzB-TN-TWT" secondAttribute="bottom" id="brk-8c-cox"/>
-                            <constraint firstItem="rzB-TN-TWT" firstAttribute="top" secondItem="fR2-gU-Ec3" secondAttribute="top" id="oNt-0s-a40"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="fR2-gU-Ec3"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NfJ-gA-B6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Message" id="Olb-3h-q2m" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wxy-Be-Ks5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6281" y="554"/>
+            <point key="canvasLocation" x="6198" y="554"/>
         </scene>
         <!--マイページ参照-->
         <scene sceneID="alE-Ft-gZU">
@@ -939,20 +948,65 @@
             </objects>
             <point key="canvasLocation" x="4483.125" y="1343.661971830986"/>
         </scene>
-        <!--Message View Controller-->
-        <scene sceneID="3V6-Uy-H46">
+        <!--Firend Message User List View Controller-->
+        <scene sceneID="tPe-nT-QfX">
             <objects>
-                <viewController id="Ak2-Yo-ZM9" customClass="MessageViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="K20-bO-SPk">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                <viewController storyboardIdentifier="friendMessage" id="dFb-P4-Vjy" customClass="firendMessageUserListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aGO-VH-svN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="7KL-g1-ceZ"/>
+                        <viewLayoutGuide key="safeArea" id="Dok-3T-myr"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wEt-0t-dE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QnH-eA-Vk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7119" y="554"/>
+            <point key="canvasLocation" x="7922" y="552"/>
+        </scene>
+        <!--Love Message User List View Controller-->
+        <scene sceneID="cuq-20-hI0">
+            <objects>
+                <viewController storyboardIdentifier="loveMessage" id="pmj-A3-4Nd" customClass="loveMessageUserListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sHu-tA-p2D">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xWS-9t-PbX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nzz-Fm-BiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8657" y="554"/>
+        </scene>
+        <!--Marriage Message User List View Controller-->
+        <scene sceneID="mUp-4x-2v8">
+            <objects>
+                <viewController storyboardIdentifier="marriageMessage" id="fY5-B8-W3i" customClass="marriageMessageUserListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pBQ-PS-nMT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BzI-21-nLJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fP3-ez-CeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9405" y="554"/>
+        </scene>
+        <!--Roommate Message User List View Controller-->
+        <scene sceneID="VJD-bV-mor">
+            <objects>
+                <viewController storyboardIdentifier="roommateMessage" id="HQh-QP-rn2" customClass="roommateMessageUserListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SXk-55-hqf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="emR-s8-JEv"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="spY-DQ-jZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10149" y="554"/>
         </scene>
     </scenes>
     <resources>

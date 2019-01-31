@@ -7,81 +7,29 @@
 //
 
 import UIKit
-import SwiftyJSON
+import XLPagerTabStrip
 
-class MessageUserListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class MessageUserListViewController: ButtonBarPagerTabStripViewController {
     
-    var myTableView1: UITableView!
-    var json: JSON?
-
     override func viewDidLoad() {
+        //バーの色
+        settings.style.buttonBarBackgroundColor = UIColor.white
+        //ボタンの色
+        settings.style.buttonBarItemBackgroundColor = UIColor.white
+        //セルの文字色
+        settings.style.buttonBarItemTitleColor = UIColor.darkGray
+        //セレクトバーの色
+        settings.style.selectedBarBackgroundColor = UIColor(red: 254/255, green: 0, blue: 124/255, alpha: 1)
         super.viewDidLoad()
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        if appDelegate.userJson != nil {
-            self.json = appDelegate.userJson!
-            
-            myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.plain) // ‥②
-            myTableView1.delegate = self // ‥③
-            myTableView1.dataSource = self // ‥③
-            myTableView1.estimatedRowHeight = 100
-            myTableView1.rowHeight = 75
-            self.view.addSubview(myTableView1)
-        } else {
-            errorAlert()
-        }
     }
     
-    // セクション数を指定
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        //管理されるViewControllerを返す処理
+        let fmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "friendMessage")
+        let lmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loveMessage")
+        let mmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "marriageMessage")
+        let rmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "roommateMessage")
+        let childViewControllers:[UIViewController] = [fmVC, lmVC, mmVC, rmVC]
+        return childViewControllers
     }
-    
-    // セル数を指定
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "message", sender: nil)
-    }
-    
-    // セルを生成
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("セルの値を入れていく")
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle,
-                                   reuseIdentifier: "aaa\(indexPath.section)-\(indexPath.row)")
-        
-        cell.textLabel?.text = "立花彩花"
-        cell.detailTextLabel?.text = "27歳"
-        
-        let imageURL = URL(string: "https://www.pakutaso.com/shared/img/thumb/TSURU1891A041_TP_V.jpg")
-        do {
-            let data = try Data(contentsOf: imageURL!)
-            cell.imageView?.image = UIImage(data: data)
-        }catch let err {
-            print("Error : \(err.localizedDescription)")
-        }
-        return cell
-        
-    }
-    
-    func errorAlert() {
-        let title = "接続エラー"
-        let message = "ネットワーク・サーバーの状態を確認してください"
-        let okText = "OK"
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
-        alert.addAction(okayButton)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
