@@ -53,7 +53,8 @@ class MessageViewController: JSQMessagesViewController {
         automaticallyScrollsToMostRecentMessage = true
         
         // 自分のsenderId, senderDisplayNameを設定
-        self.senderId = "user1"
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.senderId = "user"+appDelegate.playerID
         self.senderDisplayName = "test"
         
         // 吹き出しの設定
@@ -62,7 +63,6 @@ class MessageViewController: JSQMessagesViewController {
         self.outgoingBubble = bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
         
         // 画像の設定
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if (appDelegate.userJson!["user_basics"]["image1"].stringValue != "") {
             let imageURL = URL(string: "https://www.pakutaso.com/shared/img/thumb/TSURU1891A041_TP_V.jpg")
             do {

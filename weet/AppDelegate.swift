@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var myJson: JSON?
     var userJson: JSON?
+    
+    let playerID: String = "1"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -35,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = storybord.instantiateViewController(withIdentifier: viewName)
         window!.makeKeyAndVisible()
         
-        let url1: String = "http://54.238.92.95:8080/api/v1/user/1"
+        let url1: String = "http://54.238.92.95:8080/api/v1/user/"+playerID
         Alamofire.request(url1).responseJSON { response in
             guard let object = response.result.value else {
                 return
