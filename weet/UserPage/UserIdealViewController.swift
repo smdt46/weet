@@ -68,9 +68,24 @@ class UserIdealViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.detailTextLabel?.textColor = UIColor.black
         cell.detailTextLabel?.text = json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_answer_name"].stringValue
         
-        if ((indexPath.section == 0 && indexPath.row == 0) ||
-        (indexPath.section == 1 && indexPath.row == 0) ||
-            (indexPath.section == 2 && indexPath.row == 0)) {
+        if ((indexPath.section == 0 && indexPath.row == 1) ||
+            (indexPath.section == 0 && indexPath.row == 3) ||
+            (indexPath.section == 0 && indexPath.row == 4) ||
+            (indexPath.section == 0 && indexPath.row == 5) ||
+            (indexPath.section == 0 && indexPath.row == 7) ||
+            (indexPath.section == 0 && indexPath.row == 9) ||
+            (indexPath.section == 0 && indexPath.row == 12) ||
+            (indexPath.section == 1 && indexPath.row == 0) ||
+            (indexPath.section == 1 && indexPath.row == 1) ||
+            (indexPath.section == 1 && indexPath.row == 2) ||
+            (indexPath.section == 1 && indexPath.row == 3) ||
+            (indexPath.section == 1 && indexPath.row == 5) ||
+            (indexPath.section == 2 && indexPath.row == 0) ||
+            (indexPath.section == 2 && indexPath.row == 1) ||
+            (indexPath.section == 2 && indexPath.row == 2) ||
+            (indexPath.section == 2 && indexPath.row == 5) ||
+            (indexPath.section == 2 && indexPath.row == 6) ||
+            (indexPath.section == 3 && indexPath.row == 1)) {
             cell.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1)
         }
         

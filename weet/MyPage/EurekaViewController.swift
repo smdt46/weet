@@ -50,7 +50,7 @@ class EurekaViewController: FormViewController {
                     <<< ImageRow {
                         $0.title = "画像1"
                         $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
-                        $0.value = UIImage(named: "defaultIcon.png")
+                        $0.value = UIImage(named: "kmyan_icon")
                         $0.clearAction = .yes(style: .destructive)
                         $0.onChange { [unowned self] row in
                             self.selectedImg = row.value!

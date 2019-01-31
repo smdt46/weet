@@ -94,9 +94,27 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         // 強調表示（テスト用）
-        if ((indexPath.section == 2 && indexPath.row == 0) ||
-            (indexPath.section == 3 && indexPath.row == 0) ||
-            (indexPath.section == 4 && indexPath.row == 0)) {
+        if ((indexPath.section == 2 && indexPath.row == 1) ||
+            (indexPath.section == 2 && indexPath.row == 2) ||
+            (indexPath.section == 2 && indexPath.row == 3) ||
+            (indexPath.section == 2 && indexPath.row == 5) ||
+            (indexPath.section == 2 && indexPath.row == 8) ||
+            (indexPath.section == 2 && indexPath.row == 9) ||
+            (indexPath.section == 2 && indexPath.row == 10) ||
+            (indexPath.section == 2 && indexPath.row == 11) ||
+            (indexPath.section == 3 && indexPath.row == 1) ||
+            (indexPath.section == 3 && indexPath.row == 2) ||
+            (indexPath.section == 3 && indexPath.row == 3) ||
+            (indexPath.section == 3 && indexPath.row == 4) ||
+            (indexPath.section == 4 && indexPath.row == 0) ||
+            (indexPath.section == 4 && indexPath.row == 1) ||
+            (indexPath.section == 4 && indexPath.row == 2) ||
+            (indexPath.section == 4 && indexPath.row == 3) ||
+            (indexPath.section == 4 && indexPath.row == 5) ||
+            (indexPath.section == 4 && indexPath.row == 6) ||
+            (indexPath.section == 4 && indexPath.row == 7) ||
+            (indexPath.section == 5 && indexPath.row == 1) ||
+            (indexPath.section == 5 && indexPath.row == 2)) {
             cell.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1)
         }
         
