@@ -101,7 +101,9 @@ class MainViewController: ButtonBarPagerTabStripViewController {
                 self.sexLabel.textColor = UIColor.black
             }
             // 年齢・居住地セット
-            self.ageAndAddressLabel.text = json["user_basics"]["age"].stringValue + "歳"
+            self.ageAndAddressLabel.text =
+                json["user_basics"]["age"].stringValue + "歳・" +
+                json["user_basics"]["residence"].stringValue
             
             print("MainLoad")
         } else {

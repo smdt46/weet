@@ -73,7 +73,9 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
             // 名前セット
             self.nameLabel.text = self.json["user_basics"]["user_name"].stringValue
             // 年齢・居住地セット
-            self.ageAndAddressLabel.text = self.json["user_basics"]["age"].stringValue + "歳"
+            self.ageAndAddressLabel.text =
+                self.json["user_basics"]["age"].stringValue + "歳・" +
+                self.json["user_basics"]["residence"].stringValue
             // 性別セット
             self.sexLabel.text = self.json["user_basics"]["sex"].stringValue
             switch self.json["user_basics"]["sex"].stringValue {
