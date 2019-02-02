@@ -93,29 +93,11 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.detailTextLabel?.text = json["user_specials"][indexPath.section-2]["user_questions_and_answers"][indexPath.row]["answer_name"].stringValue
         }
         
-        // 強調表示（テスト用）
-        if ((indexPath.section == 2 && indexPath.row == 1) ||
-            (indexPath.section == 2 && indexPath.row == 2) ||
-            (indexPath.section == 2 && indexPath.row == 3) ||
-            (indexPath.section == 2 && indexPath.row == 5) ||
-            (indexPath.section == 2 && indexPath.row == 8) ||
-            (indexPath.section == 2 && indexPath.row == 9) ||
-            (indexPath.section == 2 && indexPath.row == 10) ||
-            (indexPath.section == 2 && indexPath.row == 11) ||
-            (indexPath.section == 3 && indexPath.row == 1) ||
-            (indexPath.section == 3 && indexPath.row == 2) ||
-            (indexPath.section == 3 && indexPath.row == 3) ||
-            (indexPath.section == 3 && indexPath.row == 4) ||
-            (indexPath.section == 4 && indexPath.row == 0) ||
-            (indexPath.section == 4 && indexPath.row == 1) ||
-            (indexPath.section == 4 && indexPath.row == 2) ||
-            (indexPath.section == 4 && indexPath.row == 3) ||
-            (indexPath.section == 4 && indexPath.row == 5) ||
-            (indexPath.section == 4 && indexPath.row == 6) ||
-            (indexPath.section == 4 && indexPath.row == 7) ||
-            (indexPath.section == 5 && indexPath.row == 1) ||
-            (indexPath.section == 5 && indexPath.row == 2)) {
-            cell.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1)
+        // 強調表示
+        for i in 0..<json["matching_questions"].count {
+            if (json["matching_questions"][i].intValue == json["user_specials"][indexPath.section-2]["user_questions_and_answers"][indexPath.row]["question_id"].intValue) {
+                cell.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1)
+            }
         }
         
         return cell
