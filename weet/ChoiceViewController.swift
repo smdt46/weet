@@ -17,10 +17,8 @@ class ChoiceViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var shadowView: UIView!
 
-    // API URL
-    var api_url:String = "http://54.238.92.95:8080/api/v1/user/"
-    let userList = ["9", "8", "7"]
-    var i: Int = 0
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var matching_format_id: String = "1"
     
     struct UserBasics: Codable {
         let user_name : String
@@ -63,14 +61,14 @@ class ChoiceViewController: UIViewController {
     
     func requestUserData(){
         do {
-            if(userList.count-1<i){
-                i=0
-            }
+            // API URL
+            let api_url:String = "http://54.238.92.95:8080/api/v1/matching/player/"+appDelegate.playerID+"/matching-format/"+matching_format_id
             // APIにアクセス
-            let url = URL(string: api_url+userList[i])!
+            let url = URL(string: api_url)!
             let data = try Data(contentsOf: url, options: [])
             // jsonに変換後パース
             let json = try JSON(data: data)
+            appDelegate.userJson = try JSON(data: data)
             let resultData:Result = try JSONDecoder().decode(Result.self, from: data)
             
             let image_url = URL(string: resultData.user_basics.image1)!
@@ -82,7 +80,6 @@ class ChoiceViewController: UIViewController {
             // ラベル更新
             userNameLabel.text=resultData.user_basics.user_name
             userInfoLabel.text=resultData.user_basics.hitokoto
-            i=i+1
             print(resultData.user_basics.hitokoto)
         } catch {
             print(error)
@@ -91,19 +88,10 @@ class ChoiceViewController: UIViewController {
     
     @objc func tapped(sender: UITapGestureRecognizer){
         print("tapped")
-        let url: String = "http://54.238.92.95:8080/api/v1/user/"+userList[i-1]
-        Alamofire.request(url).responseJSON { response in
-            guard let object = response.result.value else {
-                return
-            }
-            
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.userJson = JSON(object)
-            let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
-            let next: UIViewController = storyboard.instantiateInitialViewController()!
-            self.navigationController?.pushViewController(next, animated: true)
-            print("AppDelegate Request")
-        }
+        let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
+        let next: UIViewController = storyboard.instantiateInitialViewController()!
+        self.navigationController?.pushViewController(next, animated: true)
+
     }
     
     @IBAction func swipe(_ sender:
