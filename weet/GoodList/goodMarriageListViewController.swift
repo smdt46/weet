@@ -15,16 +15,13 @@ class goodMarriageListViewController: UIViewController, UITableViewDelegate, UIT
     
     var itemInfo: IndicatorInfo = "婚活"
     var myTableView1: UITableView!
-    var json: JSON?
-    let userList = ["8"]
+    let matching = "marriage_favo_users"
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        if appDelegate.userJson != nil {
-            self.json = appDelegate.userJson!
-            
+        if appDelegate.favoJson != nil {
             myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
             myTableView1.delegate = self
             myTableView1.dataSource = self
@@ -36,13 +33,14 @@ class goodMarriageListViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    // セル数を指定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userList.count
+        return appDelegate.favoJson![matching].count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 選択したユーザーIDをGETし、ユーザーページに遷移する
-        let url: String = "http://54.238.92.95:8080/api/v1/user/\(userList[indexPath.row])"
+        // 選択したユーザーIDのユーザーページに遷移する
+        let url: String = "http://54.238.92.95:8080/api/v1/user/\(appDelegate.favoJson![matching][indexPath.row]["user_id"].stringValue)"
         Alamofire.request(url).responseJSON { response in
             guard let object = response.result.value else {
                 return
@@ -55,35 +53,27 @@ class goodMarriageListViewController: UIViewController, UITableViewDelegate, UIT
             self.navigationController?.pushViewController(next, animated: true)
             print("AppDelegate Request")
         }
-        
     }
     
+    // セルを生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let url: String = "http://54.238.92.95:8080/api/v1/user/\(userList[indexPath.row])"
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "aaa\(indexPath.section)-\(indexPath.row)")
-        Alamofire.request(url).responseJSON { response in
-            guard let object = response.result.value else {
-                return
-            }
-            
-            
-            let userjson = JSON(object)
-            
-            cell.textLabel?.text = userjson["user_basics"]["user_name"].stringValue
-            cell.detailTextLabel?.text = userjson["user_basics"]["age"].stringValue + "歳"
-            
-            let imageURL = URL(string: userjson["user_basics"]["image1"].stringValue)
-            do {
-                let data = try Data(contentsOf: imageURL!)
-                cell.imageView?.image = UIImage(data: data)
-            }catch let err {
-                print("Error : \(err.localizedDescription)")
-            }
-            
-            
-            print("AppDelegate Request")
+        
+        cell.textLabel?.text = appDelegate.favoJson![matching][indexPath.row]["user_name"].stringValue
+        cell.detailTextLabel?.text =
+            appDelegate.favoJson![matching][indexPath.row]["age"].stringValue + "歳・" +
+            appDelegate.favoJson![matching][indexPath.row]["residence"].stringValue
+        
+        let imageURL = URL(string: appDelegate.favoJson![matching][indexPath.row]["image1"].stringValue)
+        do {
+            let data = try Data(contentsOf: imageURL!)
+            cell.imageView?.image = UIImage(data: data)
+        }catch let err {
+            print("Error : \(err.localizedDescription)")
         }
+        
         return cell
+        
     }
     
     func errorAlert() {

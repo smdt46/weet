@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var myJson: JSON?
     var userJson: JSON?
     var messageJson: JSON?
+    var favoJson: JSON?
     
     let playerID: String = "1"
 
