@@ -961,7 +961,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QnH-eA-Vk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7922" y="552"/>
+            <point key="canvasLocation" x="6951" y="554"/>
         </scene>
         <!--Love Message User List View Controller-->
         <scene sceneID="cuq-20-hI0">
@@ -976,7 +976,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nzz-Fm-BiA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8657" y="554"/>
+            <point key="canvasLocation" x="7652" y="556"/>
         </scene>
         <!--Marriage Message User List View Controller-->
         <scene sceneID="mUp-4x-2v8">
@@ -991,7 +991,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fP3-ez-CeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9405" y="554"/>
+            <point key="canvasLocation" x="8340" y="556"/>
         </scene>
         <!--Roommate Message User List View Controller-->
         <scene sceneID="VJD-bV-mor">
@@ -1006,7 +1006,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spY-DQ-jZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10149" y="554"/>
+            <point key="canvasLocation" x="9023" y="556"/>
         </scene>
     </scenes>
     <resources>

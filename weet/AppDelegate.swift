@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var myJson: JSON?
     var userJson: JSON?
+    var messageJson: JSON?
     
     let playerID: String = "1"
 

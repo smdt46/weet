@@ -15,31 +15,32 @@ class firendMessageUserListViewController: UIViewController, UITableViewDelegate
 
     var itemInfo: IndicatorInfo = "友達"
     var myTableView1: UITableView!
-    var json: JSON?
-    let userList: [String] = []
+    let matching: String = "friend_favo_users"
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        if appDelegate.userJson != nil {
-            self.json = appDelegate.userJson!
+        let api_url = "http://54.238.92.95:8080/api/v1/mutual-favo/user/"+appDelegate.playerID
+        Alamofire.request(api_url).responseJSON { response in
+            guard let object = response.result.value else {
+                self.errorAlert()
+                return
+            }
+            self.appDelegate.messageJson = JSON(object)
             
-            myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
-            myTableView1.delegate = self
-            myTableView1.dataSource = self
-            myTableView1.estimatedRowHeight = 100
-            myTableView1.rowHeight = 75
-            self.view.addSubview(myTableView1)
-        } else {
-            errorAlert()
+            self.myTableView1 = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
+            self.myTableView1.delegate = self
+            self.myTableView1.dataSource = self
+            self.myTableView1.estimatedRowHeight = 100
+            self.myTableView1.rowHeight = 75
+            self.view.addSubview(self.myTableView1)
         }
     }
     
     // セル数を指定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userList.count
+        return appDelegate.messageJson![matching].count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -50,32 +51,22 @@ class firendMessageUserListViewController: UIViewController, UITableViewDelegate
     
     // セルを生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let url: String = "http://54.238.92.95:8080/api/v1/user/\(userList[indexPath.row])"
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "aaa\(indexPath.section)-\(indexPath.row)")
-        Alamofire.request(url).responseJSON { response in
-            guard let object = response.result.value else {
-                return
-            }
-            
-            
-            let userjson = JSON(object)
-            
-            cell.textLabel?.text = userjson["user_basics"]["user_name"].stringValue
-            cell.detailTextLabel?.text = userjson["user_basics"]["age"].stringValue + "歳"
-            
-            let imageURL = URL(string: userjson["user_basics"]["image1"].stringValue)
-            do {
-                let data = try Data(contentsOf: imageURL!)
-                cell.imageView?.image = UIImage(data: data)
-            }catch let err {
-                print("Error : \(err.localizedDescription)")
-            }
-            
-            
-            print("AppDelegate Request")
-        }
-        return cell
         
+        cell.textLabel?.text = appDelegate.messageJson![matching][indexPath.row]["user_name"].stringValue
+        cell.detailTextLabel?.text =
+            appDelegate.messageJson![matching][indexPath.row]["age"].stringValue + "歳・" +
+            appDelegate.messageJson![matching][indexPath.row]["residence"].stringValue
+        
+        let imageURL = URL(string: appDelegate.messageJson![matching][indexPath.row]["image1"].stringValue)
+        do {
+            let data = try Data(contentsOf: imageURL!)
+            cell.imageView?.image = UIImage(data: data)
+        }catch let err {
+            print("Error : \(err.localizedDescription)")
+        }
+        
+        return cell
     }
     
     func errorAlert() {
