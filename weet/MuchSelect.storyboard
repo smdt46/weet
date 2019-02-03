@@ -36,7 +36,7 @@
                                 </state>
                                 <connections>
                                     <action selector="MuchButton:" destination="LOo-Fd-8Gd" eventType="touchUpInside" id="v5f-vt-bjv"/>
-                                    <segue destination="aDV-hn-Py0" kind="show" id="6ZM-o1-7s0"/>
+                                    <segue destination="aDV-hn-Py0" kind="show" identifier="choice" id="6ZM-o1-7s0"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-sB-uEI">

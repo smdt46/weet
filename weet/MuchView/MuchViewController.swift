@@ -25,9 +25,9 @@ ButtonBarPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         //管理されるViewControllerを返す処理
-        let firstVC = UIStoryboard(name: "MuchSelect", bundle: nil).instantiateViewController(withIdentifier: "Custom")
-        let secondVC = UIStoryboard(name: "MuchSelect", bundle: nil).instantiateViewController(withIdentifier: "Marry")
-        let thirdVC = UIStoryboard(name: "MuchSelect", bundle: nil).instantiateViewController(withIdentifier: "Friend")
+        let firstVC = UIStoryboard(name: "MuchSelect", bundle: nil).instantiateViewController(withIdentifier: "Friend")
+        let secondVC = UIStoryboard(name: "MuchSelect", bundle: nil).instantiateViewController(withIdentifier: "Custom")
+        let thirdVC = UIStoryboard(name: "MuchSelect", bundle: nil).instantiateViewController(withIdentifier: "Marry")
         let fourthVC = UIStoryboard(name: "MuchSelect", bundle: nil).instantiateViewController(withIdentifier: "Live")
         
         

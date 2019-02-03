@@ -61,7 +61,8 @@ class ChoiceViewController: UIViewController {
     
     func requestUserData(){
         do {
-            // API URL
+            print(matching_format_id)
+            // API URL_
             let api_url:String = "http://54.238.92.95:8080/api/v1/matching/player/"+appDelegate.playerID+"/matching-format/"+matching_format_id
             // APIにアクセス
             let url = URL(string: api_url)!
@@ -101,6 +102,18 @@ class ChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        switch matching_format_id {
+        case "1":
+            self.title = "友達マッチング"
+        case "2":
+            self.title = "恋愛マッチング"
+        case "3":
+            self.title = "婚活マッチング"
+        case "4":
+            self.title = "ルームメイトマッチング"
+        default:
+            self.title = "マッチング画面"
+        }
         requestUserData()
         // 画像をタップすることを可能に
         self.imageView.isUserInteractionEnabled = true
