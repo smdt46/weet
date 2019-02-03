@@ -66,7 +66,12 @@ class IdealEditViewController: FormViewController {
                             }
                             
                             // デフォルト値設定
-                            $0.value = [self.json["user_specials"][i]["user_questions_and_answers"][j]["answer_name"].stringValue]
+                            var answers:[String] = []
+                            for n in 0..<self.json["user_ideal_specials"][i]["user_ideal_questions_and_answers"][j]["ideal_answer_name"].count {
+                                answers.append(self.json["user_ideal_specials"][i]["user_ideal_questions_and_answers"][j]["ideal_answer_name"][n].stringValue)
+                            }
+                            $0.value = Set<String>(answers)
+                            
                             } .onChange { row in
                                 let q_id: Int = self.json["user_specials"][i]["user_questions_and_answers"][j]["question_id"].intValue
                                 //let ans_id: Int = dic[row.value!]!

@@ -66,7 +66,14 @@ class IdealViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell.detailTextLabel?.numberOfLines = 0
         cell.detailTextLabel?.textColor = UIColor.black
-        cell.detailTextLabel?.text = json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_answer_name"].stringValue
+        var idealAns:String = ""
+        for i in 0..<json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_answer_name"].count {
+            idealAns = idealAns + json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_answer_name"][i].stringValue
+            if i != json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_answer_name"].count - 1 {
+                idealAns = idealAns + ","
+            }
+        }
+        cell.detailTextLabel?.text = idealAns
         
         return cell
     }
