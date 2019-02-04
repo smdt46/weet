@@ -15,8 +15,15 @@ class MuchEurekaViewController: FormViewController {
         var selectedGender : String = ""
     var sex: String = "女性"
     var age: Int = 18
-    var pref: String = "兵庫県"
+    var pref: [String] = ["兵庫県"]
     let ageArray:[Int] = ([Int])(18...60)
+    let prefDic:[String:Int] = ["北海道":1,"青森県":2,"岩手県":3,"宮城県":4,"秋田県":5,"山形県":6,"福島県":7,
+                                "茨城県":8,"栃木県":9,"群馬県":10,"埼玉県":11,"千葉県":12,"東京都":13,"神奈川県":14,
+                                "新潟県":15,"富山県":16,"石川県":17,"福井県":18,"山梨県":19,"長野県":20,"岐阜県":21,
+                                "静岡県":22,"愛知県":23,"三重県":24,"滋賀県":25,"京都府":26,"大阪府":27,"兵庫県":28,
+                                "奈良県":29,"和歌山県":30,"鳥取県":31,"島根県":32,"岡山県":33,"広島県":34,"山口県":35,
+                                "徳島県":36,"香川県":37,"愛媛県":38,"高知県":39,"福岡県":40,"佐賀県":41,"長崎県":42,
+                                "熊本県":43,"大分県":44,"宮崎県":45,"鹿児島県":46,"沖縄県":47]
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -74,7 +81,7 @@ class MuchEurekaViewController: FormViewController {
                     Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                 }
 
-                <<< PickerInputRow<String>() { row in
+                <<< MultipleSelectorRow<String>() { row in
                     row.title = "居住地"
                     row.options = ["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県",
                                    "茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県",
@@ -83,16 +90,40 @@ class MuchEurekaViewController: FormViewController {
                                    "奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県",
                                    "徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県",
                                    "熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
-                    row.value = self.pref
+                    row.value = Set<String>(self.pref)
                 } .onChange { row in
-                        self.pref = row.value!
+                    let valueArray = Array(row.value!)
+                    var prefArray:[Int] = []
+                    var prefStr:String = ""
+                    for i in 0..<valueArray.count {
+                        for (key,value) in self.prefDic {
+                            if (valueArray[i] == key) {
+                                prefArray.append(value)
+                                break
+                            }
+                        }
+                    }
+                    prefArray.sort { $0 < $1 }
+                    for i in 0..<prefArray.count {
+                        prefStr = prefStr + String(prefArray[i])
+                        if i != prefArray.count - 1 {
+                            prefStr = prefStr + ","
+                        }
+                    }
+                    let parameters: Parameters = [
+                        "PrefecturesID": prefStr
+                    ]
+                    print("prefArray: \(prefArray)")
+                    print(prefStr)
+                    let api_url:String = "http://54.238.92.95:8080/api/v1/matching-prefectures/"+appDelegate.playerID
+                    Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                 }
-        }
-        
-        override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-            // Dispose of any resources that can be recreated.
-        }
     }
+        
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
     
   
