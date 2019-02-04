@@ -15,7 +15,7 @@ import SwiftyJSON
 class EurekaViewController: FormViewController {
 
     let unset: String = "未設定"
-    let user_id: Int = 1
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     // 参照画面からJSONを受け取る
     var json: JSON = []
@@ -26,9 +26,6 @@ class EurekaViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
         
         if appDelegate.myJson != nil {
             
@@ -41,9 +38,8 @@ class EurekaViewController: FormViewController {
                 }
                 
                 let qjson = JSON(object)
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 
-                self.json = appDelegate.myJson!
+                self.json = self.appDelegate.myJson!
                 
                 self.form
                     +++ Section("ユーザー画像")
@@ -118,7 +114,7 @@ class EurekaViewController: FormViewController {
                                     let ans_id: Int = dic[row.value!]!
                                     print("q_id: \(q_id)")
                                     print("a_id: \(ans_id)")
-                                    // self.saveProfile(user_id: self.user_id, q_id: q_id, a_id: ans_id)
+                                    self.saveProfile(q_id: q_id, a_id: ans_id)
                         }
                         section.append(row)
                     }
@@ -151,18 +147,16 @@ class EurekaViewController: FormViewController {
             "Hitokoto": hitokoto,
             "Comment": comment
         ]
-        let url: String = "http://54.238.92.95:8080/api/v1/user/\(String(user_id))/update/basics"
+        let url: String = "http://54.238.92.95:8080/api/v1/user/\(appDelegate.playerID)/update/basics"
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
         print("basics_update_tap")
         
-        let url1: String = "http://54.238.92.95:8080/api/v1/user/1"
+        let url1: String = "http://54.238.92.95:8080/api/v1/user/\(appDelegate.playerID)"
         Alamofire.request(url1).responseJSON { response in
             guard let object = response.result.value else {
                 return
             }
-            
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.myJson = JSON(object)
+            self.appDelegate.myJson = JSON(object)
             print("AppDelegate Request")
         }
         
@@ -224,14 +218,13 @@ class EurekaViewController: FormViewController {
     }
     
     // 質問選択肢をPOSTして更新する
-    func saveProfile(user_id: Int, q_id: Int, a_id: Int) {
+    func saveProfile(q_id: Int, a_id: Int) {
         let parameters: Parameters = [
-            "user_id": user_id,
             "question_id": q_id,
             "answer_id": a_id
         ]
-        let url: String = "http://54.238.92.95:8080/test"
-        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        let url: String = "http://54.238.92.95:8080/api/v1/user/\(appDelegate.playerID)/update/specials"
+        Alamofire.request(url, method: .put, parameters: parameters)
         print("profile_update")
     }
     
