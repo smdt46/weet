@@ -35,7 +35,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="MuchButton:" destination="LOo-Fd-8Gd" eventType="touchUpInside" id="v5f-vt-bjv"/>
                                     <segue destination="aDV-hn-Py0" kind="show" identifier="choice" id="6ZM-o1-7s0"/>
                                 </connections>
                             </button>

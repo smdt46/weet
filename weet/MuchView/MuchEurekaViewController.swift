@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import Alamofire
 
 class MuchEurekaViewController: FormViewController {
     
@@ -19,6 +20,7 @@ class MuchEurekaViewController: FormViewController {
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             
             form
                 +++ Section("条件")
@@ -32,10 +34,29 @@ class MuchEurekaViewController: FormViewController {
 //                }
                 <<< SegmentedRow<String>() { row in
                     row.title = "性別"
-                    row.options = ["男性","女性"]
+                    row.options = ["男性","女性","両方"]
                     row.value = self.sex
                 } .onChange { row in
                         self.sex = row.value!
+                        var SexID:Int = 2
+                        switch self.sex {
+                        case "男性":
+                            SexID = 1
+                        case "女性":
+                            SexID = 2
+                        case "両方":
+                            SexID = 3
+                        default:
+                            SexID = 2
+                        }
+                    
+                        // PUTする
+                        let parameters: Parameters = [
+                            "SexID": SexID
+                        ]
+                        print("SexID: \(SexID)")
+                        let api_url:String = "http://54.238.92.95:8080/api/v1/matching-sexes/"+appDelegate.playerID
+                        Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                 }
                 
                 <<< PickerInputRow<Int>() { row in
@@ -43,11 +64,14 @@ class MuchEurekaViewController: FormViewController {
                     row.options = self.ageArray
                     row.value = self.age
                 } .onChange { row in
-                    if let age = row.value {
-                        self.age = age
-                    } else {
-                        self.age = 18
-                    }
+                    self.age = row.value!
+                    let parameters: Parameters = [
+                        "FirstAge": self.age-3,
+                        "LastAge": self.age+3
+                    ]
+                    print("Age: \(self.age)")
+                    let api_url:String = "http://54.238.92.95:8080/api/v1/matching-ages/"+appDelegate.playerID
+                    Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                 }
 
                 <<< PickerInputRow<String>() { row in

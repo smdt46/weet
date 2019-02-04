@@ -14,21 +14,6 @@ class MuchButtonViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func MuchButton(_ sender: Any) {
-        let eurekaVC = children[1] as! MuchEurekaViewController
-        
-        let sex: String = eurekaVC.sex
-        let age: Int = eurekaVC.age
-        let pref: String = eurekaVC.pref
-        
-        // PUTする（後日実装）
-        
-        // デバッグ用
-        print(sex)
-        print(age)
-        print(pref)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {
             // identifierが取れなかったら処理やめる
