@@ -76,18 +76,6 @@ class MainViewController: ButtonBarPagerTabStripViewController {
 //            self.image1.layer.borderColor = UIColor.blue.cgColor
 //            self.image1.layer.borderWidth = 2
             
-            
-            // 画像をタップすることを可能に
-            self.imagePreview.isUserInteractionEnabled = true
-            
-            // 画像をタップされたときのアクションを追加
-            self.imagePreview.addGestureRecognizer(
-                UITapGestureRecognizer(
-                    target: self,
-                    action: #selector(self.tapped(sender:)))
-            )
-            
-            
             // 名前セット
             self.nameLabel.text = json["user_basics"]["user_name"].stringValue
             // 性別セット
@@ -116,11 +104,27 @@ class MainViewController: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
     }
     
-    
-    @objc func tapped(sender: UITapGestureRecognizer){
-        print("tapped")
-        // Alamofireで云々
-        self.performSegue(withIdentifier: "edit", sender: nil)
+    // 更新ボタン
+    @IBAction func updateButton(_ sender: Any) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let url: String = "http://54.238.92.95:8080/api/v2/user/"+appDelegate.playerID
+        Alamofire.request(url).responseJSON { response in
+            guard let object = response.result.value else {
+                return
+            }
+            
+            appDelegate.myJson = JSON(object)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mypageVC = storyboard.instantiateViewController(withIdentifier: "Mypage") as! UserProfileViewController
+            let idealVC = storyboard.instantiateViewController(withIdentifier: "Ideal") as! IdealViewController
+            mypageVC.loadView()
+            mypageVC.viewDidLoad()
+            idealVC.loadView()
+            idealVC.viewDidLoad()
+            self.loadView()
+            self.viewDidLoad()
+            print("Update Request")
+        }
     }
     
     func errorAlert() {

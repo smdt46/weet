@@ -587,6 +587,11 @@
                         <viewLayoutGuide key="safeArea" id="DCk-WT-GwJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="マイページ" id="smc-LH-fpH">
+                        <barButtonItem key="leftBarButtonItem" title="更新" id="6G5-Ur-kqh">
+                            <connections>
+                                <action selector="updateButton:" destination="TdT-3Z-riu" id="Q4h-Ba-ghI"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="編集" id="h5E-Ql-opU">
                             <connections>
                                 <segue destination="cvx-BZ-cKN" kind="show" identifier="edit" id="1Gr-FM-dgh"/>
