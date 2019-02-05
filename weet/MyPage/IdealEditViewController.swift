@@ -13,12 +13,7 @@ import SwiftyJSON
 
 class IdealEditViewController: FormViewController {
 
-    let unset: String = "未設定"
-    let user_id: Int = 1
-    
-    // 参照画面からJSONを受け取る
     var json: JSON = []
-    
     // 選択されたイメージ格納用
     var selectedImg = UIImage()
     
@@ -29,19 +24,24 @@ class IdealEditViewController: FormViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         
-        if appDelegate.myJson != nil {
+        let api_url: String = "http://54.238.92.95:8080/api/v2/user/"+appDelegate.playerID
+        Alamofire.request(api_url).responseJSON { response in
+            guard let object = response.result.value else {
+                self.errorAlert()
+                return
+            }
             
+            self.json = JSON(object)
             let url: String = "http://54.238.92.95:8080/api/v1/answers"
+            
             Alamofire.request(url).responseJSON { response in
                 guard let object = response.result.value else {
-                    print("接続エラー")
                     self.errorAlert()
                     return
                 }
                 
                 let qjson = JSON(object)
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                self.json = appDelegate.myJson!
                 
                 // 友達・恋愛などフォーム作成
                 for i in 0..<self.json["user_specials"].count {
@@ -77,6 +77,7 @@ class IdealEditViewController: FormViewController {
                                 //let ans_id: Int = dic[row.value!]!
                                 let valueArray = Array(row.value!)
                                 var ansArray:[Int] = []
+                                var ansStr:String = ""
                                 for i in 0..<valueArray.count {
                                     for (key,value) in dic {
                                         if (valueArray[i] == key) {
@@ -86,20 +87,29 @@ class IdealEditViewController: FormViewController {
                                     }
                                 }
                                 ansArray.sort { $0 < $1 }
+                                for i in 0..<ansArray.count {
+                                    ansStr = ansStr + String(ansArray[i])
+                                    if i != ansArray.count - 1 {
+                                        ansStr = ansStr + ","
+                                    }
+                                }
+                                print("mfid: \(i+1)")
                                 print("q_id: \(q_id)")
                                 print("a_id: \(ansArray)")
-                                // self.saveProfile(user_id: self.user_id, q_id: q_id, a_id: ans_id)
+                                print("ansStr: \(ansStr)")
+                                let parameters: Parameters = [
+                                    "matching_format_id": String(i+1),
+                                    "question_id": q_id,
+                                    "answer_ids": ansStr
+                                ]
+                                let api_url:String = "http://54.238.92.95:8080/api/v1/user/\(appDelegate.playerID)/update/ideal-specials"
+                                Alamofire.request(api_url, method: .put, parameters: parameters)
                         }
                         section.append(row)
                     }
                     self.form.append(section)
                 }
             }
-            
-            
-        } else {
-            print("接続エラー")
-            errorAlert()
         }
     }
     
