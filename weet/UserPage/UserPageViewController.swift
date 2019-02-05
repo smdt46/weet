@@ -26,7 +26,9 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var goodButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var sexLabel: UILabel!
-    var skipType:Int = 1
+    var postType:String = "favo"
+    var matchingFormatID:Int = 1
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     
     override func viewDidLoad() {
@@ -39,7 +41,8 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
         //セレクトバーの色
         settings.style.selectedBarBackgroundColor = UIColor(red: 254/255, green: 0, blue: 124/255, alpha: 1)
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        goodButton.isEnabled = false
+        skipButton.isEnabled = false
         
         if appDelegate.userJson != nil {
             self.json = appDelegate.userJson!
@@ -91,12 +94,18 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
             // タイトルセット
             self.navigationItem.title = self.json["user_basics"]["user_name"].stringValue
             
+            goodButton.isEnabled = true
+            skipButton.isEnabled = true
+            
             print("UserPage Request")
         } else {
             errorAlert()
         }
         
         print("MainLoad")
+        
+        print("mfid: \(matchingFormatID)")
+        print("postType: \(postType)")
         
         super.viewDidLoad()
         
@@ -119,6 +128,99 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func goodButton(_ sender: Any) {
+        if (postType == "favo") {
+            let parameters: Parameters = [
+                "MatchingFormatID": matchingFormatID,
+                "PlayerUserID": self.json["user_basics"]["user_id"].intValue,
+                "FavoUserID": Int(appDelegate.playerID)!
+            ]
+            print("mfid: \(matchingFormatID)")
+            print("playid: \(Int(appDelegate.playerID)!)")
+            print("favoid: \(self.json["user_basics"]["user_id"].intValue)")
+            let url: String = "http://54.238.92.95:8080/api/v1/favo/user"
+            Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            print("favo_post")
+        } else if(postType == "mutual") {
+            let parameters: Parameters = [
+                "MatchingFormatID": matchingFormatID,
+                "UserID1": Int(appDelegate.playerID)!,
+                "UserID2": self.json["user_basics"]["user_id"].intValue
+            ]
+            print("mfid: \(matchingFormatID)")
+            print("playid: \(Int(appDelegate.playerID)!)")
+            print("favoid: \(self.json["user_basics"]["user_id"].intValue)")
+            let url: String = "http://54.238.92.95:8080/api/v1/mutual-favo/user"
+            Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            print("mutual-favo_post")
+        }
+        goodButton.isEnabled = false
+    }
+    
+    @IBAction func skipButton(_ sender: Any) {
+        if (postType == "favo") {
+            if self.presentingViewController is UINavigationController {
+                //  表示元がNavigationControllerの場合
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                // 表示元がViewControllerの場合
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else if(postType == "mutual") {
+            let url: String = "http://54.238.92.95:8080/api/v1/favo/player/\(appDelegate.playerID)/favo-user/\(self.json["user_basics"]["user_id"].stringValue)/matching-format/\(String(matchingFormatID))"
+            Alamofire.request(url, method: .delete, encoding: JSONEncoding.default)
+           
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let friendVC = storyboard.instantiateViewController(withIdentifier: "friendGood") as! goodFriendListViewController
+            let loveVC = storyboard.instantiateViewController(withIdentifier: "loveGood") as! goodLoveListViewController
+            let marriageVC = storyboard.instantiateViewController(withIdentifier: "marriageGood") as! goodMarriageListViewController
+            let roommateVC = storyboard.instantiateViewController(withIdentifier: "roommateGood") as! goodRoommateListViewController
+            
+            if self.presentingViewController is UINavigationController {
+                //  表示の大元がNavigationControllerの場合
+                let nc = self.presentingViewController as! UINavigationController
+                let vc = nc.topViewController as! goodListViewController
+                vc.loadView()
+                vc.viewDidLoad()
+                friendVC.loadView()
+                friendVC.viewDidLoad()
+                loveVC.loadView()
+                loveVC.viewDidLoad()
+                marriageVC.loadView()
+                marriageVC.viewDidLoad()
+                roommateVC.loadView()
+                roommateVC.viewDidLoad()
+                self.dismiss(animated: true, completion: nil)
+                
+            } else {
+                // 表示元がViewControllerの場合
+                let api_url = "http://54.238.92.95:8080/api/v1/favo/user/"+appDelegate.playerID
+                Alamofire.request(api_url).responseJSON { response in
+                    guard let object = response.result.value else {
+                        self.errorAlert()
+                        return
+                    }
+                    self.appDelegate.favoJson = JSON(object)
+                    // 前画面のViewControllerを取得
+                    let count = (self.navigationController?.viewControllers.count)! - 2
+                    let vc = self.navigationController?.viewControllers[count] as! goodListViewController
+                    vc.loadView()
+                    vc.viewDidLoad()
+                    friendVC.loadView()
+                    friendVC.viewDidLoad()
+                    loveVC.loadView()
+                    loveVC.viewDidLoad()
+                    marriageVC.loadView()
+                    marriageVC.viewDidLoad()
+                    roommateVC.loadView()
+                    roommateVC.viewDidLoad()
+                    // 画面を消す
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        skipButton.isEnabled = false
+    }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         //管理されるViewControllerを返す処理

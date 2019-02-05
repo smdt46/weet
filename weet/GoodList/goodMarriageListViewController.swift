@@ -49,9 +49,11 @@ class goodMarriageListViewController: UIViewController, UITableViewDelegate, UIT
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.userJson = JSON(object)
             let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
-            let next: UIViewController = storyboard.instantiateInitialViewController()!
-            self.navigationController?.pushViewController(next, animated: true)
-            print("AppDelegate Request")
+            let vc = storyboard.instantiateViewController(withIdentifier: "userMain") as! UserPageViewController
+            vc.matchingFormatID = 3
+            vc.postType = "mutual"
+            print("UserPage Request")
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

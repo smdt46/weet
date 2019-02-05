@@ -152,6 +152,9 @@
                                     <constraint firstAttribute="height" constant="75" id="U0u-Pp-9df"/>
                                 </constraints>
                                 <state key="normal" image="good"/>
+                                <connections>
+                                    <action selector="goodButton:" destination="P7I-rT-saF" eventType="touchUpInside" id="NQZ-F7-IqY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oz-0Z-hj4">
                                 <rect key="frame" x="192.5" y="486.5" width="75" height="75"/>
@@ -160,6 +163,9 @@
                                     <constraint firstAttribute="width" constant="75" id="rFc-Ik-g1Z"/>
                                 </constraints>
                                 <state key="normal" image="skip"/>
+                                <connections>
+                                    <action selector="skipButton:" destination="P7I-rT-saF" eventType="touchUpInside" id="Ij7-3Z-6Jn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

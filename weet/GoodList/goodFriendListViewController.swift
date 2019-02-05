@@ -35,6 +35,7 @@ class goodFriendListViewController: UIViewController, UITableViewDelegate, UITab
             self.myTableView1.estimatedRowHeight = 100
             self.myTableView1.rowHeight = 75
             self.view.addSubview(self.myTableView1)
+            print("favouser Request")
         }
     }
     
@@ -54,9 +55,11 @@ class goodFriendListViewController: UIViewController, UITableViewDelegate, UITab
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.userJson = JSON(object)
             let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
-            let next: UIViewController = storyboard.instantiateInitialViewController()!
-            self.navigationController?.pushViewController(next, animated: true)
-            print("AppDelegate Request")
+            let vc = storyboard.instantiateViewController(withIdentifier: "userMain") as! UserPageViewController
+            vc.matchingFormatID = 1
+            vc.postType = "mutual"
+            print("UserPage Request")
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

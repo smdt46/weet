@@ -24,7 +24,7 @@ class MuchButtonViewController: UIViewController {
             let selectVC = children[0] as! MuchViewController
             let muchCace: Int = selectVC.currentIndex
             let vc = segue.destination as! ChoiceViewController
-            vc.matching_format_id = String(muchCace+1)
+            vc.matching_format_id = muchCace+1
         }
     }
     

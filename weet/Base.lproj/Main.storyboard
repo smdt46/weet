@@ -792,7 +792,7 @@
         <!--「いいね！」されたユーザー-->
         <scene sceneID="HRW-JM-La5">
             <objects>
-                <viewController id="yPK-Tx-fuq" customClass="goodListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goodMain" id="yPK-Tx-fuq" customClass="goodListViewController" customModule="weet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wZE-rT-yi7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -827,7 +827,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KQS-ZF-Cfr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="「いいね！」されたユーザー" id="JVY-t9-CAc"/>
+                    <navigationItem key="navigationItem" title="「いいね！」されたユーザー" id="JVY-t9-CAc">
+                        <barButtonItem key="rightBarButtonItem" title="更新" id="AQZ-Wn-3cW">
+                            <connections>
+                                <action selector="reloadButton:" destination="yPK-Tx-fuq" id="Nse-Pm-WTJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonBarView" destination="qOJ-kd-imY" id="shC-RA-YH9"/>
                         <outlet property="containerView" destination="ESz-gY-5NB" id="uzw-II-mLi"/>

@@ -18,7 +18,7 @@ class ChoiceViewController: UIViewController {
     @IBOutlet weak var shadowView: UIView!
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var matching_format_id: String = "1"
+    var matching_format_id:Int = 1
     
     struct UserBasics: Codable {
         let user_name : String
@@ -63,7 +63,7 @@ class ChoiceViewController: UIViewController {
         do {
             print(matching_format_id)
             // API URL_
-            let api_url:String = "http://54.238.92.95:8080/api/v1/matching/player/"+appDelegate.playerID+"/matching-format/"+matching_format_id
+            let api_url:String = "http://54.238.92.95:8080/api/v1/matching/player/"+appDelegate.playerID+"/matching-format/"+String(matching_format_id)
             // APIにアクセス
             let url = URL(string: api_url)!
             let data = try Data(contentsOf: url, options: [])
@@ -83,6 +83,7 @@ class ChoiceViewController: UIViewController {
             userInfoLabel.text=resultData.user_basics.hitokoto
             print(resultData.user_basics.hitokoto)
         } catch {
+            errorAlert()
             print(error)
         }
     }
@@ -90,9 +91,10 @@ class ChoiceViewController: UIViewController {
     @objc func tapped(sender: UITapGestureRecognizer){
         print("tapped")
         let storyboard: UIStoryboard = UIStoryboard(name: "UserPage", bundle: nil)
-        let next: UIViewController = storyboard.instantiateInitialViewController()!
-        self.navigationController?.pushViewController(next, animated: true)
-
+        let vc = storyboard.instantiateViewController(withIdentifier: "userMain") as! UserPageViewController
+        vc.matchingFormatID = matching_format_id
+        vc.postType = "favo"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func swipe(_ sender:
@@ -100,28 +102,29 @@ class ChoiceViewController: UIViewController {
         requestUserData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let identifier = segue.identifier else {
-            // identifierが取れなかったら処理やめる
-            return
-        }
+    func errorAlert() {
+        let title = "ユーザーが見つかりませんでした"
+        let message = "条件を変えてください"
+        let okText = "OK"
         
-        if (identifier == "choice") {
-            let vc = segue.destination as! UserPageViewController
-            vc.skipType = 1
-        }
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         switch matching_format_id {
-        case "1":
+        case 1:
             self.title = "友達マッチング"
-        case "2":
+        case 2:
             self.title = "恋愛マッチング"
-        case "3":
+        case 3:
             self.title = "婚活マッチング"
-        case "4":
+        case 4:
             self.title = "ルームメイトマッチング"
         default:
             self.title = "マッチング画面"

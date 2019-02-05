@@ -13,9 +13,9 @@ import Alamofire
 class MuchEurekaViewController: FormViewController {
     
         var selectedGender : String = ""
-    var sex: String = "女性"
-    var age: Int = 18
-    var pref: [String] = ["兵庫県"]
+    var sex: String = UserDefaults.standard.string(forKey: "searchSex") ?? "女性"
+    var age: Int = UserDefaults.standard.integer(forKey: "searchAge")
+    var pref: [String] = UserDefaults.standard.stringArray(forKey: "searchPrefArry") ?? ["兵庫県"]
     let ageArray:[Int] = ([Int])(18...60)
     let prefDic:[String:Int] = ["北海道":1,"青森県":2,"岩手県":3,"宮城県":4,"秋田県":5,"山形県":6,"福島県":7,
                                 "茨城県":8,"栃木県":9,"群馬県":10,"埼玉県":11,"千葉県":12,"東京都":13,"神奈川県":14,
@@ -44,9 +44,9 @@ class MuchEurekaViewController: FormViewController {
                     row.options = ["男性","女性","両方"]
                     row.value = self.sex
                 } .onChange { row in
-                        self.sex = row.value!
+                        UserDefaults.standard.set(row.value, forKey: "searchSex")
                         var SexID:Int = 2
-                        switch self.sex {
+                        switch row.value {
                         case "男性":
                             SexID = 1
                         case "女性":
@@ -71,12 +71,12 @@ class MuchEurekaViewController: FormViewController {
                     row.options = self.ageArray
                     row.value = self.age
                 } .onChange { row in
-                    self.age = row.value!
+                    UserDefaults.standard.set(row.value, forKey: "searchAge")
                     let parameters: Parameters = [
-                        "FirstAge": self.age-3,
-                        "LastAge": self.age+3
+                        "FirstAge": row.value!-1,
+                        "LastAge": row.value!+1
                     ]
-                    print("Age: \(self.age)")
+                    print("Age: \(String(describing: row.value))")
                     let api_url:String = "http://54.238.92.95:8080/api/v1/matching-ages/"+appDelegate.playerID
                     Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                 }
@@ -93,6 +93,7 @@ class MuchEurekaViewController: FormViewController {
                     row.value = Set<String>(self.pref)
                 } .onChange { row in
                     let valueArray = Array(row.value!)
+                    UserDefaults.standard.set(valueArray, forKey: "searchPrefArry")
                     var prefArray:[Int] = []
                     var prefStr:String = ""
                     for i in 0..<valueArray.count {
