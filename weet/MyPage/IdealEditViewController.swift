@@ -75,8 +75,19 @@ class IdealEditViewController: FormViewController {
                             } .onChange { row in
                                 let q_id: Int = self.json["user_specials"][i]["user_questions_and_answers"][j]["question_id"].intValue
                                 //let ans_id: Int = dic[row.value!]!
+                                let valueArray = Array(row.value!)
+                                var ansArray:[Int] = []
+                                for i in 0..<valueArray.count {
+                                    for (key,value) in dic {
+                                        if (valueArray[i] == key) {
+                                            ansArray.append(value)
+                                            break
+                                        }
+                                    }
+                                }
+                                ansArray.sort { $0 < $1 }
                                 print("q_id: \(q_id)")
-                                //print("a_id: \(ans_id)")
+                                print("a_id: \(ansArray)")
                                 // self.saveProfile(user_id: self.user_id, q_id: q_id, a_id: ans_id)
                         }
                         section.append(row)

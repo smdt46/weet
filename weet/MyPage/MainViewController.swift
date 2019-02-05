@@ -116,13 +116,6 @@ class MainViewController: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func imageButton1(_ sender: Any) {
-    }
-    @IBAction func imageButton2(_ sender: Any) {
-    }
-    @IBAction func imageButton3(_ sender: Any) {
-    }
-    
     
     @objc func tapped(sender: UITapGestureRecognizer){
         print("tapped")

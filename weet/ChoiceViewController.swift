@@ -100,6 +100,18 @@ class ChoiceViewController: UIViewController {
         requestUserData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let identifier = segue.identifier else {
+            // identifierが取れなかったら処理やめる
+            return
+        }
+        
+        if (identifier == "choice") {
+            let vc = segue.destination as! UserPageViewController
+            vc.skipType = 1
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         switch matching_format_id {

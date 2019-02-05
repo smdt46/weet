@@ -26,6 +26,7 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
     @IBOutlet weak var goodButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var sexLabel: UILabel!
+    var skipType:Int = 1
     
     
     override func viewDidLoad() {

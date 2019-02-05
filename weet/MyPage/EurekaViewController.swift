@@ -157,34 +157,31 @@ class EurekaViewController: FormViewController {
                 return
             }
             self.appDelegate.myJson = JSON(object)
+            // 表示の大元がViewControllerかNavigationControllerかで戻る場所を判断する
+            if self.presentingViewController is UINavigationController {
+                //  表示の大元がNavigationControllerの場合
+                let nc = self.presentingViewController as! UINavigationController
+                let vc = nc.topViewController as! MainViewController
+                vc.loadView()
+                vc.viewDidLoad()
+                self.dismiss(animated: true, completion: nil)
+                
+            } else {
+                // 表示元がViewControllerの場合
+                // 前画面のViewControllerを取得
+                let count = (self.navigationController?.viewControllers.count)! - 3
+                let vc = self.navigationController?.viewControllers[count] as! MainViewController
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainVC = storyboard.instantiateViewController(withIdentifier: "Mypage") as! UserProfileViewController
+                // 画面更新
+                vc.loadView()
+                vc.viewDidLoad()
+                mainVC.loadView()
+                mainVC.viewDidLoad()
+                // 画面を消す
+                self.navigationController?.popViewController(animated: true)
+            }
             print("AppDelegate Request")
-        }
-        
-        // 表示の大元がViewControllerかNavigationControllerかで戻る場所を判断する
-        if self.presentingViewController is UINavigationController {
-            //  表示の大元がNavigationControllerの場合
-            let nc = self.presentingViewController as! UINavigationController
-            let vc = nc.topViewController as! MainViewController
-            // vc.json = self.json
-            vc.loadView()
-            vc.viewDidLoad()
-            self.dismiss(animated: true, completion: nil)
-            
-        } else {
-            // 表示元がViewControllerの場合
-            // 前画面のViewControllerを取得
-            let count = (self.navigationController?.viewControllers.count)! - 3
-            let vc = self.navigationController?.viewControllers[count] as! MainViewController
-            let vc1 = self.navigationController?.viewControllers[count] as! UserProfileViewController
-            // AlamofireでGETし、AppDelegateのJSONを更新する
-            // vc.json = self.json
-            // 画面更新
-            vc.loadView()
-            vc.viewDidLoad()
-            vc1.loadView()
-            vc1.viewDidLoad()
-            // 画面を消す
-            self.navigationController?.popViewController(animated: true)
         }
     }
     

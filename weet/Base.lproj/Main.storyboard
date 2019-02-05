@@ -495,9 +495,6 @@
                                                                     <constraint firstAttribute="height" constant="50" id="f9A-mT-Fvb"/>
                                                                     <constraint firstAttribute="width" constant="50" id="gxb-Yu-gxq"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="imageButton3:" destination="TdT-3Z-riu" eventType="touchUpInside" id="CU6-fQ-YzN"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7o-wC-FfW">
                                                                 <rect key="frame" x="58" y="0.0" width="50" height="50"/>
@@ -506,9 +503,6 @@
                                                                     <constraint firstAttribute="height" constant="50" id="QC7-nm-yFi"/>
                                                                     <constraint firstAttribute="width" constant="50" id="koh-qz-upe"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="imageButton2:" destination="TdT-3Z-riu" eventType="touchUpInside" id="PlV-TO-WJG"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jd6-oW-HBV">
                                                                 <rect key="frame" x="116" y="0.0" width="50" height="50"/>
@@ -517,9 +511,6 @@
                                                                     <constraint firstAttribute="width" secondItem="Jd6-oW-HBV" secondAttribute="height" multiplier="1:1" id="WNs-Wg-3Lc"/>
                                                                     <constraint firstAttribute="height" constant="50" id="fvr-li-tEm"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="imageButton1:" destination="TdT-3Z-riu" eventType="touchUpInside" id="O4R-rc-g1v"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
