@@ -12,6 +12,7 @@
 		6C0D8B5821FDD53000DED2EF /* goodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D8B5721FDD53000DED2EF /* goodListViewController.swift */; };
 		6C1A680921F01EDD00C3FA6F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A680821F01EDD00C3FA6F /* MainViewController.swift */; };
 		6C1A681121F0220000C3FA6F /* IdealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1A681021F0220000C3FA6F /* IdealViewController.swift */; };
+		6C319139220A9E4A00266499 /* MANUAL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6C319138220A9E4A00266499 /* MANUAL.txt */; };
 		6C3399A321E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */; };
 		6C3399A421E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3399A221E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib */; };
 		6C49D76E21E1FFEF00EB7024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C49D76D21E1FFEF00EB7024 /* AppDelegate.swift */; };
@@ -69,6 +70,7 @@
 		6C0D8B5721FDD53000DED2EF /* goodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = goodListViewController.swift; sourceTree = "<group>"; };
 		6C1A680821F01EDD00C3FA6F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6C1A681021F0220000C3FA6F /* IdealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdealViewController.swift; sourceTree = "<group>"; };
+		6C319138220A9E4A00266499 /* MANUAL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MANUAL.txt; sourceTree = "<group>"; };
 		6C3399A121E6E1A500AA6F0E /* UserImagePreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImagePreviewTableViewCell.swift; sourceTree = "<group>"; };
 		6C3399A221E6E1A500AA6F0E /* UserImagePreviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserImagePreviewTableViewCell.xib; sourceTree = "<group>"; };
 		6C49D76A21E1FFEF00EB7024 /* weet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +179,7 @@
 				6C5E210B21F8988D009708CD /* ChoiceViewController.swift */,
 				6C49D77421E1FFF100EB7024 /* Assets.xcassets */,
 				6C49D77621E1FFF100EB7024 /* LaunchScreen.storyboard */,
+				6C319138220A9E4A00266499 /* MANUAL.txt */,
 				6C49D77921E1FFF100EB7024 /* Info.plist */,
 				6CDDE9CD21FA142D003C3B0B /* GoogleService-Info.plist */,
 			);
@@ -362,6 +365,7 @@
 				6C58736A21F9EE4500525C9B /* Couple.png in Resources */,
 				6C49D77521E1FFF100EB7024 /* Assets.xcassets in Resources */,
 				6C49D77321E1FFEF00EB7024 /* Main.storyboard in Resources */,
+				6C319139220A9E4A00266499 /* MANUAL.txt in Resources */,
 				6CC3D0A02203B07F0083486E /* Message.storyboard in Resources */,
 				6C58736721F9EE4500525C9B /* "Live.png in Resources */,
 				6CDDE9CE21FA142D003C3B0B /* GoogleService-Info.plist in Resources */,
