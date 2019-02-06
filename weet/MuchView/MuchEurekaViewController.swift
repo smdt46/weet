@@ -14,6 +14,7 @@ class MuchEurekaViewController: FormViewController {
     
         var selectedGender : String = ""
     var sex: String = UserDefaults.standard.string(forKey: "searchSex") ?? "女性"
+    var SexID:Int = 2
     var age: Int = UserDefaults.standard.integer(forKey: "searchAge")
     var pref: [String] = UserDefaults.standard.stringArray(forKey: "searchPrefArry") ?? ["兵庫県"]
     let ageArray:[Int] = ([Int])(18...60)
@@ -43,33 +44,57 @@ class MuchEurekaViewController: FormViewController {
                     row.title = "性別"
                     row.options = ["男性","女性","両方"]
                     row.value = self.sex
+                    switch row.value {
+                    case "男性":
+                        SexID = 1
+                    case "女性":
+                        SexID = 2
+                    case "両方":
+                        SexID = 3
+                    default:
+                        SexID = 2
+                    }
+                    let parameters: Parameters = [
+                        "SexID": SexID
+                    ]
+                    let api_url:String = "http://54.238.92.95:8080/api/v1/matching-sexes/"+appDelegate.playerID
+                    Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
+                    print("SexID: \(self.SexID)")
+                    print("sexput")
                 } .onChange { row in
                         UserDefaults.standard.set(row.value, forKey: "searchSex")
-                        var SexID:Int = 2
                         switch row.value {
                         case "男性":
-                            SexID = 1
+                            self.SexID = 1
                         case "女性":
-                            SexID = 2
+                            self.SexID = 2
                         case "両方":
-                            SexID = 3
+                            self.SexID = 3
                         default:
-                            SexID = 2
+                            self.SexID = 2
                         }
                     
                         // PUTする
                         let parameters: Parameters = [
-                            "SexID": SexID
+                            "SexID": self.SexID
                         ]
-                        print("SexID: \(SexID)")
                         let api_url:String = "http://54.238.92.95:8080/api/v1/matching-sexes/"+appDelegate.playerID
                         Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
+                    print("SexID: \(self.SexID)")
+                    print("sexput")
                 }
                 
                 <<< PickerInputRow<Int>() { row in
-                    row.title = "年齢"
+                    row.title = "年齢(±1で検索します)"
                     row.options = self.ageArray
                     row.value = self.age
+                    let parameters: Parameters = [
+                        "FirstAge": row.value!-1,
+                        "LastAge": row.value!+1
+                    ]
+                    let api_url:String = "http://54.238.92.95:8080/api/v1/matching-ages/"+appDelegate.playerID
+                    Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
+                    print("ageput")
                 } .onChange { row in
                     UserDefaults.standard.set(row.value, forKey: "searchAge")
                     let parameters: Parameters = [
@@ -79,6 +104,7 @@ class MuchEurekaViewController: FormViewController {
                     print("Age: \(String(describing: row.value))")
                     let api_url:String = "http://54.238.92.95:8080/api/v1/matching-ages/"+appDelegate.playerID
                     Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
+                    print("ageput")
                 }
 
                 <<< MultipleSelectorRow<String>() { row in
@@ -91,6 +117,32 @@ class MuchEurekaViewController: FormViewController {
                                    "徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県",
                                    "熊本県","大分県","宮崎県","鹿児島県","沖縄県"]
                     row.value = Set<String>(self.pref)
+                    let valueArray = Array(row.value!)
+                    UserDefaults.standard.set(valueArray, forKey: "searchPrefArry")
+                    var prefArray:[Int] = []
+                    var prefStr:String = ""
+                    for i in 0..<valueArray.count {
+                        for (key,value) in self.prefDic {
+                            if (valueArray[i] == key) {
+                                prefArray.append(value)
+                                break
+                            }
+                        }
+                    }
+                    prefArray.sort { $0 < $1 }
+                    for i in 0..<prefArray.count {
+                        prefStr = prefStr + String(prefArray[i])
+                        if i != prefArray.count - 1 {
+                            prefStr = prefStr + ","
+                        }
+                    }
+                    let parameters: Parameters = [
+                        "PrefecturesID": prefStr
+                    ]
+                    print("prefArray: \(prefArray)")
+                    print(prefStr)
+                    let api_url:String = "http://54.238.92.95:8080/api/v1/matching-prefectures/"+appDelegate.playerID
+                    Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                 } .onChange { row in
                     let valueArray = Array(row.value!)
                     UserDefaults.standard.set(valueArray, forKey: "searchPrefArry")
