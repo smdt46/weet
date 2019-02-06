@@ -402,7 +402,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lOu-Pu-1bZ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="メッセージ可能ユーザ一覧" id="Oys-eF-Jv5"/>
+                    <navigationItem key="navigationItem" title="メッセージ可能ユーザ一覧" id="Oys-eF-Jv5">
+                        <barButtonItem key="rightBarButtonItem" title="更新" id="FYW-fB-IJw">
+                            <connections>
+                                <action selector="reloadButton:" destination="GY2-hj-N9b" id="oRM-lj-TcP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonBarView" destination="gnS-m9-8eP" id="fof-Hk-u5r"/>
                         <outlet property="containerView" destination="PVt-D6-TD2" id="ouo-pR-cQi"/>
