@@ -12,6 +12,8 @@ weet_swift
 ## Install
 1. Xcodeをインストールする。
 [https://itunes.apple.com/jp/app/xcode/id497799835?mt=12](url)
-2. 任意のシミュレーターでビルドする。
+2. リポジトリをクローン、またはダウンロードして解凍する。
+3. weet_swift/weet.xcworkspaceをxcodeで開く。
+4. 任意のシミュレーターでビルドする。
 
 ※実機ビルド方法は準備中。
