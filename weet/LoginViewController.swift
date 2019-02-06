@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
             let url: String = "http://54.238.92.95:8080/api/v2/user/"+userName!
             Alamofire.request(url).responseJSON { response in
                 guard let object = response.result.value else {
+                    self.errorAlert(title: "接続エラー", message: "ネットワーク・サーバーの状態を確認してください。")
                     return
                 }
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -51,18 +52,18 @@ class LoginViewController: UIViewController {
                 print("AppDelegate Request")
             }
         } else {
-            print("ユーザーネームが違う")
+            errorAlert(title: "IDエラー", message: "ユーザーIDは1~9の範囲でログインしてください")
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func errorAlert(title: String, message: String) {
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
     }
-    */
 
 }
