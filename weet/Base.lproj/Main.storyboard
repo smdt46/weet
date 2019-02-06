@@ -718,13 +718,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wpr-P0-eGu"/>
                     </view>
-                    <navigationItem key="navigationItem" title="理想像編集" id="YIk-kM-AxU">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="8h2-rp-LsI">
-                            <connections>
-                                <action selector="saveButton:" destination="z5V-pp-ELE" id="M4S-Vi-zh5"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="理想像編集" id="YIk-kM-AxU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7xm-ov-icX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

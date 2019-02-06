@@ -30,7 +30,7 @@ class EurekaViewController: FormViewController {
         let api_url: String = "http://54.238.92.95:8080/api/v2/user/"+appDelegate.playerID
         Alamofire.request(api_url).responseJSON { response in
             guard let object = response.result.value else {
-                self.errorAlert()
+                self.Alert(title: "接続エラー", message: "ネットワーク・サーバーの状態を確認してください")
                 return
             }
             
@@ -39,14 +39,14 @@ class EurekaViewController: FormViewController {
             Alamofire.request(url).responseJSON { response in
                 guard let object = response.result.value else {
                     print("接続エラー")
-                    self.errorAlert()
+                    self.Alert(title: "接続エラー", message: "ネットワーク・サーバーの状態を確認してください")
                     return
                 }
                 
                 let qjson = JSON(object)
                 
                 self.form
-                    +++ Section("ユーザー画像")
+                    +++ Section(header: "ユーザー画像", footer: "画像のアップロードは準備中です")
                     <<< ImageRow {
                         $0.title = "画像1"
                         $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
@@ -58,14 +58,14 @@ class EurekaViewController: FormViewController {
                         }
                     }
                     
-                    +++ Section("ひとこと")
+                    +++ Section(header: "ひとこと", footer: "編集が完了したら保存ボタンを押してください")
                     <<< TextRow { row in
                         row.tag = "hitokoto"
                         row.placeholder = "75文字以内"
                         row.value = self.json["user_basics"]["hitokoto"].stringValue
                     }
                     
-                    +++ Section("自己紹介")
+                    +++ Section(header: "自己紹介", footer: "編集が完了したら保存ボタンを押してください")
                     <<< TextAreaRow { row in
                         row.tag = "comment"
                         row.placeholder = "300文字以内"
@@ -157,11 +157,10 @@ class EurekaViewController: FormViewController {
         let url: String = "http://54.238.92.95:8080/api/v1/user/\(appDelegate.playerID)/update/basics"
         Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
         print("basics_update_tap")
+        Alert(title: "保存完了", message: "ユーザー基本情報を保存しました")
     }
     
-    func errorAlert() {
-        let title = "接続エラー"
-        let message = "ネットワーク・サーバーの状態を確認してください"
+    func Alert(title: String, message: String) {
         let okText = "OK"
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
