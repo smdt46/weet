@@ -69,7 +69,7 @@ class UserIdealViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.detailTextLabel?.text = json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_answer_name"].stringValue
         
         for i in 0..<json["matching_ideal_questions"].count {
-            if (json["matching_questions"][i].intValue == json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_question_id"].intValue) {
+            if (json["matching_ideal_questions"][i].intValue == json["user_ideal_specials"][indexPath.section]["user_ideal_questions_and_answers"][indexPath.row]["ideal_question_id"].intValue) {
                 cell.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1)
             }
         }
