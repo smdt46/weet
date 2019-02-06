@@ -152,6 +152,8 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
             print("favoid: \(self.json["user_basics"]["user_id"].intValue)")
             let url: String = "http://54.238.92.95:8080/api/v1/mutual-favo/user"
             Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            let url1: String = "http://54.238.92.95:8080/api/v1/favo/player/\(appDelegate.playerID)/favo-user/\(self.json["user_basics"]["user_id"].stringValue)/matching-format/\(String(matchingFormatID))"
+            Alamofire.request(url1, method: .delete, encoding: JSONEncoding.default)
             print("mutual-favo_post")
         }
         goodButton.isEnabled = false
