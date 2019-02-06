@@ -7,27 +7,24 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    @IBAction func postButton(_ sender: Any) {
-        let parameters: Parameters = [
-            "test": "kazumori!"
-        ]
-        let url: String = "http://54.238.92.95:8080/test"
-        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+    @IBAction func logoutButtonTapped(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+        UserDefaults.standard.set(nil, forKey: "playerID")
+        
+        // タイトル画面へ
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "title")
+        present(nextView, animated: true, completion: nil)
     }
-    
 }
 

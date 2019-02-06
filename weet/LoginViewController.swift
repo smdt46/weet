@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
 
@@ -26,21 +28,30 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         let userName = userNameTextField.text
-        let userPassword = userPasswordTextField.text
-        let userNameStored = UserDefaults.standard.string(forKey: "userName")
-        let userPasswordStored = UserDefaults.standard.string(forKey: "userPassword")
-        if(userName == userNameStored) {
-            if(userPassword == userPasswordStored) {
-                // ユーザ基本情報が登録されていなかったら
-                // 基本情報入力画面に遷移する
-                // 入力されていたら、UserDefaultsにユーザIDとログイン状態を保存し、メイン画面に遷移する
-                
-                // ログイン
+        if(userName == "1" || userName == "2" || userName == "3" || userName == "4" || userName == "5" || userName == "6" || userName == "7" || userName == "8" || userName == "9") {
+        
+            // ユーザ基本情報が登録されていなかったら
+            // 基本情報入力画面に遷移する
+            // 入力されていたら、UserDefaultsにユーザIDとログイン状態を保存し、メイン画面に遷移する
+            
+            // ログイン
+            let url: String = "http://54.238.92.95:8080/api/v2/user/"+userName!
+            Alamofire.request(url).responseJSON { response in
+                guard let object = response.result.value else {
+                    return
+                }
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.myJson = JSON(object)
+                appDelegate.playerID = userName!
+                UserDefaults.standard.set(userName, forKey: "playerID")
                 UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                 //UserDefaults.standard.synchronize()
                 //self.dismiss(animated: true, completion: nil)
                 self.performSegue(withIdentifier: "tabMain", sender: self)
+                print("AppDelegate Request")
             }
+        } else {
+            print("ユーザーネームが違う")
         }
     }
     

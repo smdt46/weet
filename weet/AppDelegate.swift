@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var messageJson: JSON?
     var favoJson: JSON?
     
-    let playerID: String = "1"
+    var playerID: String = UserDefaults.standard.string(forKey: "playerID") ?? "1"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var viewName: String
         
         // ログイン中であればメインのタブメニューへ、そうでなければタイトル画面へ遷移
-        if UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+        if UserDefaults.standard.bool(forKey: "isUserLoggedIn") && UserDefaults.standard.string(forKey: "playerID") != nil  {
             viewName = "tabMain"
         } else {
             viewName = "title"
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let object = response.result.value else {
                 return
             }
-
+            
             self.myJson = JSON(object)
             print("AppDelegate Request")
         }
@@ -58,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.userJson = JSON(object)
             print("AppDelegate Request")
         }
+        
         
         FirebaseApp.configure()
         
