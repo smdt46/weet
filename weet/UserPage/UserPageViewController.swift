@@ -152,6 +152,18 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func okotowariAlert() {
+        let title = "送信完了"
+        let message = "お断りしました。\n相手には通知されません。"
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func goodButton(_ sender: Any) {
         if (postType == "favo") {
             let parameters: Parameters = [
@@ -242,8 +254,9 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
                     marriageVC.viewDidLoad()
                     roommateVC.loadView()
                     roommateVC.viewDidLoad()
+                    self.okotowariAlert()
                     // 画面を消す
-                    self.navigationController?.popViewController(animated: true)
+                    //self.navigationController?.popViewController(animated: true)
                 }
             }
         }
