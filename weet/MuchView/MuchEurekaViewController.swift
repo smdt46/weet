@@ -85,12 +85,12 @@ class MuchEurekaViewController: FormViewController {
                 }
                 
                 <<< PickerInputRow<Int>() { row in
-                    row.title = "年齢(±1で検索します)"
+                    row.title = "年齢(±3で検索します)"
                     row.options = self.ageArray
                     row.value = self.age
                     let parameters: Parameters = [
-                        "FirstAge": row.value!-1,
-                        "LastAge": row.value!+1
+                        "FirstAge": row.value!-3,
+                        "LastAge": row.value!+3
                     ]
                     let api_url:String = "http://54.238.92.95:8080/api/v1/matching-ages/"+appDelegate.playerID
                     Alamofire.request(api_url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
@@ -98,8 +98,8 @@ class MuchEurekaViewController: FormViewController {
                 } .onChange { row in
                     UserDefaults.standard.set(row.value, forKey: "searchAge")
                     let parameters: Parameters = [
-                        "FirstAge": row.value!-1,
-                        "LastAge": row.value!+1
+                        "FirstAge": row.value!-3,
+                        "LastAge": row.value!+3
                     ]
                     print("Age: \(String(describing: row.value))")
                     let api_url:String = "http://54.238.92.95:8080/api/v1/matching-ages/"+appDelegate.playerID
