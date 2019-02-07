@@ -128,6 +128,30 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func goodAlert() {
+        let title = "送信完了！"
+        let message = "いいねを送りました。"
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func mutualAlert() {
+        let title = "マッチング成立"
+        let message = "マッチングが成立しました。メッセージのやり取りが可能になりました。"
+        let okText = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: okText, style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func goodButton(_ sender: Any) {
         if (postType == "favo") {
             let parameters: Parameters = [
@@ -140,6 +164,7 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
             print("favoid: \(self.json["user_basics"]["user_id"].intValue)")
             let url: String = "http://54.238.92.95:8080/api/v1/favo/user"
             Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            goodAlert()
             print("favo_post")
         } else if(postType == "mutual") {
             let parameters: Parameters = [
@@ -154,6 +179,7 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
             Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             let url1: String = "http://54.238.92.95:8080/api/v1/favo/player/\(appDelegate.playerID)/favo-user/\(self.json["user_basics"]["user_id"].stringValue)/matching-format/\(String(matchingFormatID))"
             Alamofire.request(url1, method: .delete, encoding: JSONEncoding.default)
+            mutualAlert()
             print("mutual-favo_post")
         }
         goodButton.isEnabled = false
