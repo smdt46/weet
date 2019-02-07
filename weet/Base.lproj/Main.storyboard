@@ -25,11 +25,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="5c9-VZ-Uvn">
-                                <rect key="frame" x="16" y="231.5" width="288" height="155"/>
+                                <rect key="frame" x="16" y="260" width="288" height="98"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTM-RW-Ypu">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="41"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                         <state key="normal" title="新規登録（未実装）">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,33 +59,27 @@
                                             <segue destination="MK1-oa-rzO" kind="show" identifier="loginFromTitle" id="tQ6-r0-L7x"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLe-aj-fRA">
-                                        <rect key="frame" x="0.0" y="114" width="288" height="41"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
-                                        <state key="normal" title="デモ用">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="demoLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fWd-XH-WoS"/>
-                                            <segue destination="Yul-o2-JgI" kind="show" identifier="demo" id="fkv-dh-ADi"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qRe-Ox-8CI">
+                                <rect key="frame" x="16" y="374" width="288" height="178"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">〜お断り〜・デモとして、何度でもユーザーに対して「いいね」（マッチング）をすることができるようになっています。・以下の機能は未実装です。 新規登録、画像のアップロード、メッセージの個別ルーム（テストで1つのみ実装）など</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qRe-Ox-8CI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="9k8-oj-6Eq"/>
+                            <constraint firstItem="qRe-Ox-8CI" firstAttribute="top" secondItem="5c9-VZ-Uvn" secondAttribute="bottom" constant="16" id="BXN-BO-exO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qRe-Ox-8CI" secondAttribute="trailing" constant="16" id="StK-im-F2s"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5c9-VZ-Uvn" secondAttribute="trailing" constant="16" id="TBS-rM-XdB"/>
                             <constraint firstItem="RGb-Fh-yna" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aCU-IB-LS0"/>
                             <constraint firstItem="5c9-VZ-Uvn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="c8t-BV-PCP"/>
                             <constraint firstItem="5c9-VZ-Uvn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l26-iZ-6wU"/>
                             <constraint firstItem="5c9-VZ-Uvn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="25" id="rT4-gA-bZZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qRe-Ox-8CI" secondAttribute="bottom" constant="16" id="swT-PV-Pfz"/>
                             <constraint firstItem="RGb-Fh-yna" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="u8G-Ku-g9T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -750,13 +744,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="N3s-jo-4vd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="プロフィール編集" id="nlM-Pk-LHx">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="hQp-qP-oy2">
-                            <connections>
-                                <action selector="saveButton:" destination="ewB-4h-Lh9" id="Zlj-v0-es8"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="プロフィール編集" id="nlM-Pk-LHx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KVb-qO-Bpq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1068,7 +1056,7 @@
         <image name="searchIcon" width="72" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9yr-EY-ls0"/>
+        <segue reference="7yQ-Br-EN0"/>
         <segue reference="tQ6-r0-L7x"/>
     </inferredMetricsTieBreakers>
 </document>

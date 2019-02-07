@@ -83,13 +83,21 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="左スワイプで次のユーザーへ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fR-gn-dYb">
+                                <rect key="frame" x="74.5" y="548" width="226" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="8fR-gn-dYb" firstAttribute="centerX" secondItem="Zne-1M-r4b" secondAttribute="centerX" id="46S-Qy-QH9"/>
                             <constraint firstItem="fbC-3b-vy0" firstAttribute="centerX" secondItem="VGv-1T-sRC" secondAttribute="centerX" id="8tL-vV-0dR"/>
                             <constraint firstItem="t4c-od-5q4" firstAttribute="bottom" secondItem="oQy-1G-NW1" secondAttribute="bottom" constant="-15" id="Ame-aL-iYZ"/>
                             <constraint firstItem="t4c-od-5q4" firstAttribute="width" secondItem="Zne-1M-r4b" secondAttribute="width" constant="-59" id="HO7-gj-idV"/>
+                            <constraint firstItem="8fR-gn-dYb" firstAttribute="centerY" secondItem="Zne-1M-r4b" secondAttribute="centerY" constant="225" id="KhB-sB-iIn"/>
                             <constraint firstItem="oQy-1G-NW1" firstAttribute="width" secondItem="Zne-1M-r4b" secondAttribute="width" constant="-28" id="TIm-LX-YnZ"/>
                             <constraint firstItem="fbC-3b-vy0" firstAttribute="width" secondItem="Zne-1M-r4b" secondAttribute="width" constant="-89" id="cze-ey-69E"/>
                             <constraint firstItem="pHg-ex-pah" firstAttribute="width" secondItem="Zne-1M-r4b" secondAttribute="width" constant="-59" id="djr-ZS-xIL"/>

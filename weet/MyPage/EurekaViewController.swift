@@ -46,31 +46,35 @@ class EurekaViewController: FormViewController {
                 let qjson = JSON(object)
                 
                 self.form
-                    +++ Section(header: "ユーザー画像", footer: "画像のアップロードは準備中です")
-                    <<< ImageRow {
-                        $0.title = "画像1"
-                        $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
-                        $0.value = UIImage(named: "kmyan_icon")
-                        $0.clearAction = .yes(style: .destructive)
-                        $0.onChange { [unowned self] row in
-                            self.selectedImg = row.value!
-                            // パラメータにqidとaidを設定する
-                        }
-                    }
+//                    +++ Section(header: "ユーザー画像", footer: "画像のアップロードは準備中です")
+//                    <<< ImageRow {
+//                        $0.title = "画像1"
+//                        $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+//                        $0.value = UIImage(named: "kmyan_icon")
+//                        $0.clearAction = .yes(style: .destructive)
+//                        $0.onChange { [unowned self] row in
+//                            self.selectedImg = row.value!
+//                            // パラメータにqidとaidを設定する
+//                        }
+//                    }
                     
-                    +++ Section(header: "ひとこと", footer: "編集が完了したら保存ボタンを押してください")
+                    +++ Section("ひとこと")
                     <<< TextRow { row in
                         row.tag = "hitokoto"
                         row.placeholder = "75文字以内"
                         row.value = self.json["user_basics"]["hitokoto"].stringValue
+                        }.onChange{ row in
+                            self.saveBasics()
                     }
                     
-                    +++ Section(header: "自己紹介", footer: "編集が完了したら保存ボタンを押してください")
+                    +++ Section("自己紹介")
                     <<< TextAreaRow { row in
                         row.tag = "comment"
                         row.placeholder = "300文字以内"
                         row.value = self.json["user_basics"]["comment"].stringValue
-                }
+                    } .onChange { row in
+                           self.saveBasics()
+                    }
                 
                 // 友達・恋愛などフォーム作成
                 for i in 0..<self.json["user_specials"].count {
@@ -78,18 +82,18 @@ class EurekaViewController: FormViewController {
                     // セクションを作成
                     let section = Section(self.json["user_specials"][i]["matching_format_name"].stringValue)
                     // マッチング許可のスイッチ作成
-                    if (i != 0) {
-                        let switchRow = SwitchRow("switchRowTag\(String(i))"){
-                            $0.title = self.json["user_specials"][i]["matching_format_name"].stringValue + "マッチング許可"
-                            $0.value = UserDefaults.standard.bool(forKey: "isLoveChoice")
-                            
-                            // 許可情報をPOSTする.onChange使用予定
-                            
-                            } .onChange { row in
-                                self.saveChoice(updateChoice: i, updateSW: row.value!)
-                        }
-                        section.append(switchRow)
-                    }
+//                    if (i != 0) {
+//                        let switchRow = SwitchRow("switchRowTag\(String(i))"){
+//                            $0.title = self.json["user_specials"][i]["matching_format_name"].stringValue + "マッチング許可"
+//                            $0.value = UserDefaults.standard.bool(forKey: "isLoveChoice")
+//
+//                            // 許可情報をPOSTする.onChange使用予定
+//
+//                            } .onChange { row in
+//                                self.saveChoice(updateChoice: i, updateSW: row.value!)
+//                        }
+//                        section.append(switchRow)
+//                    }
                     
                     
                     // 行を作成
@@ -99,11 +103,11 @@ class EurekaViewController: FormViewController {
                         let row = PickerInputRow<String>() {
                             
                             // スイッチ関連
-                            if(i != 0){
-                                $0.hidden = Condition.function(["switchRowTag\(String(i))"], { form in
-                                    return !((form.rowBy(tag: "switchRowTag\(String(i))") as? SwitchRow)?.value ?? false)
-                                })
-                            }
+//                            if(i != 0){
+//                                $0.hidden = Condition.function(["switchRowTag\(String(i))"], { form in
+//                                    return !((form.rowBy(tag: "switchRowTag\(String(i))") as? SwitchRow)?.value ?? false)
+//                                })
+//                            }
                             
                             
                             // タイトル設定
@@ -134,30 +138,6 @@ class EurekaViewController: FormViewController {
                 }
             }
         }
-    }
-    
-
-    @IBAction func saveButton(_ sender: Any) {
-        
-        let hitokotoRow = form.rowBy(tag: "hitokoto") as! TextRow
-        let hitokoto = hitokotoRow.value!
-        let commentRow = form.rowBy(tag: "comment") as! TextAreaRow
-        let comment = commentRow.value!
-        
-        let parameters: Parameters = [
-            "UserName": json["user_basics"]["user_name"].stringValue,
-            "Image1": json["user_basics"]["image1"].stringValue,
-            "Image2": "",
-            "Image3": "",
-            "Age": json["user_basics"]["age"].intValue,
-            "Sex": json["user_basics"]["sex"].stringValue,
-            "Hitokoto": hitokoto,
-            "Comment": comment
-        ]
-        let url: String = "http://54.238.92.95:8080/api/v1/user/\(appDelegate.playerID)/update/basics"
-        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
-        print("basics_update_tap")
-        Alert(title: "保存完了", message: "ユーザー基本情報を保存しました")
     }
     
     func Alert(title: String, message: String) {
@@ -192,6 +172,27 @@ class EurekaViewController: FormViewController {
 //        let url: String = "http://localhost:8080/api/v1/matching-format-choices/"+appDelegate.playerID
 //        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
 //        print("basics_update_tap")
+    }
+    
+    func saveBasics() {
+        let hitokotoRow = form.rowBy(tag: "hitokoto") as! TextRow
+        let hitokoto = hitokotoRow.value!
+        let commentRow = form.rowBy(tag: "comment") as! TextAreaRow
+        let comment = commentRow.value!
+        
+        let parameters: Parameters = [
+            "UserName": json["user_basics"]["user_name"].stringValue,
+            "Image1": json["user_basics"]["image1"].stringValue,
+            "Image2": "",
+            "Image3": "",
+            "Age": json["user_basics"]["age"].intValue,
+            "Sex": json["user_basics"]["sex"].stringValue,
+            "Hitokoto": hitokoto,
+            "Comment": comment
+        ]
+        let url: String = "http://54.238.92.95:8080/api/v1/user/\(appDelegate.playerID)/update/basics"
+        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default)
+        print("basics_update_tap")
     }
     
     // 質問選択肢をPOSTして更新する
