@@ -191,8 +191,58 @@ class UserPageViewController: ButtonBarPagerTabStripViewController {
             Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             let url1: String = "http://54.238.92.95:8080/api/v1/favo/player/\(appDelegate.playerID)/favo-user/\(self.json["user_basics"]["user_id"].stringValue)/matching-format/\(String(matchingFormatID))"
             Alamofire.request(url1, method: .delete, encoding: JSONEncoding.default)
-            mutualAlert()
+            
             print("mutual-favo_post")
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let friendVC = storyboard.instantiateViewController(withIdentifier: "friendGood") as! goodFriendListViewController
+            let loveVC = storyboard.instantiateViewController(withIdentifier: "loveGood") as! goodLoveListViewController
+            let marriageVC = storyboard.instantiateViewController(withIdentifier: "marriageGood") as! goodMarriageListViewController
+            let roommateVC = storyboard.instantiateViewController(withIdentifier: "roommateGood") as! goodRoommateListViewController
+            
+            if self.presentingViewController is UINavigationController {
+                //  表示の大元がNavigationControllerの場合
+                let nc = self.presentingViewController as! UINavigationController
+                let vc = nc.topViewController as! goodListViewController
+                vc.loadView()
+                vc.viewDidLoad()
+                friendVC.loadView()
+                friendVC.viewDidLoad()
+                loveVC.loadView()
+                loveVC.viewDidLoad()
+                marriageVC.loadView()
+                marriageVC.viewDidLoad()
+                roommateVC.loadView()
+                roommateVC.viewDidLoad()
+                self.dismiss(animated: true, completion: nil)
+                
+            } else {
+                // 表示元がViewControllerの場合
+                let api_url = "http://54.238.92.95:8080/api/v1/favo/user/"+appDelegate.playerID
+                Alamofire.request(api_url).responseJSON { response in
+                    guard let object = response.result.value else {
+                        self.errorAlert()
+                        return
+                    }
+                    self.appDelegate.favoJson = JSON(object)
+                    // 前画面のViewControllerを取得
+                    let count = (self.navigationController?.viewControllers.count)! - 2
+                    let vc = self.navigationController?.viewControllers[count] as! goodListViewController
+                    vc.loadView()
+                    vc.viewDidLoad()
+                    friendVC.loadView()
+                    friendVC.viewDidLoad()
+                    loveVC.loadView()
+                    loveVC.viewDidLoad()
+                    marriageVC.loadView()
+                    marriageVC.viewDidLoad()
+                    roommateVC.loadView()
+                    roommateVC.viewDidLoad()
+                    self.mutualAlert()
+                    // 画面を消す
+                    //self.navigationController?.popViewController(animated: true)
+                }
+            }
         }
         goodButton.isEnabled = false
     }
